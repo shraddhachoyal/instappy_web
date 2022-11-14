@@ -1254,19 +1254,17 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  /*This function is used for update additional apps details*/
   updateAdditionalAppData(appData: any) {
     let second_array = appData;
     if (this.additionalAppIcon) {
       var merged = Object.assign(appData, { 'icon_values': this.additionalAppIcon });
       second_array = appData;
     }
-
     if (this.additionalAppSplashIcon) {
       var merged = Object.assign(appData, { 'splashscreen_icon_value': this.additionalAppSplashIcon });
       second_array = appData;
     }
-    console.log(second_array);
-
     this.dashboardService.updateAdditionalApp(second_array).subscribe((data) => {
       this.addAdditionalAppResult = data;
       if (this.addAdditionalAppResult.success === true) {
@@ -1300,7 +1298,6 @@ export class DashboardComponent implements OnInit {
         this.app_form_appuid = this.aditionalAppDetails.response.app_uid;
         this.aditionalAppDetails = this.aditionalAppDetails.response;
         console.log('***:', this.aditionalAppDetails);
-
 
         const appIcon = siteURL + '/media/' + this.aditionalAppDetails.icon_values;
         const appSplashIcon = siteURL + '/media/' + this.aditionalAppDetails.splashscreen_icon_value;
