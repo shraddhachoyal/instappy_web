@@ -1,0 +1,94 @@
+<app-panel-header></app-panel-header>
+<section class="pricing-heading-page">
+  <div class="container">
+    <div class="header-height"></div>
+    <div class="heading-bx">
+      <a routerLink="#" class="font-weight-bold">
+        <i aria-hidden="true" class="fa fa-angle-left"></i>
+        <span class="text-dark">Back</span></a>
+      <h3 class="m-0">Subscription</h3>
+      <p> Your trial is ending in <span class="colo_info"> 10 Days</span> </p>
+    </div>
+    <div class="pricing-tab-bx">
+      <div class="tab-content mt-3">
+        <div class="tab-pane active" id="annualyplan" role="tabpanel" aria-labelledby="annualyplan-tab">
+          <div class="plan-box">
+            <div class="basic-plan" *ngFor="let res of pricingArr">
+              <h3 class="plan-name">{{res.plan_name}}</h3>
+              <p class="price-tag">${{res.price}}</p>
+              <p class="package-time">per month, billed yearly</p>
+              <div class="divider-bx">
+                <h4>for</h4>
+                <ul class="plan-bx-icon pt-0 mb-2">
+                  <li>
+                    <i aria-hidden="true" class="fa fa-apple ml-3"></i>
+                  </li>
+                  <li class="mr-0">
+                    <i aria-hidden="true" class="fa fa-android"></i>
+                  </li>
+                </ul>
+              </div>
+              <a class="primary-btn" (click)="purchasePlan(res.id,res.plan_name,res.price)">Purchase</a>
+              <ul class="plan-detais">
+                <li [innerHtml]="res.description"></li>
+              </ul>
+            </div>
+
+            <!-- <div class="popular-plan">
+              <h5 class="popular-plan-tag">Popular</h5>
+              <h3 class="plan-name">Gold</h3>
+              <p class="price-tag">$65</p>
+              <p class="package-time">per month, billed yearly</p>
+              <div class="divider-bx">
+                <h4>For</h4>
+                <ul class="plan-bx-icon pt-0 mb-2">
+                  <li>
+                    <i aria-hidden="true" class="fa fa-apple ml-3"></i>
+                  </li>
+                  <li class="mr-0">
+                    <i aria-hidden="true" class="fa fa-android"></i>
+                  </li>
+                </ul>
+              </div>
+              <a class="primary-btn mt-0" (click)="purchasePlan(1,'pre',199)">Purchase</a>
+              <ul class="plan-detais">
+                <li class="act-plan">All Features of the GOLD package &nbsp; +</li>
+                <li>Unlimited sales</li>
+                <li>Billing/ Shopping Cart/ Favorites/ My Orders integrated</li>
+                <li>Fully independent Inventory</li>
+                <li>Management System including Payment Gateway</li>
+                <li>Seamless integration with your e-Commerce website (optional)</li>
+                <li>No transaction fee on sales</li>
+              </ul>
+            </div>
+            <div class="basic-plan">
+              <h3 class="plan-name">Diamond</h3>
+              <p class="price-tag">$110</p>
+              <p class="package-time">per month, billed yearly</p>
+              <div class="divider-bx">
+                <h4>for</h4>
+                <ul class="plan-bx-icon pt-0 mb-2">
+                  <li>
+                    <i aria-hidden="true" class="fa fa-apple ml-3"></i>
+                  </li>
+                  <li class="mr-0">
+                    <i aria-hidden="true" class="fa fa-android"></i>
+                  </li>
+                </ul>
+              </div>
+              <a routerLink="/checkout" class="primary-btn">Get Started</a>
+              <ul class="plan-detais">
+                <li>Native apps with core features</li>
+                <li>White label apps launched unde your own account</li>
+                <li>Unlimited push notifications</li>
+                <li>Expert assistance in creating your app</li>
+                <li>CMS panel for unlimited app updates</li>
+                <li>Auto updates for iOS and Android</li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

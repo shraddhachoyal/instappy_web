@@ -1,0 +1,243 @@
+<app-panel-header></app-panel-header>
+<section class="checkout-box">
+  <div class="container">
+    <div class="header-height"></div>
+    <div class="row">
+      <div class="col-12">
+        <div class="heading-bx">
+          <a routerLink="/subscription" class="font-weight-bold">
+            <i aria-hidden="true" class="fa fa-angle-left"></i> <span class="text-dark">Back</span>
+          </a>
+          <h3 class="ml-3 mt-2">Checkout</h3>
+        </div>
+        <div class="checkout-box-data" id="checkoutForm">
+          <form [formGroup]="billingForm" (ngSubmit)="billingFormSubmit()">
+            <ul class="checkout-bx">
+              <li class="bg-white">
+                <div class="checkout-form">
+                  <h3>Billing information</h3>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <input type="text" formControlName="full_name" class="form-control" id="inputEmail4"
+                        placeholder="Full Name*"
+                        [ngClass]="{ 'is-invalid': submitted && billingform.full_name.errors }">
+                      <div *ngIf="submitted && billingform.full_name.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.full_name.errors.required">Please enter your fullname</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input type="text" formControlName="company_name" class="form-control" id="inputPassword4"
+                        placeholder="Company Name*"
+                        [ngClass]="{ 'is-invalid': submitted && billingform.company_name.errors }">
+                      <div *ngIf="submitted && billingform.company_name.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.company_name.errors.required">Please enter your company name</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <input type="email" formControlName="email" class="form-control" id="inputEmail4"
+                        placeholder="E-Mail Address*"
+                        [ngClass]="{ 'is-invalid': submitted && billingform.email.errors }">
+                      <div *ngIf="submitted && billingform.email.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.email.errors.required">Please enter your email address</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <select class="custom-select" id="inputGroupSelect02" (change)="getStateByCountries($event)"
+                        formControlName="country" [ngClass]="{ 'is-invalid': submitted && billingform.country.errors }"
+                        placeholder="Select Country">
+                        <option value="" disabled selected>Select Country</option>
+                        <option *ngFor="let country of countryList" value="{{country.iso2}}" ng-reflect-value="country"
+                          selected="">
+                          {{country.name}}</option>
+                      </select>
+                      <div *ngIf="submitted && billingform.country.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.country.errors.required">Please select country</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <select class="custom-select" id="inputGroupSelect02" (change)="getCityByState($event)"
+                        formControlName="state" [ngClass]="{ 'is-invalid': submitted && billingform.state.errors }">
+                        <option value="" disabled selected>Select State</option>
+                        <option *ngFor="let state of stateList" value="{{state.iso2}}" ng-reflect-value="state"
+                          selected="">
+                          {{state.name}}</option>
+                      </select>
+                      <div *ngIf="submitted && billingform.state.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.state.errors.required">Please select state</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <select class="custom-select" formControlName="city" value=""
+                        [ngClass]="{ 'is-invalid': submitted && billingform.city.errors }">
+                        <option value="" disabled selected>Select City</option>
+                        <option *ngFor="let city of cityList" value="{{city.name}}" ng-reflect-value="city" selected="">
+                          {{city.name}}</option>
+                      </select>
+                      <div *ngIf="submitted && billingform.city.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.city.errors.required">Please select city</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <input type="text" class="form-control" id="inputEmail4" placeholder="Zip Code*"
+                        formControlName="zip_code"
+                        [ngClass]="{ 'is-invalid': submitted && billingform.zip_code.errors }">
+                      <div *ngIf="submitted && billingform.zip_code.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.zip_code.errors.required">Please enter zipcode</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input type="number" class="form-control" id="inputEmail4" placeholder="Phone Number*"
+                        formControlName="phone_no"
+                        [ngClass]="{ 'is-invalid': submitted && billingform.phone_no.errors }">
+                      <div *ngIf="submitted && billingform.phone_no.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.phone_no.errors.required">Please enter your phone number</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <textarea type="text" class="form-control bill_address" id="inputEmail4"
+                        placeholder="Billing Address" formControlName="address"
+                        [ngClass]="{ 'is-invalid': submitted && billingform.address.errors }"></textarea>
+                      <div *ngIf="submitted && billingform.address.errors" class="invalid-feedback">
+                        <div *ngIf="billingform.address.errors.required">Please enter your address</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="isChecked"
+                      formControlName="isChecked"
+                      [ngClass]="{ 'is-invalid': submitted && billingform.company_name.errors }">
+                    <label class="form-check-label" for="exampleCheck1">Lorem Ipsum is simply dummy text of the printing
+                      and typesetting industry.</label>
+                    <div *ngIf="submitted && billingform.isChecked.errors" class="invalid-feedback">
+                      <div *ngIf="billingform.isChecked.errors.required">Please check this field to proceed forward
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="visa-varified">
+                    <ul>
+                      <li><img src="../../assets/images/panel/stripe.png"> </li>
+                      <!-- <li><img src="../../assets/images/panel/maestro.png"> </li>
+                      <li><img src="../../assets/images/panel/paypal.png"> </li> -->
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-white">
+                <div class="payment-details-bx">
+                  <h3>Plan information</h3>
+                  <ul class="data-pay-desc">
+                    <!-- <li><span> Order id</span> <span>1536051035</span></li> -->
+                    <li><span>Date</span> <span>{{currDate}}</span></li>
+                    <li><span>Time</span> <span>{{currTime}}</span>
+                    </li>
+                  </ul>
+
+                  <ul class="data-pay-desc">
+                    <li *ngIf="itemArr.plan_name">{{itemArr.plan_name}} <span
+                        *ngIf="itemArr.plan_price">${{itemArr.plan_price}}</span></li>
+                    <p>Additional Apps</p>
+                    <li *ngFor="let appList of appListArr" class="app_data_list">
+                      <div class="form-check">
+                        <input class="form-check-input additional-apps" type="checkbox"
+                          [checked]="appList.isCheck === true" value="{{appList.additional_id}}" id="defaultCheck1"
+                          name="{{appList.app_name}}"
+                          (change)="onChange(appList.additional_id,appList.app_name,appList.price, $event)">
+                        <label class="form-check-label text-capitalize" for="defaultCheck1">
+                          {{appList.app_name}}
+                        </label>
+                      </div>
+                      <div>${{appList.price}}</div>
+                    </li>
+                  </ul>
+                  <ul class="data-pay-desc">
+                    <li><span>Discount</span> <span>$ {{discount_amount}}</span></li>
+                    <li><span>GST/VAT</span><span> {{GSTVAT}}%</span></li>
+                  </ul>
+                  <ul class="data-pay-desc border-none">
+                    <li class="prise-total"><span>TOTAL</span><span>${{total_ammount}}</span></li>
+                    <li class="prise-total"><span>SUB TOTAL</span><span>${{sub_total}}</span></li>
+                  </ul>
+                  <div class="coupon-box">
+                    <div class="coupon-bx-zone">
+                      <div class="coupon">
+                        <div class="submit-bx">
+                          <button class="apply-now">Apply</button>
+                        </div>
+                        <input type="text" class="form-control" id="coupon-code" placeholder="Coupon code">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="complete-payment-btn">
+                    <button class="complete-btn" type="submit">Complete Payment</button>
+                  </div><br>
+                  <span class="{{messageCls}}">{{message}}</span>
+                </div>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="checkout-box mt-0 pt-0" [ngClass]="displayDiv" id="payment_successful/">
+  <div class="container">
+    <div class="heading-bx d-flex align-items-center">
+      <a routerLink="/my-apps" class="font-weight-bold">
+        <i aria-hidden="true" class="fa fa-angle-left"></i> <span class="text-dark">Back</span>
+        <h6 class="ml-3 mt-2">My Apps </h6>
+      </a>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="checkout-box-data-radius bg-white">
+          <div class="payment-successful">
+            <div class="payment-successful-title">
+              <img src="../../assets/images/panel/payment-successful.png">
+              <h3>Payment Successful</h3>
+            </div>
+            <p class="text-center">Awesome! You have successfully completed the payment process. </p>
+            <div class="card-body-data notifications-para m-0">
+
+              <ul class="payment_list">
+                <li>
+                  Order ID
+                  <p>{{resultData.order_id}}</p>
+                </li>
+                <!-- <li>
+                  App Name
+                  <p class="text-primary">The Fooder</p>
+                </li> -->
+                <li>
+                  Subscription Plan
+                  <p>{{itemArr.plan_name}}</p>
+                </li>
+                <li>
+                  Payment Status
+                  <p>Successful</p>
+                </li>
+                <li>
+                  Total
+                  <p class="font-weight-bold">${{total_ammount}}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

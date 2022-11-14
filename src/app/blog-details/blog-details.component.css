@@ -1,0 +1,263 @@
+/* blog full css start */
+
+/* .recent-blog-box, .full-blog {
+    padding: 20px 0 0;
+  } */
+
+section.blog-details-box {
+  padding-top: 50px;
+}
+
+.blog-full-content {
+  padding: 15px 0;
+}
+
+.blog-full-banner img {
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.blog-full-content h4 {
+  font-family: "Proxima Nova Rg";
+  margin: 0 0 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.blog-full-banner {
+  text-align: center;
+}
+
+.full-blog h3 {
+  font-family: "Proxima Nova Rg";
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  color: #000;
+}
+
+.blog-full-content p {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  font-family: "Proxima Nova Rg";
+  margin: 0 0 10px;
+}
+
+/* blog full css start */
+
+/* share css start */
+
+
+.social-share-links li {
+  display: inline-block;
+  padding-right: 10px;
+  color: #133150;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.social-share-links li:last-child {
+  padding-right: 0px;
+}
+
+.social-share-links li a {
+  color: #133150;
+}
+
+.social-share-links {
+  padding: 0 8px;
+  list-style: none;
+  background: #fdc40a;
+  border-radius: 4px;
+}
+
+.table-full-content {
+  background: #f8fafd;
+  /* padding: 20px; */
+  border-radius: 10px;
+}
+
+.table-full-content>img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* share css ends */
+/* recent blog css start */
+
+.recent-blog {
+  margin: 0 0 20px;
+}
+
+.recent-blog-tags h4,
+.recent-blog-box h4 {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: "Proxima Nova Rg";
+}
+
+.recent-blog h6 {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Proxima Nova Rg";
+}
+
+.recent-blog p {
+  font-family: "Proxima Nova Rg";
+  color: #888888;
+  font-size: 16px;
+  margin: 0;
+}
+
+ul.tags-list li {
+  background: #f5f8fc;
+  margin: 15px 0;
+  border-radius: 10px;
+  text-align: center;
+  display: table;
+  padding: 7px 12px;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.br-right {
+  border-right: 1px solid #d2d2d2;
+}
+
+.tb-blog-bx {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.publish-bx p {
+  margin: 0;
+}
+
+.tb-blog-bx h4 {
+  font-family: "Proxima Nova Rg";
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.blog-full-content p {
+  font-family: "Proxima Nova Rg";
+
+  font-size: 16px;
+  font-weight: 400;
+}
+
+ul.tags-list {
+  padding: 0;
+  list-style: none;
+}
+
+ul.tb-content {
+  padding: 0 0 0 20px;
+  list-style: auto;
+}
+
+ul.tb-content li {
+  font-family: "Proxima Nova Rg";
+  padding: 5px 0;
+  font-size: 14px;
+  color: #000;
+}
+
+/* recent blog css end */
+
+/* related blog css start */
+
+
+.publish-bx {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.related-blog h3 {
+  font-family: "Proxima Nova Rg";
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0 0 15px;
+  color: #000;
+}
+
+.related-blog-bx img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+}
+
+.related-blog-bx h3 {
+  font-family: "Proxima Nova Rg";
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #000;
+  text-align: left;
+}
+
+.related-blog {
+  padding: 10px 0 25px;
+}
+
+.related-blog a {
+  text-decoration: none;
+}
+
+.related-blog-bx {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.read-time {
+  font-family: "Proxima Nova Rg";
+  color: #888888;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* related blog css end */
+
+@media (max-width: 767.9px) {
+  .blog-full-banner img {
+    margin-top: 0px;
+  }
+
+  .related-blog-bx {
+    margin-bottom: 20px;
+  }
+
+  .br-right {
+    border: none;
+  }
+}
+
+.newest-rede {
+  color: #000;
+  text-decoration: none;
+}
+
+.newest-rede:hover {
+
+  text-decoration: none;
+}
+
+.wp-block-image {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+video {
+  max-width: 100%;
+}

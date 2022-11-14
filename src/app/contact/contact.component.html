@@ -1,0 +1,108 @@
+<app-header></app-header>
+<!--<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size = "medium" color = "#f05123" type = "ball-clip-rotate" [fullScreen] = "false"></ngx-spinner>-->
+<section class="instappy-wizard-section">
+  <div class="container">
+    <div class="contact-bg">
+      <h2>Contact Us</h2>
+      <p>Questions? Let us know and we'll get in touch with you
+      </p>
+    </div>
+
+    <div class="contact-ui">
+      <ul class="contact-form-box">
+        <li>
+          <div class="cntact-form">
+           
+
+            <form [formGroup]="UserForm" (ngSubmit)="onFormSubmit()">
+              <div class="form-group">
+                <h4>Fill up this form with basic details about yourself.</h4>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="fullName">Full Name *</label>
+                  <input type="text" formControlName="fullname" class="form-control" placeholder="Type your full name"
+                    [ngClass]="{ 'is-invalid': submitted && contactform.fullname.errors }">
+                  <!-- <div *ngIf="submitted && contactform.fullname.errors" class="invalid-feedback">
+                    <div *ngIf="contactform.fullname.errors.required || contactform.fullname.hasError('whitespace')">
+                      Full Name is required</div>
+                  </div> -->
+                  <div *ngIf="submitted && contactform.fullname.errors" class="invalid-feedback">
+                    <div *ngIf="contactform.fullname.errors.required || contactform.fullname.hasError('whitespace')">
+                      Full Name is required</div>
+                    <div *ngIf="!contactform.fullname.errors.required && contactform.fullname.hasError('notaname')">Please enter valid Name</div> 
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="businessEmail"> Email *</label>
+                  <input type="text" name="EmailID" formControlName="email" placeholder="Type your email address"
+                    maxlength="50" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && contactform.email.errors }">
+                  <div *ngIf="submitted && contactform.email.errors" class="invalid-feedback">
+                    <div *ngIf="contactform.email.errors.required">Email is required</div>
+                    <div *ngIf="contactform.email.errors.email">Email must be a valid email address</div>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="companyname">Company Name</label>
+                  <input type="text" formControlName="companyname" placeholder="Type your company name"
+                    class="form-control" [ngClass]="{ 'is-invalid': submitted && contactform.companyname.errors }">
+                  <div *ngIf="submitted && contactform.companyname.errors" class="invalid-feedback">
+                    <div *ngIf="contactform.companyname.errors.required">Company Name is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contacttextarea">Message *</label>
+                <textarea min="0" formControlName="message" placeholder="Type your message" maxlength="200"
+                  class="form-control textarea" minRows="4"
+                  [ngClass]="{ 'is-invalid': submitted && contactform.message.errors }"></textarea>
+                <div *ngIf="submitted && contactform.message.errors" class="invalid-feedback">
+                  <div *ngIf="contactform.message.errors.required">Message is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <p>By proceeding you agree to Instappy's <a routerLink="/privacy-policy"
+                    class="privacy-policy-link">privacy policy</a> and <a routerLink="/terms-condition"
+                    class="privacy-policy-link">terms and conditions</a></p>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="acceptTerms"
+                    class="form-check-input" [ngClass]="{ 'is-invalid': submitted && contactform.acceptTerms.errors }">
+                  <label class="form-check-label" for="gridCheck">
+                    <p> Get updates regarding new updates and features</p>
+                  </label>
+                  <div *ngIf="submitted && contactform.acceptTerms.errors" class="invalid-feedback">
+                    <div *ngIf="contactform.acceptTerms.errors.required">Check Box is required</div>
+                  </div>
+                </div>
+              </div>
+              <!--<button class="btn warning-btn contact-submit" [disabled]="UserForm.invalid" type="submit"
+                value="submit">Submit</button>-->
+              <button class="btn warning-btn contact-submit" type="submit" value="submit">Submit</button>
+            </form>
+          </div>
+          <span *ngIf="message" class="{{ resMessage }}">{{ message }}</span>
+        </li>
+        <li>
+          <div class="gradient-bs">
+            <div class="address-bx">
+              <h3>
+                We're here to help you
+                build the next big thing.
+              </h3>
+              <p>Instappy is a leading cloud-based app creation platform fast gaining popularity with users worldwide.
+              </p>
+              <p>We make it simple for everyone to create instant, affordable, intuitive and stunning mobile
+                applications. </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

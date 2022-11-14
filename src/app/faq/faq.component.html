@@ -1,0 +1,48 @@
+<app-header></app-header>
+<section class="instappy-wizard-section">
+   <div class="container">
+      <div class="faq-banner">
+         <div class="faq-title">
+            <h2>FAQ’s</h2>
+            <p>Lorem ipsum dolor sit amet, malis vocent cu cum, vel ex probo percipitur, eam paulo dicunt delicatissimi
+               in.</p>
+         </div>
+         <div class="faq-search-input">
+            <form action="#" method="post">
+               <div class="input-group">
+                  <div class="faq-search-bar">
+                     <input class="btn btn-lg" name="faqsearch" value="" (keyup)="searchFaq($event)" id="faq-search"
+                        type="text" placeholder="Search">
+                     <div class="search-icon">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</section>
+<section class="faq-warp">
+   <div class="container">
+      <div class="accordion" id="accordionfaq">
+         <span *ngIf="message" class="{{ msgClass }}">{{ message }}</span>
+         <div class="faq-accordion" data-aos="fade-up" *ngFor="let questionlist of faq;let index = index;">
+            <div class="faq-card">
+               <div class="faq-header" data-toggle="collapse" [attr.data-target]="'#collapse_'+ index"
+                  aria-expanded="true">
+                  <span class="accicon-faq"><i class="fa fa-caret-right"></i></span>
+                  <span class="faq-title">{{questionlist.faq_question}}</span>
+               </div>
+               <div id="{{'collapse_'+index}}" class="collapse {{index === 0 ? 'show' : ''}}"
+                  data-parent="#accordionfaq">
+                  <div class="accordion-content">
+                     <p>{{questionlist.faq_answer}} </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<app-footer></app-footer>

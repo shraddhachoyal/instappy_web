@@ -1,0 +1,23 @@
+<app-header></app-header>
+<section class="instappy-wizard-section">
+   <div class="container">
+      <div class="terms-condition">
+         <div class="row">
+            <div class="col-md-12">
+               <h2>Terms & Condition</h2>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <div class="terms-para" *ngFor="let termslist of terms_condition">
+                  <h4>{{termslist.heading}}</h4>
+                  <div class="box_para" [innerHtml]="termslist?.content">
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,103 @@
+section.nstapp-navbar {
+    background: #fff;
+    border-left: 10px solid #fdc40a;
+    box-shadow: 1px 3px 4px #ebebeb;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+  }
+  div#navbar ul li a, div#navbar ul li a:after, div#navbar ul li a:before {
+      transition: all .5s;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .dropdown .dropdown-menu {
+    display: none;
+  }
+.dropdown-toggle{
+  border: none;
+  background-color: transparent;
+  border-radius: 0rem;
+}
+.dropdown-menu.show {
+  border-radius: 0px;
+}
+.dropdown-menu {
+  border: none;
+  padding: 0;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+   background: transparent;
+
+}
+.dropdown-item {
+  padding: 12px  20px;
+
+}
+
+  .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover { color: #fdc40a ; }
+  div#navbar ul li a { position: relative; }
+  div#navbar ul li a:after, div#navbar ul li a:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 0%;
+      content: '.';
+      color: transparent;
+      background: #fdc40a;
+      height: 1px;
+  }
+  .secondary-btn {
+    background: transparent;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1.5px solid #000;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: all .3s;
+}.primary-btn {
+  background: #fdc40a;
+  color: #000;
+  font-family: 'Proxima Nova Rg';
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid #fdc40a;
+  cursor: pointer;
+  text-decoration: none !important;
+}.primary-btn:hover, .primary-btn:active, .primary-btn:focus, .secondary-btn:hover, .secondary-btn:active, .secondary-btn:focus, .blue-btn:hover, .blue-btn:active, .blue-btn:focus {
+  color: unset;
+  box-shadow: 0 0 11px rgb(33 33 33 / 20%);
+}
+
+  div#navbar ul li a:hover:after {
+    width: 100%;
+  }
+  a.navbar-brand img {
+    width: 150px;
+    height: 50px;
+  }
+  .navbar-toggle {
+    border: none;
+    background: transparent;
+    transform: rotate(180deg);
+  }
+  .navbar-toggle:hover {
+    background: transparent;
+  }
+  a.nav-link.primary-btn:after, a.nav-link.secondary-btn:after {
+      display: none;
+  }
+  a.nav-link.primary-btn:hover, a.nav-link.secondary-btn:hover {
+      color: unset !important ;
+  }
+  body {
+    background: #f9fafb !important;
+}

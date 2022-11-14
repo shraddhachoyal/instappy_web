@@ -1,0 +1,152 @@
+<link crossorigin="use-credentials" rel="manifest" href="./manifest.json" />
+<section class="nstapp-navbar">
+  <div class="left_line_logo"></div>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="#">
+        <img img src="assets/images/black-logo.svg">
+      </a>
+      <div class="set-app">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item border-0">
+            <a class="nav-link" href="javascript:void(0)" id="navbar-dropdown" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <div class="progress_blue_para">
+                <!-- <div class="greencircle" id="greencircle" data-percent="25" class="small green"><b>{{pieChart}}/4</b>
+                </div> -->
+                <div id="greencircle" data-percent="25" class="small green"><b>{{pieChart}}/4</b></div>
+                <div>
+                  Set Up Your app <i class='fa fa-angle-down'></i>
+                </div>
+              </div>
+            </a>
+            <div class="dropdown-menu dashboard_right" aria-labelledby="navbar-dropdown">
+              <div class="dashboard_right">
+                <div class="danalytics-block dashboard_box">
+                  <div class="analytics-head set-up-your-app">
+                    <div class="additional-app set-up-your-app-para">
+                      <div class="box-count-para">
+                        <div class="box-count">
+                          <div class="progress_blue_para">
+                            <!-- <div class="greencircle" id="greencircle" data-percent="25" class="small green">
+                              <b>{{pieChart}}/4</b>
+                            </div> -->
+                            <div id="bluecircle" data-percent="25" class="big"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="restaurantleft">
+                      <h4>Set up your app</h4>
+                      <p class="mb-0">This will guide you through the basic steps
+                        of your app to set up and get it published.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="dnumbers-restaurant-app rider-app">
+                    <div class="restaurantleft">
+                      <div class="edit-para">
+                        <h4>App design & content</h4>
+                        <span>
+                          <img src="../../assets/images/panel/edit.png" alt="edit" />
+                          Edit
+                        </span>
+                      </div>
+                      <p class="edit-wawp">Easily edit the color, images & content of your app as per
+                        your preference.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="dnumbers-restaurant-app rider-app">
+                    <div class="restaurantleft w-100">
+                      <div class="edit-para">
+                        <h4>Connect a payment gateway</h4>
+                        <span>
+                          <img src="../../assets/images/panel/connect.png" alt="edit" />
+                          Connect
+                        </span>
+                      </div>
+                      <p class="edit-wawp">Add a payment gateway so that your customer can pay.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="dnumbers-restaurant-app rider-app ">
+                    <div class="restaurantleft w-100">
+                      <div class="edit-para">
+                        <h4>Google analytics</h4>
+                        <span>
+                          <img src="../../assets/images/panel/edit.png" alt="edit" />
+                          Edit
+                        </span>
+                      </div>
+                      <p class="edit-wawp">Connect firebase account to start analysing app data.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="dnumbers-restaurant-app rider-app ">
+                    <div class="restaurantleft w-100">
+                      <div class="edit-para">
+                        <h4>Upgrade account</h4>
+                        <span>
+                          <img src="../../assets/images/panel/upgrade.png" alt="edit" />
+                          Upgrade
+                        </span>
+                      </div>
+                      <p class="edit-wawp">Upgrade your account to publish your app.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item border-0">
+            <a class="nav-link btn-primary border-0 text-white" routerLink="/subscription">Upgrade</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/my-apps">
+              My Apps
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+              <a class="dropdown-item" routerLink="/faq">Faq</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)" id="navbar-dropdown" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Help <i class='fa fa-angle-down'></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+              <a class="dropdown-item" routerLink="/faq">Faq</a>
+            </div>
+          </li>
+          <li class="nav-item  border-0 pr-0">
+            <a class="nav-link pb-0 pr-0" href="javascript:void(0)" id="navbar-dropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="headerProfileImg" *ngIf="userInfo.profile_image"
+                src="{{siteURL + '/media/'+userInfo.profile_image}}" />
+              <i *ngIf="userInfo.profile_image === ''" class='fa fa-user'></i>
+            </a>
+            <div class="dropdown-menu logout-nth" aria-labelledby="navbar-dropdown">
+              <a class="dropdown-item" href="/myaccount"> My Account</a>
+              <!-- <a class="dropdown-item" href="/billing-info">Billing History</a>  -->
+              <a class="dropdown-item" (click)="logout()"
+                [ngStyle]="{'display': (checkLogin === true) ? 'block' : 'none'}"> Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+<div class="header-height"></div>

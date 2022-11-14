@@ -1,0 +1,319 @@
+<app-panel-header></app-panel-header>
+<section class="publish-app-warp">
+  <div class="container">
+    <div class="header-height"></div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="scp-breadcrumb">
+          <ul class="breadcrumb ml-0 pl-0">
+            <li class="ml-0 pl-0"><a routerLink="/panel" class="font-dark  font-weight-bold"><i aria-hidden="true"
+                  class="fa fa-angle-left mr-2"></i>Back</a></li>
+            <li class="active font-weight-bold text-primary"><a id="my_apps" routerLink="/my-apps">My Apps</a></li>
+          </ul>
+          <div class="nextprev-button">
+            <h2>My Account</h2>
+          </div>
+        </div>
+        <div class="danalytics-block box-two">
+          <div class="account-info">
+            <div class="analytics-head demo-section">
+              <div class="additional-app">
+                <h3> basic information</h3>
+                <form class="user-account-info" [formGroup]="updateProfileForm" (ngSubmit)="updateProfileSubmit()">
+                  <ul class="d-block p-0 mb-0">
+                    <div class="documents-para">
+                      <div class="box-flex">
+                        <li>
+                          <label> Full Name*</label>
+                          <input type="text" [(ngModel)]="userInfo.full_name" placeholder="Fullname"
+                            class="input-sample" formControlName="full_name"
+                            [ngClass]="{ 'is-invalid': submitted && updateproform.full_name.errors }">
+                          <div *ngIf="submitted && updateproform.full_name.errors" class="invalid-feedback">
+                            <div *ngIf="updateproform.full_name.errors.required">Please enter your fullname</div>
+                          </div>
+                        </li>
+                        <li>
+                          <label>Company Name*</label>
+                          <input type="text" [(ngModel)]="userInfo.company_name" placeholder="Company name"
+                            class="input-sample" formControlName="company_name"
+                            [ngClass]="{ 'is-invalid': submitted && updateproform.company_name.errors }">
+                          <div *ngIf="submitted && updateproform.company_name.errors" class="invalid-feedback">
+                            <div *ngIf="updateproform.company_name.errors.required">Please enter your fullname</div>
+                          </div>
+                        </li>
+                      </div>
+                      <div class="box-flex">
+                        <li>
+                          <label>Country* </label>
+                          <select class="select-sample" [(ngModel)]="userInfo.country"
+                            (change)="getStateByCountries($any($event.target).value)" formControlName="country"
+                            [ngClass]="{'is-invalid': submitted && updateproform.country.errors}">
+                            <option value="" disabled selected>Select Country</option>
+                            <option *ngFor="let country of countryList" value="{{country.iso2}}"
+                              ng-reflect-value="country" [selected]="country.iso2 == userInfo.country">
+                              {{country.name}}</option>
+                          </select>
+                          <div *ngIf="submitted && updateproform.country.errors" class="invalid-feedback">
+                            <div *ngIf="updateproform.country.errors.required">Please select your country</div>
+                          </div>
+                        </li>
+                        <li>
+                          <label>State*</label>
+                          <select class="select-sample" [(ngModel)]="userInfo.state"
+                            (change)="getCityByState($any($event.target).value)" formControlName="state"
+                            [ngClass]="{'is-invalid': submitted && updateproform.state.errors}">
+                            <option value="" disabled selected>Select State</option>
+                            <option *ngFor="let state of stateList" value="{{state.iso2}}">
+                              {{state.name}}</option>
+                          </select>
+
+                          <div *ngIf="submitted && updateproform.state.errors" class="invalid-feedback">
+                            <div *ngIf="updateproform.state.errors.required">Please select your state</div>
+                          </div>
+                        </li>
+                      </div>
+                      <div class="box-flex">
+                        <li class="mb-3">
+                          <label>City* </label>
+                          <select class="select-sample" formControlName="city" [(ngModel)]="userInfo.city"
+                            [ngClass]="{'is-invalid': submitted && updateproform.city.errors}">
+                            <option value="" disabled selected>Select City</option>
+                            <option *ngFor="let city of cityList" value="{{city.name}}">{{city.name}}</option>
+                          </select>
+                          <div *ngIf="submitted && updateproform.city.errors" class="invalid-feedback">
+                            <div *ngIf="updateproform.city.errors.required">Please select your city</div>
+                          </div>
+                        </li>
+                        <li>
+                          <label>Zipcode* </label>
+                          <input type="text" [(ngModel)]="userInfo.zipcode" placeholder="Zipcode" class="input-sample"
+                            formControlName="zipcode"
+                            [ngClass]="{ 'is-invalid': submitted && updateproform.zipcode.errors }">
+                          <div *ngIf="submitted && updateproform.zipcode.errors" class="invalid-feedback">
+                            <div *ngIf="updateproform.zipcode.errors.required">Please enter your zipcode</div>
+                          </div>
+                        </li>
+                        <li class="full_para">
+                          <label> Full address*</label>
+                          <textarea type="text" id="text-area" [(ngModel)]="userInfo.address" formControlName="address"
+                            placeholder="Full Address" class="input-sample name_c"
+                            [ngClass]="{ 'is-invalid': submitted && updateproform.address.errors }"></textarea>
+                          <div *ngIf="submitted && updateproform.address.errors" class="invalid-feedback">
+                            <div *ngIf="updateproform.address.errors.required">Please enter your address</div>
+                          </div>
+                        </li>
+                      </div>
+                    </div>
+                  </ul>
+                  <div class="nextprev-button"><button class="btn warning-btn form-submit" type="submit"
+                      value="submit">Submit</button>
+                    <div class="message_box">
+                      <span *ngIf="message" class="{{ msgClass }}">{{ message }}</span>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="border-right para"></div>
+            <div class="analytics-head demo-section para_big">
+              <div class="additional-app-para_all">
+                <form novalidate="" class="appicon-form">
+                  <div class="play-box">
+                    <span class="Upload_file form-control">
+                      <input type="file" name="photo" id="upload-photo" (change)="onImageChange($event)">
+                    </span>
+                    <span id="profileImage">
+                      <img src="{{siteURL+'/media/'+userInfo.profile_image}}" width="130px;"
+                        *ngIf="userInfo.profile_image">
+                      <i class="fa fa-user" *ngIf="userInfo.profile_image === ''"></i>
+                    </span>
+                  </div>
+                  <p class="box_team"> Browse image</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--- Basic Information end-->
+        <div class="danalytics-block box-two">
+          <h3> login information</h3>
+          <div class="login-information">
+            <div class="login-information_1">
+              <div class="additional-app">
+                <form class="user-account-info">
+                  <ul class="d-block p-0 mb-0">
+                    <div class="documents-para">
+                      <li>
+                        <label> E-mail Address</label>
+                        <input type="email" placeholder="E-mail Address" class="input-sample"
+                          value="{{userInfo.email}}">
+                      </li>
+                      <li>
+                        <label> Password</label>
+                        <input type="password" class="input-sample" value="{{userInfo.password}"
+                          placeholder=" * * * * * * * *">
+                      </li>
+                      <li class="mb-0 verify-number-para">
+                        <label>Phone number</label>
+                        <input type="text" class="input-sample" placeholder="+91 00 00 00 00 00"
+                          value="{{userInfo.mobile_number}}">
+                        <!-- <span class="verify-number">verify</span> -->
+                      </li>
+                    </div>
+                  </ul>
+                </form>
+              </div>
+            </div>
+            <div class="login-information demo-section">
+              <div class="additional-app-para d-block">
+                <ul class="login-information_1 user-change-datils">
+
+                  <li data-toggle="modal" data-target="#editPassword">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <span> change password </span>
+                  </li>
+                  <li class="mb-0">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span> change Number</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--- login Information end-->
+      </div>
+    </div>
+  </div>
+
+  <!--Edit E-mail Modal -->
+  <div id="editEmail" class="modal top fade">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content notification_modal-box border-0">
+        <div class="modal-header d-block border-0">
+          <h4 class="modal-title notification-modal-title">Change E-mail</h4>
+        </div>
+        <!-- <span *ngIf="mailFormMsg" class="{{ msgClass }}">{{ mailFormMsg }}</span> -->
+        <div class="modal-body">
+          <form [formGroup]="updateEmailForm" (ngSubmit)="updateEmail()">
+            <div>
+              <label> E-mail Address</label>
+              <input type="email" name="email" formControlName="email" placeholder="E-mail Address" class="input-sample"
+                value="{{userInfo.email}}" [(ngModel)]="userInfo.email"
+                [ngClass]="{ 'is-invalid': updateEmailFormSubmitted && emailform.email.errors }">
+              <div *ngIf="updateEmailFormSubmitted && emailform.email.errors" class="invalid-feedback">
+                <div *ngIf="emailform.email.errors.email">Email must be a valid email address</div>
+                <div *ngIf="emailform.email.errors.required">Please enter your email address</div>
+              </div>
+            </div>
+            <br>
+            <div class="modal-footer d-flex">
+              <div class="nextprev-button"><button class="btn warning-btn form-submit" type="submit"
+                  value="submit">Submit</button>
+              </div>
+              <div class="nextprev-button"><button class="btn warning-btn form-submit" type="button"
+                  data-dismiss="modal" value="submit">Cancel</button>
+              </div>
+            </div>
+            <!-- </div>
+          <div class="modal-footer"> -->
+            <!-- <div class="nextprev-button modal_btn_group"> -->
+            <!-- <button class="btn warning-btn form-submit" type="button" data-dismiss="modal">Cancle</button>
+              <button class="btn warning-btn form-submit" type="submit" value="submit">Submit</button> -->
+
+            <!-- </div> -->
+          </form>
+        </div>
+        <!--<div class="modal-footer d-flex">
+          <div class="nextprev-button"><button class="btn warning-btn form-submit" type="submit"
+              value="submit">Submit</button>
+          </div>
+          <div class="nextprev-button"><button class="btn warning-btn form-submit" type="button"
+              data-dismiss="modal" value="submit">Cancel</button>
+          </div>
+        </div>-->
+      </div>
+    </div>
+  </div>
+
+  <!--Edit Password Modal -->
+  <div id="editPassword" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-block">
+          <!-- <button type="button" class="close" data-dismiss="modal" id="closeBtn">&times;</button> -->
+          <h4 class="modal-title">Change Password</h4>
+        </div>
+
+        <form [formGroup]="changepassForm" (ngSubmit)="updatePassword()">
+          <div class="modal-body">
+            <div>
+              <div class="form-group">
+                <label for="registerInputName">Your Password *</label>
+                <div class="eye-relative">
+                  <input type="{{passwordViewtype}}" formControlName="password" class="form-control" id=""
+                    placeholder="Type your password"
+                    [ngClass]="{ 'is-invalid': changepassFormSubmitted && changepassform.password.errors }">
+                  <div class="show_pass_login login-eye">
+                    <i id="eye_icon" [ngStyle]="{'display': (showPassview==true) ? 'inline-block' : 'none'}"
+                      (click)="togglePassword($event)" class="fa fa-eye-slash" aria-hidden="true"></i>
+                    <i id="eye_icon" [ngStyle]="{'display': (showPassview==false) ? 'inline-block' : 'none'}"
+                      (click)="togglePassword($event)" class="fa fa-eye" aria-hidden="true"></i>
+                  </div>
+                  <div *ngIf="changepassFormSubmitted && changepassform.password.errors" class="invalid-feedback">
+                    <div *ngIf="changepassform.password.errors.required">Please enter your password</div>
+                    <div *ngIf="changepassform.password.errors.minlength">
+                      Password must be at least 8 characters
+                    </div>
+                    <div *ngIf="changepassform.password.errors.maxlength">
+                      Password must not exceed 20 characters
+                    </div>
+                    <div *ngIf="!changepassform.password.errors.maxlength">
+                      <div *ngIf="!changepassform.password.errors.required">
+                        <div
+                          *ngIf="!changepassform.password.errors.minlength and changepassform.password.errors.pattern">
+                          <p>Your password must contain at least one uppercase, one lowercase, one number, and one
+                            special character. </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="registerInputName">Confirm Password *</label>
+                <div class="eye-relative">
+                  <input type="{{passwordViewtype}}" formControlName="confirmPassword" class="form-control"
+                    id="registerPassword" placeholder="Type your confirm password"
+                    [ngClass]="{ 'is-invalid': changepassFormSubmitted && changepassform.confirmPassword.errors }">
+                  <div class="show_pass_login login-eye">
+                    <i id="eye_icon" [ngStyle]="{'display': (showPassview==true) ? 'inline-block' : 'none'}"
+                      (click)="togglePassword($event)" class="fa fa-eye-slash" aria-hidden="true"></i>
+                    <i id="eye_icon" [ngStyle]="{'display': (showPassview==false) ? 'inline-block' : 'none'}"
+                      (click)="togglePassword($event)" class="fa fa-eye" aria-hidden="true"></i>
+                  </div>
+                  <div *ngIf="changepassFormSubmitted && changepassform.confirmPassword.errors"
+                    class="invalid-feedback">
+                    <div *ngIf="changepassform.confirmPassword.errors.required">Confirm Password is required</div>
+                    <div *ngIf="changepassform.confirmPassword.errors.mustMatch">Passwords must match</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex">
+            <div class="message_box">
+              <span *ngIf="editPswMsgClass" class="{{ editPswMsgClass }}">{{ editPswMsg }}</span>
+            </div>
+            <div class="nextprev-button"><button class="btn warning-btn form-submit" type="submit"
+                value="submit">Submit</button>
+            </div>
+            <div class="nextprev-button"><button class="btn warning-btn form-submit" type="button" data-dismiss="modal"
+                value="submit">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

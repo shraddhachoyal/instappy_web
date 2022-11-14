@@ -1,0 +1,902 @@
+html,
+body {
+    font-family: 'Proxima Nova Alt Lt';
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: 'Proxima Nova Alt Lt';
+}
+
+.fj-expierence-tb-image {
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Bl';
+    src: url('ProximaNova-Black.woff2') format('woff2'), url('ProximaNova-Black.woff') format('woff'), url('ProximaNova-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Alt Rg';
+    src: url('ProximaNovaA-Bold.woff2') format('woff2'), url('ProximaNovaA-Bold.woff') format('woff'), url('ProximaNovaA-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Alt Lt';
+    src: url('ProximaNovaA-Light.woff2') format('woff2'), url('ProximaNovaA-Light.woff') format('woff'), url('ProximaNovaA-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Alt Th';
+    src: url('ProximaNovaA-Thin.woff2') format('woff2'), url('ProximaNovaA-Thin.woff') format('woff'), url('ProximaNovaA-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Th';
+    src: url('ProximaNovaT-Thin.woff2') format('woff2'), url('ProximaNovaT-Thin.woff') format('woff'), url('ProximaNovaT-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Rg';
+    src: url('ProximaNova-Regular.woff2') format('woff2'), url('ProximaNova-Regular.woff') format('woff'), url('ProximaNova-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Th';
+    src: url('ProximaNova-Extrabld.woff2') format('woff2'), url('ProximaNova-Extrabld.woff') format('woff'), url('ProximaNova-Extrabld.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Rg';
+    src: url('ProximaNova-Bold.woff2') format('woff2'), url('ProximaNova-Bold.woff') format('woff'), url('ProximaNova-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+.header-height {
+    height: 80px;
+}
+
+
+/* Home banner css start */
+
+section.instappy-banner-section {
+    background: url('../../assets/images/top-banner/top-bg.png')no-repeat;
+    position: relative;
+    background-size: contain;
+}
+
+.slide-relative .swiper-wrapper {
+    padding: 0px 5px;
+}
+
+.instappy-main-banner img {
+    max-width: 100%;
+}
+
+.banner-content-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0 0px;
+}
+
+.banner-content-box h2 {
+    font-family: 'Proxima Nova Rg';
+    font-size: 44px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #000;
+}
+
+.banner-content-box p {
+    font-family: 'Proxima Nova Rg';
+    font-size: 20px;
+    font-weight: normal;
+    width: 50%;
+    margin: 0 auto 10px;
+    color: #000;
+}
+
+ul.banner-btn-box {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px;
+}
+
+ul.banner-btn-box li {
+    margin: 10px;
+}
+
+.primary-btn {
+    background: #fdc40a;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid #fdc40a;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.blue-btn {
+    background: #197ad7;
+    color: #fff;
+    font-family: 'Proxima Nova Rg';
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid #197ad7;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1.5px solid #000;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: all .3s;
+}
+
+.primary-btn:hover,
+.primary-btn:active,
+.primary-btn:focus,
+.secondary-btn:hover,
+.secondary-btn:active,
+.secondary-btn:focus,
+.blue-btn:hover,
+.blue-btn:active,
+.blue-btn:focus {
+    color: unset;
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+
+.secondary-btn:hover,
+.secondary-btn:active,
+.secondary-btn:focus {
+    color: #000 !important;
+    background: #fdc40a;
+    border-color: #fdc40a;
+}
+
+.secondary-btn i {
+    margin-right: 5px;
+}
+
+.blue-btn:hover,
+.blue-btn:active,
+.blue-btn:focus {
+    color: #fff;
+}
+
+.create-app-banner-box {
+    width: 60%;
+    margin: 0 auto 20px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 280px;
+}
+
+.create-app-banner-box input:focus,
+.create-app-banner-box input:visited,
+.create-app-banner-box input:active,
+.create-app-banner-box input {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    font-size: 16px;
+    color: #000;
+    height: calc(3em + .75rem + 2px);
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.transparent-btn:visited,
+.transparent-btn:focus,
+.transparent-btn:active {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.transparent-btn {
+    font-size: 16px;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    font-weight: 600;
+    background: #fff;
+}
+
+.transparent-btn i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.create-app-banner-box input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-size: 16px;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    font-weight: 500;
+}
+
+.create-app-banner-box input::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 16px;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    font-weight: 500;
+}
+
+    {
+    /* IE 10+ */
+    font-size: 16px;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    font-weight: 500;
+}
+
+.create-app-banner-box input:-ms-input-placeholder,
+.create-app-banner-box input:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 16px;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    font-weight: 500;
+}
+
+
+/* Home banner css end */
+
+
+/* home page client logo section start */
+
+.client-slider-section {
+    padding: 50px 0;
+}
+
+.base-heading h3 {
+    font-family: 'Proxima Nova Rg';
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 25px;
+}
+
+
+/* home page client logo section end */
+
+
+/* home page feature box css start */
+
+.powerfull-feature-section {
+    background: url('../../assets/images/top-banner/top-bg.png')no-repeat;
+    position: relative;
+    background-size: cover;
+    padding: 50px 0;
+    background-position: center top;
+}
+
+.bold-heading {
+    margin-bottom: 50px;
+}
+
+.bold-heading h3 {
+    font-family: 'Proxima Nova Rg';
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    color: #000;
+}
+
+.features-icon img {
+    width: 50px;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+
+}
+
+.instappy-features-box {
+    cursor: pointer;
+}
+
+.instappy-features-box .features-icon img {
+    -webkit-transition: 0.6s ease-out;
+    -moz-transition: 0.6s ease-out;
+    transition: 0.6s ease-out;
+}
+
+.instappy-features-box:hover .features-icon img {
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+    ;
+}
+
+.secondary-btn span svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    margin-top: -2px;
+}
+
+.instappy-features-box h4 {
+    font-family: 'Proxima Nova Rg';
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #000;
+}
+
+.steps-image-box {
+    position: relative;
+}
+
+.steps-image-box span.tin-icon {
+    left: auto;
+    right: 0;
+    bottom: auto;
+    top: -10px;
+}
+
+.instappy-features-box p {
+    font-family: 'Proxima Nova Rg';
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 0 5px;
+    color: #000;
+    padding-right: 10px;
+}
+
+.slide-relative {
+    position: relative;
+}
+
+.slide-feature-box {
+    padding-bottom: 50px;
+}
+
+.bold-heading h3 span {
+    border-bottom: 5px solid #fdc40a;
+}
+
+.bold-heading p {
+    font-family: 'Proxima Nova Rg';
+    font-size: 20px;
+    font-weight: normal;
+    width: 60%;
+    margin: 0 auto 10px;
+    color: #000;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgb(204 202 202 / 43%);
+    color: #000;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 12px;
+}
+
+.swiper-button-prev {
+    left: -50px;
+}
+
+.swiper-button-next {
+    right: -50px;
+}
+
+
+/* wizard section css start */
+
+section.instappy-wizard-section {
+    padding: 120px 0 100px;
+}
+
+.image-box-design img {
+    max-width: 100%;
+}
+
+.instappy-wizard-box {
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    position: relative;
+}
+
+.relative-box {
+    position: relative;
+}
+
+.instappy-wizard-box>li {
+    flex: 0 0 50%;
+}
+
+.image-box-design {
+    position: relative;
+}
+
+.wizard-image-box {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.wizard-content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: middle;
+    height: 100%;
+    padding: 50px;
+}
+
+.wizard-content-box h3 {
+    font-family: 'Proxima Nova Rg';
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #000;
+}
+
+.wizard-content-box h3 span {
+    border-bottom: 5px solid #fdc40a;
+}
+
+.wizard-content-box p {
+    font-family: 'Proxima Nova Rg';
+    font-size: 14px;
+    font-weight: normal;
+    margin: 10px 0;
+    color: #000;
+}
+
+.wizard-content-box h4 {
+    font-family: 'Proxima Nova Rg';
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.wizard-download-box {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.fj-expierence-tb-image img {
+    max-width: 100%;
+    filter: grayscale(1);
+}
+
+.fj-expierence-tb-image img:hover {
+    filter: grayscale(1);
+}
+
+.wizard-download-box li {
+    margin-right: 15px;
+}
+
+.wizard-download-box li svg {
+    fill: #000;
+    width: 25px;
+    height: 25px;
+}
+
+.wizard-download-box li i {
+    color: #000;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.live-experience-box,
+.review-app-box {
+    position: absolute;
+}
+
+.review-app-box {
+    top: 150px;
+    left: 60px;
+}
+
+.review-app-box a {}
+
+.live-experience-box {
+    bottom: 100px;
+    right: 60px;
+}
+
+.live-experience-box a {}
+
+#spin:after {
+    content: "";
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        content: "create";
+    }
+
+    50% {
+        content: "edit";
+    }
+
+    100% {
+        content: "publish";
+    }
+}
+
+
+/* wizard section css end */
+
+span.tin-icon {
+    position: absolute;
+    left: 100px;
+    bottom: 30px;
+    z-index: -1;
+}
+
+.steps-image-box img {
+    max-width: 100%;
+}
+
+.click-box-icons img {
+    width: 50px;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    background: #f7f9fc;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.click-box-icons {
+    padding: 0px 10px;
+}
+
+.tabbing-custom {
+    position: relative;
+}
+
+.insta-click-tab {
+    display: flex;
+    background: #fff;
+    margin: 20px 0;
+    width: 35%;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.insta-click-tab.active {
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+
+.instappy-steps-section {
+    zoom: 1;
+    position: relative;
+    height: auto;
+    padding: 20px 0 50px;
+}
+
+.click-box h3 {
+    font-family: 'Proxima Nova Rg';
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+}
+
+.insta-click-tab.active h3 {
+    margin-top: 0px;
+}
+
+.click-box h3 {
+    margin-top: 10px;
+}
+
+.click-box p {
+    font-size: 14px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    display: none;
+    padding: 5px 0 0;
+}
+
+.instappy-steps-section .active .click-box p {
+    display: block;
+}
+
+.insta-click-desc-box {
+    zoom: 1;
+    position: relative;
+    height: auto;
+    min-height: 100%;
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .insta-click-desc-box {
+        position: absolute;
+        width: 60%;
+        right: 0;
+        top: 0;
+    }
+}
+
+.instappy-steps-section .active+.insta-click-desc-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media(max-width: 1199.9px) {
+    .wizard-content-box {
+        padding: 40px;
+    }
+}
+
+@media(max-width: 991.9px) {
+    .bold-heading p {
+        width: 100%;
+    }
+
+    .banner-content-box p {
+        width: 80%;
+    }
+
+    .insta-click-desc-box,
+    .insta-click-tab {
+        width: 100%;
+        position: relative;
+    }
+
+    .instappy-wizard-box>li:last-child {
+        flex: 0 0 35%;
+    }
+
+    .instappy-wizard-box>li:first-child {
+        flex: 0 0 65%;
+    }
+
+    .wizard-content-box h3 {
+        font-size: 28px;
+    }
+
+    /*section.instappy-banner-section {
+        background-size: cover;
+    }*/
+    section.instappy-banner-section {
+        background-size: 100% 75%;
+    }
+
+    .create-app-banner-box {
+        bottom: 100px;
+    }
+}
+
+.transparent-btn i {
+    -webkit-text-stroke: 1px #fff;
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 767.9px) {
+    .instappy-main-footer {
+        padding-bottom: 20px !important;
+    }
+
+    button.btn.transparent-btn span {
+        display: none;
+    }
+
+    .footer-logo a svg {
+        width: 60%;
+    }
+
+    .footer-logo {
+        text-align: center;
+    }
+
+    .instappy-social-links li i {
+        color: #000;
+        font-size: 20px;
+    }
+
+    .instappy-social-links li {
+        padding-top: 10px;
+    }
+
+    .desktp-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .instappy-social-links {
+        text-align: center;
+    }
+
+    .wizard-content-box h4 {
+        font-weight: 600;
+    }
+
+    .instappy-footer-links {
+        text-align: center;
+    }
+
+    .wizard-content-box {
+        text-align: center;
+    }
+
+    .wizard-download-box {
+        justify-content: center;
+    }
+
+    .powerfull-feature-section {
+        padding-top: 0;
+    }
+
+    .instappy-features-box {
+        text-align: center;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        background: #ffffff40;
+    }
+
+    section.powerfull-feature-section ul.banner-btn-box {
+        margin-bottom: 0;
+    }
+
+    section.instappy-wizard-section {
+        padding: 50px 0;
+    }
+
+    .client-slider-section {
+        padding: 30px 0;
+    }
+
+    section.instappy-banner-section .banner-content-box h2 {
+        font-size: 40px;
+    }
+
+    .bold-heading p,
+    .banner-content-box p {
+        font-size: 16px;
+    }
+
+    .instappy-wizard-box {
+        display: block;
+    }
+
+    .wizard-image-box {
+        position: relative;
+    }
+
+    .bold-heading h3,
+    .banner-content-box h2 {
+        font-size: 26px;
+    }
+
+    .slide-relative {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .slide-expierence-box img {
+        width: 100%;
+    }
+
+    .create-app-banner-box {
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 479.9px) {
+    section.instappy-banner-section {
+        background-size: 100% 80%;
+    }
+
+    .create-app-banner-box {
+        bottom: 50px;
+    }
+
+    ul.banner-btn-box {
+        display: block;
+    }
+
+    .swiper-button-next {
+        right: -30px;
+    }
+
+    .swiper-button-prev {
+        left: -30px;
+    }
+
+    ul.banner-btn-box li a {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    ul.banner-btn-box li {
+        margin-bottom: 20px;
+    }
+
+    ul.banner-btn-box li:last-child {
+        margin-bottom: 0;
+    }
+}

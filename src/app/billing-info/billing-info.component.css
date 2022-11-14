@@ -1,0 +1,96 @@
+.billing-data {
+    background: #f9fafb;
+    padding: 30px 0;
+}
+
+.tabie-data {
+    background: #fff;
+    border-radius: 10px;
+}
+
+.tabie-data .table thead th {
+    border: none;
+}
+
+.tabie-data td:last-child span,
+.tabie-data th {
+    font-family: 'Proxima Nova Rg';
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+}
+
+.tabie-data table.table {
+    width: 98%;
+    margin: 0 auto;
+}
+
+
+.heading-bx {
+    margin: 0 0 20px;
+
+}
+
+.heading-bx h3 {
+    font-size: 22px;
+    font-family: 'Proxima Nova Rg';
+    font-weight: 800;
+}
+
+.fooder {
+    color: rgb(38, 188, 237);
+
+}
+
+.invoice {
+    color: rgb(38, 188, 237);
+}
+
+.invoice:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#icon {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #000;
+}
+
+
+.text-dark {
+    font-size: 16px;
+}
+
+.font-weight-bold:hover {
+    text-decoration: none !important;
+}
+
+.ml-3 {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.ml-3:hover {
+    text-decoration: none;
+}
+
+.fa-download {
+    font-size: 15px;
+}
+
+
+@media (max-width: 767.98px) {
+    .tabie-data {
+        background: #fff;
+        border-radius: 10px;
+        max-width: 900px;
+        overflow: auto;
+    }
+
+    .tabie-data td:last-child span,
+    .tabie-data th {
+        font-size: 12px;
+    }
+}

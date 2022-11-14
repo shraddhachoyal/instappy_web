@@ -1,0 +1,79 @@
+<app-header></app-header>
+<section class="blog-details-box">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-9 col-12 br-right">
+            <div class="full-blog" *ngIf="blog_details">
+               <h3 [innerHtml]="blog_details.title"></h3>
+               <p class="read-time">{{blog_details.date | date:'longDate'}} <!--| <span>5 min read</span>--> </p>
+               <div class="blog-full-banner" *ngIf="blog_details">
+                  <!-- <img src="{{blog_details._embedded['wp:featuredmedia']['0'].media_details.sizes.thumbnail.source_url }}"> -->
+               </div>
+
+               <div class="publish-bx">
+                  <div class="publish-bx">
+                     <p>Published By : <strong>The Strategist
+                     </strong> </p>
+                  </div>
+                  <div class="blog-share-section">
+                     <ul class="social-share-links">
+                        <li>Share |</li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="blog-full-content">
+                  <p [innerHtml]="blog_details.excerpt"></p>
+               </div>
+               <div class="table-full-content" *ngIf="blog_details">
+                  <img [src]="blog_details.blog_featured_image" alt="{{blog_details.title}}">
+               </div>
+
+               <div class="blog-full-content" *ngIf="blog_details">
+                  <h4>{{blog_details.title}}</h4>
+                  <p [innerHtml]="blog_details.content"></p>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-3 col-12">
+            <div class="recent-blog-box">
+               <h4>Recent</h4>
+
+               <div class="recent-blog" *ngFor="let recentBlog of recentBlogs">
+                  <a routerLink="/blog-details/{{recentBlog.id}}" class="newest-rede">
+                     <h6>{{recentBlog.title.rendered}}</h6>
+                     <!-- <p>5 min read</p> -->
+                  </a>
+               </div>
+
+            </div>
+            <div class="recent-blog-tags">
+               <h4>Tags</h4>
+               {{blog_details.tags}}
+               <ul class="tags-list" *ngFor="let tag of alltags">
+                  <li><a routerLink="/tags/{{tag.name}}">{{tag.name}}</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <hr>
+      <div class="related-blog">
+         <h3>More Blogs</h3>
+         <div class="row">
+
+            <div class="col-md-4 col-12" *ngFor="let blogmoredata of blogMoreList">
+               <a routerLink="/blog-details/{{blogmoredata.blog_id}}" class="newest-rede">
+                  <div class="related-blog-bx">
+                     <img [src]="blogmoredata.blog_featured_image" alt="{{blogmoredata.blog_title}}">
+                     <h3>{{blogmoredata.blog_title}}</h3>
+                     <!-- <p class="read-time">5 min read</p> -->
+                  </div>
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<app-footer></app-footer>

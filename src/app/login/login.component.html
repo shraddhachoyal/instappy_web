@@ -1,0 +1,180 @@
+<app-header></app-header>
+<div class="bg_barnd">
+  <section class="login-page" [ngStyle]="{'display': (verificationProcess==true) ? 'block' : 'none'}">
+    <div class="container">
+      <div class="login-formbox">
+        <!-- <span *ngIf="message" class="{{ loginSuccessMsg }}">{{ message }}</span> -->
+        <!-- Login Form -->
+        <div class="login-form" [ngStyle]="{'display': (loginReg==true) ? 'block' : 'none'}">
+          <div class="login-form-head text-center">
+            <h3>Login</h3>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+            <div class="form-group">
+              <label for="loginInputEmail1">Email Address</label>
+              <input type="text" name="EmailID" formControlName="email" placeholder="Type your email address"
+                maxlength="50" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginform.email.errors }">
+              <div *ngIf="submitted && loginform.email.errors" class="invalid-feedback">
+                <div *ngIf="loginform.email.errors.email">Email must be a valid email address</div>
+                <div *ngIf="loginform.email.errors.required">Please enter your email address</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <div class="eye-relative">
+                <input type="{{passwordViewtype}}" formControlName="password" class="form-control" id="registerPassword"
+                  placeholder="Type your password" [ngClass]="{ 'is-invalid': submitted && loginform.password.errors }">
+                <div class="show_pass_login login-eye">
+                  <i [ngStyle]="{'display': (showPassview==true) ? 'inline-block' : 'none'}"
+                    (click)="togglePassword($event)" class="fa fa-eye-slash" aria-hidden="true"></i>
+                  <i [ngStyle]="{'display': (showPassview==false) ? 'inline-block' : 'none'}"
+                    (click)="togglePassword($event)" class="fa fa-eye" aria-hidden="true"></i>
+                </div>
+                <div *ngIf="submitted && loginform.password.errors" class="invalid-feedback">
+                  <div *ngIf="loginform.password.errors.required">Please enter your password</div>
+                </div>
+              </div>
+              <small id="forgetpassword" class="form-text text-muted text-right"><a href="javascript:void(0);"
+                  (click)="forgetbox()">Forgot Password?</a> </small>
+            </div>
+
+            <button class="primary-btn" id="login_button" type="submit" value="Login">Login</button>
+          </form>
+          <div class="login-form-btm text-center">
+            <p>New here ? <a href="javascript:void(0);" (click)="togglebox()">Create Account</a> </p>
+          </div>
+          <span *ngIf="message" class="{{ loginSuccessMsg }}">{{ message }}</span>
+          <div *ngIf="message ==='Your account is not verified. Please verify your account.'" class="verify_button">
+            <button class="primary-btn" id="verify_button" type="submit" value="Verify">Verify Account</button>
+            <!-- <h6 class="login_page"><a href=""> Verify Account</a></h6> -->
+          </div>
+        </div>
+
+        <!-- SignUp Form -->
+        <div class="create-form" [ngStyle]="{'display': (createReg==true) ? 'block' : 'none'}">
+          <div class="login-form-head text-center">
+            <h3>Create your Account</h3>
+          </div>
+          <form [formGroup]="UserForm" (ngSubmit)="onSignupFormSubmit()">
+            <div class="form-group">
+              <label for="registerInputName">Your Name</label>
+              <input type="text" formControlName="full_name" class="form-control" placeholder="Type your full name"
+                [ngClass]="{ 'is-invalid': submitted && signupform.full_name.errors }">
+              <div *ngIf="submitted && signupform.full_name.errors" class="invalid-feedback">
+                <div *ngIf="signupform.full_name.errors.required || signupform.full_name.hasError('whitespace')">
+                  Please enter your full name</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="registerInputEmail1">Email Address</label>
+              <input type="text" name="EmailID" formControlName="email" placeholder="Type your email address"
+                maxlength="50" class="form-control" [ngClass]="{ 'is-invalid': submitted && signupform.email.errors }">
+              <div class="emailerror">{{emailExistMsg}}</div>
+              <div *ngIf="submitted && signupform.email.errors" class="invalid-feedback">
+                <div *ngIf="signupform.email.errors.email">Email must be a valid email address</div>
+                <div *ngIf="signupform.email.errors.required">Please enter your email address</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="registerInputName">Your Password *</label>
+              <div class="eye-relative">
+                <input type="{{passwordViewtype}}" formControlName="password" class="form-control" id="registerPassword"
+                  placeholder="Type your password"
+                  [ngClass]="{ 'is-invalid': submitted && signupform.password.errors }">
+                <div class="show_pass_login login-eye">
+                  <i [ngStyle]="{'display': (showPassview==true) ? 'inline-block' : 'none'}"
+                    (click)="togglePassword($event)" class="fa fa-eye-slash" aria-hidden="true"></i>
+                  <i [ngStyle]="{'display': (showPassview==false) ? 'inline-block' : 'none'}"
+                    (click)="togglePassword($event)" class="fa fa-eye" aria-hidden="true"></i>
+                </div>
+
+                <div *ngIf="submitted && signupform.password.errors" class="invalid-feedback">
+                  <div *ngIf="signupform.password.errors.required">Please enter your password</div>
+                  <div *ngIf="signupform.password.errors.minlength">
+                    Password must be at least 8 characters
+                  </div>
+                  <div *ngIf="signupform.password.errors.maxlength">
+                    Password must not exceed 20 characters
+                  </div>
+                  <div *ngIf="!signupform.password.errors.maxlength">
+                    <div *ngIf="!signupform.password.errors.required">
+                      <div *ngIf="!signupform.password.errors.minlength and signupform.password.errors.pattern">
+                        <p>Your password must contain at least one uppercase, one lowercase, one number, and one special
+                          character. </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="inf-regsiter">
+              <p class="registerdesc text-center">By creating an account, you confirm to read and agree to our
+                <br>
+                <a routerLink="/terms-condition"> Terms & Conditions</a> & <a routerLink="/privacy-policy">Privacy
+                  Policy.</a>
+              </p>
+            </div>
+            <button class="primary-btn" id="submit_button" type="submit" value="submit">Submit</button>
+            <!-- <button class="primary-btn" [disabled]="UserForm.invalid">Register</button> -->
+          </form>
+          <span class="{{regSuccessMsg}}">{{regMessage}}</span>
+          <div class="login-form-btm text-center">
+            <p>Already have an account? <a href="javascript:void(0);" (click)="togglebox()">Login</a> </p>
+          </div>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="forget-form" [ngStyle]="{'display': (forgetReg==true) ? 'block' : 'none'}">
+          <div class="login-form-head text-center">
+            <h3>Forgot Password</h3>
+          </div>
+          <form [formGroup]="forgotPassForm" (ngSubmit)="onForgotFormSubmit()">
+            <div class="form-group">
+              <label for="loginInputEmail1">Enter Email Address</label>
+              <input type="text" name="email" formControlName="email" placeholder="Type your email address"
+                maxlength="50" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && forgotPassform.email.errors }">
+              <div *ngIf="submitted && forgotPassform.email.errors" class="invalid-feedback">
+                <div *ngIf="forgotPassform.email.errors.email">Email must be a valid email address</div>
+                <div *ngIf="forgotPassform.email.errors.required">Please enter your email address</div>
+              </div>
+            </div>
+            <!-- <a type="submit" class="primary-btn">submit</a> -->
+            <div class="forgot_pswd">
+              <button class="primary-btn" type="submit" value="submit">Submit</button>
+            </div>
+          </form>
+          <div class="login-form-btm text-center">
+            <p>Go back to <a href="javascript:void(0);" (click)="togglebox()">Login</a> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="varify-section" [ngStyle]="{'display': (verificationProcess==false) ? 'block' : 'none'}">
+    <div class="container">
+      <div class="varify-header-bx text-center">
+        <h3>Yay! Account created Successfully</h3>
+      </div>
+      <div class="varification-bx">
+        <ul>
+          <li>
+            <div class="varify-icon">
+              <img src="../../assets/images/varifyicn.png">
+            </div>
+          </li>
+          <li>
+            <div class="varify-desc">
+              <h4>Verify your account</h4>
+              <p>We have sent a mail to the email address provided by you. Please click on the link to verify your
+                account</p>
+              <button class="btn btn-warning" id="resend_button" type="button" value="login"
+                (click)="resendToken()">Resend Link</button>
+              <span class="{{ resendTokenSuccessMsg }}">{{ resendTokenmessage }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>

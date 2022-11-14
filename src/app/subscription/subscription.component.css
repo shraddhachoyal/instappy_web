@@ -1,0 +1,463 @@
+/*main banner ss */
+section.pricing-heading-page {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f9fafb;
+}
+
+.pricing-head-bx h2,
+.pricing-table-head-bx h2 {
+    font-family: "Proxima Nova Rg";
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    color: #000;
+}
+
+.heading-bx>p {
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+
+span.colo_info {
+    color: #197ad7;
+    font-weight: 600;
+}
+
+.pricing-head-bx h2 {
+    margin-bottom: 30px;
+}
+
+/* prcing tabIe css strat */
+
+.table-responsive-section {
+    padding: 25px 0 0;
+}
+
+.pricing-head-bx h2 span,
+.pricing-table-head-bx h2 span {
+    border-bottom: 5px solid #fdc40a;
+}
+
+.pricing-table-head-bx p {
+    font-family: "Proxima Nova Rg";
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 auto 10px;
+    color: #000;
+}
+
+.table-pricing-box tr:nth-child(even) {
+    background-color: #f8fafd;
+}
+
+.active-plan {
+    width: 7px;
+    height: 7px;
+    border-radius: 10px;
+    background: #197ad7;
+    display: inline-block;
+}
+
+.unactive-plan {
+    width: 7px;
+    height: 7px;
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #333;
+    display: inline-block;
+}
+
+.table-pricing-box tr th:nth-child(2),
+.table-pricing-box tr th:last-child,
+.table-pricing-box tr td:nth-child(2),
+.table-pricing-box tr td:last-child {
+    text-align: center;
+}
+
+.table-pricing-box table tr th,
+.table-pricing-box table tr td {
+    border: none;
+    padding: 20px 20px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+    font-family: "Proxima Nova Rg";
+}
+
+.table-pricing-box table {
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* prcing tabIe css end */
+
+/* Plan css start */
+.pricing-taby {
+    width: 30%;
+    margin: 0 auto;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.act-plan {
+    background: #f8fafd;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: 1px solid #e3e4e6;
+
+}
+
+.plus-icon {
+    padding-bottom: 0px !important;
+    color: #000;
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+.popular-plan-tag {
+    background: #d8e9f8;
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 10px;
+    color: #197ad7;
+    border: 2px solid #197ad7;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.plan-detais {
+    list-style: none;
+    padding: 0;
+}
+
+.plan-detais li {
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+    font-family: "Proxima Nova Rg";
+    padding: 6px 0;
+
+}
+
+.plan-name {
+    font-size: 30px;
+    font-family: "Proxima Nova Rg";
+    color: #000;
+    margin: 0 0 15px;
+}
+
+.price-tag {
+    font-size: 40px;
+    font-family: "Proxima Nova Rg";
+    font-weight: 700;
+    margin: 0;
+}
+
+.package-time {
+    font-size: 16px;
+    color: #000;
+    font-family: "Proxima Nova Rg";
+    margin: 0 0 8px;
+}
+
+.primary-btn {
+    background: #fdc40a;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    padding: 8px 50px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid #fdc40a;
+    cursor: pointer;
+    text-decoration: none !important;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+ul.plan-bx-icon>li>i {
+    font-size: 20px;
+}
+
+.prime-bg {
+    border: 1px solid #ccc;
+    background: #f8fafd;
+    border-radius: 10px;
+    padding: 3px 10px !IMPORTANT;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.additin-btn i {
+    -webkit-text-stroke: 1px #fff;
+    font-size: 16px;
+}
+
+.additin-btn {
+    padding-bottom: 0 !important;
+}
+
+.divider-bx h4 {
+    color: #000;
+    font-size: 16px;
+    padding: 10px 0;
+    margin: 0;
+    position: relative;
+    font-family: "Proxima Nova Rg";
+}
+
+.divider-bx h4:after {
+    content: close-quote;
+    background: linear-gradient(to right, #000, #000, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), #000, #000);
+    position: absolute;
+    height: 1px;
+    width: 60%;
+    right: 0;
+    top: 50%;
+    margin: 0 auto;
+    left: 0;
+}
+
+.pricing-table-head-bx {
+    margin: 0 0 30px;
+}
+
+.pricing-taby,
+.pricing-tab-bx .nav-tabs .nav-link {
+    border: none;
+}
+
+.pricing-tab-bx a.nav-link.active {
+    background: #fdc40a !important;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 400;
+    border: 1px solid #fdc40a;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-size: 16px;
+}
+
+.pricing-tab-bx a.nav-link {
+    background: #fff !important;
+    color: #000;
+    font-family: 'Proxima Nova Rg';
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    border: 1px solid #000;
+    margin-bottom: 0px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.plan-bx-icon li svg {
+    fill: #000;
+    width: 25px;
+    height: 25px;
+}
+
+.popular-plan {
+    margin-top: -30px;
+}
+
+.plan-box {
+    display: flex;
+    padding: 50px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.basic-plan {
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    background: #ffffff;
+    padding: 25px 35px;
+    border-radius: 15px;
+    text-align: center;
+    flex: 0 0 33%;
+    margin-bottom: 30px;
+}
+
+.popular-plan {
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    background: #ffffff;
+    padding: 25px 35px;
+    border-radius: 15px;
+    margin-top: -30px;
+    margin-bottom: -30px;
+    text-align: center;
+    flex: 0 0 35%;
+    z-index: 999;
+}
+
+.plan-bx-icon li {
+    margin-right: 20px;
+}
+
+.plan-bx-icon {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+/* Plan css end */
+.heading-bx {
+    margin: 0 0 20px;
+}
+
+.heading-bx>a {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.heading-bx h3 {
+    font-size: 22px;
+    font-family: Proxima Nova Rg;
+    font-weight: 800;
+}
+
+.heading-bx>a>i {
+    margin-right: 10px;
+}
+
+
+/* qute sectin css start */
+
+.plan-benefits-section {
+    padding: 30px 0;
+}
+
+.plan-benefits-box ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.plan-detais {
+    margin-top: 10px;
+}
+
+.plan-img-qoute img {
+    width: 50px;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 15px;
+    -webkit-transition: 0.6s ease-out;
+    -moz-transition: 0.6s ease-out;
+    transition: 0.6s ease-out;
+}
+
+.plan-benefits-box ul li {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.plan-img-qoute {
+    display: inline-flex;
+}
+
+.plan-img-qoute img:hover {
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+}
+
+.plan-benefits-box ul li div p {
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+    margin: 0;
+    margin-top: 10px;
+    padding-left: 10px;
+    font-family: "Proxima Nova Rg";
+
+}
+
+/* qute sectin css end */
+
+@media (max-width: 991.9px) {
+
+    .plan-box {
+        display: block;
+    }
+
+    .basic-plan {
+        margin: 40px 0 70px;
+    }
+}
+
+@media (max-width:767.9px) {
+    .plan-benefits-box ul li {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .plan-benefits-box ul {
+        display: block;
+    }
+
+    .primary-btn {
+        display: block;
+    }
+
+    .price-tag {
+        font-size: 30px;
+    }
+
+    .pricing-head-bx h2 span,
+    .pricing-table-head-bx h2 span {
+        border-bottom: 3px solid #fdc40a;
+    }
+
+    .pricing-head-bx h2,
+    .pricing-table-head-bx h2 {
+        font-size: 28px;
+    }
+
+    .plan-box {
+        padding-top: 0px;
+    }
+
+    .pricing-taby {
+        width: 80%;
+    }
+
+    section.pricing-heading-page {
+        background-size: 100% 30%;
+    }
+}
+
+
+
+@media screen and (min-device-width: 768px) and (max-device-width:1024) {
+    .plan-box {
+        display: flex;
+        gap: 20px;
+    }
+
+    .basic-plan {
+        flex: 0 0 50%;
+        margin: 0px 0 0px;
+    }
+
+    .popular-plan {
+        flex: 0 0 50%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}

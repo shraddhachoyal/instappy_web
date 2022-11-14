@@ -1,0 +1,614 @@
+<app-header></app-header>
+<section class="instappy-home-banner-section">
+   <div class="container">
+      <ul class="home-banner-main">
+         <li *ngIf="home_contents[0]">
+            <div class="banner-content-box" data-aos="fade-in" data-aos-easing="linear" data-aos-duration="800">
+               <h2>{{home_contents[0].title}} </h2>
+               <p>{{home_contents[0].description}}</p>
+            </div>
+            <ul class="banner-btn-box" data-aos="fade-in" data-aos-easing="linear" data-aos-duration="800">
+               <li><a (click)="getStart()" class="primary-btn">Get Started</a></li>
+               <li>
+                  <a class="secondary-btn" href="javascript:void(0)" data-toggle="modal"
+                     data-target="#edit-app-content_modal">
+                     <span>
+                        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                           <defs>
+                              <style>
+                                 .cls-1 {
+                                    fill: #121313;
+                                 }
+
+                                 .cls-1,
+                                 .cls-2 {
+                                    fill-rule: evenodd;
+                                 }
+
+                                 .cls-2 {
+                                    fill: #0e0f0f;
+                                 }
+                              </style>
+                           </defs>
+                           <g id="Arrow_Drop_Right_Circle" data-name="Arrow Drop Right Circle">
+                              <path class="cls-1"
+                                 d="M0,16A16,16,0,1,0,16,0,16,16,0,0,0,0,16Zm30,0A14,14,0,1,1,16,2,14,14,0,0,1,30,16Z" />
+                              <path class="cls-2"
+                                 d="M13.08,8.63a.85.85,0,0,0-.07.42V23a1,1,0,0,0,1.7.74l6.9-7a1,1,0,0,0,0-1.43l-6.89-7a1,1,0,0,0-1.64.32c-.06.13.15-.37,0,0-.06.13.15-.37,0,0C13,8.76,13.23,8.26,13.08,8.63Z" />
+                           </g>
+                        </svg>
+                     </span>
+                     View Demo
+                  </a>
+               </li>
+            </ul>
+         </li>
+         <li>
+            <div class="home-banner-img">
+               <img src="assets/images/tpicn2.png" class="img1a" alt="home banner" data-aos="fade-left"
+                  data-aos-easing="linear" data-aos-duration="550">
+               <img src="assets/images/tpicn1.png" class="img2a" alt="home banner" data-aos="fade-left"
+                  data-aos-easing="linear" data-aos-duration="550" data-aos-delay="700">
+               <img src="assets/images/tpicn3.png" class="img3a" alt="home banner" data-aos="fade-left"
+                  data-aos-easing="linear" data-aos-duration="550" data-aos-delay="1500">
+            </div>
+            <!-- <div class="home-banner-img">
+               <img *ngFor="let banner of bannerImages;" src={{banner.image}} class="img1a" alt="home banner"
+                  data-aos="fade-left" data-aos-easing="linear" data-aos-duration="550">
+            </div> -->
+         </li>
+      </ul>
+   </div>
+</section>
+<section class="client-slider-section">
+   <div class="container">
+      <div class="swiper-container " [swiper]="slideexpierencebox" data-aos="fade-top" data-aos-easing="linear"
+         data-aos-duration="500">
+         <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide" *ngFor="let logo of logos">
+               <div class="fj-expierence-tb-image ">
+                  <img img src={{logo.image}} alt="user image">
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- <section class="instappy-steps-section">
+   <div class="container" *ngIf="data1_index1[1]">
+      <div class="bold-heading text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500">
+         <h3>{{data1_index1[1].title}} </h3>
+         <p>{{data1_index1[1].description}} </p>
+      </div>
+   </div>
+   <div class="container">
+      <div class="tabbing-custom" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="500">
+      
+         <div class="insta-click-tab" *ngFor="let appSteps of data4_index1; let first = first;" [ngClass]="{'active': first}">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step1.svg">
+            </div>
+            <div class="click-box">
+               <h3>{{appSteps.title}}</h3>
+               <p>{{appSteps.description}}</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box" *ngFor="let appSteps of data4_index1">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img
+                     src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src={{appSteps.image}} alt="user image">
+            </div>
+         </div>
+      
+         <div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step2.svg">
+            </div>
+            <div class="click-box">
+               <h3>{{data3_index1.sub_heading2}}</h3>
+               <p>{{data3_index1.sub_description2}}</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img
+                     src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src={{data3_index1.sub_image2}} alt="user image">
+            </div>
+         </div>
+         <div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step3.svg">
+            </div>
+            <div class="click-box">
+               <h3>{{data3_index1.sub_heading3}}</h3>
+               <p>{{data3_index1.sub_description3}}</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img
+                     src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src={{data3_index1.sub_image3}} alt="user image">
+            </div>
+         </div>
+         <div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step4.svg">
+            </div>
+            <div class="click-box">
+               <h3>{{data3_index1.sub_heading4}}</h3>
+               <p>{{data3_index1.sub_description4}}</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img
+                     src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src={{data3_index1.sub_image4}} alt="user image">
+            </div>
+         </div>-->
+<!--</div>
+   </div>
+</section>-->
+
+
+
+
+
+
+<!--<section class="instappy-steps-section">
+   <div class="container">
+      <div class="bold-heading text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500"
+         *ngIf="home_contents[1]">
+         <h3>{{home_contents[1].title}}</h3>
+         <p>{{home_contents[1].description}}</p>
+      </div>
+   </div>
+   <div class="container">
+      <div class="tabbing-custom" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="500">
+         <div *ngFor="let appSteps of appAllSteps;let index = index;">
+            <div class="insta-click-tab ">
+               <div class="click-box-icons">
+                  <img img src="assets/images/step-tutorials/app-step1.svg">
+               </div>
+               <div class="click-box">
+                  <h3>{{appSteps.title}}</h3>
+                  <p>{{appSteps.description}}</p>
+               </div>
+            </div>
+            <div class="insta-click-desc-box">
+               <div class="steps-image-box">
+                  <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img
+                        img src="assets/images/tinyicon.png" alt="ios icon"></span>
+                  <img img src={{siteURL+appSteps.image}} alt="user image">
+               </div>
+            </div>
+         </div>-->
+<!--<div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step2.svg" >
+            </div>
+            <div class="click-box">
+               <h3>smjmskskjism</h3>
+               <p>skjmkwmijrkjfutm</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src="" alt="user image">
+            </div>
+         </div>
+         <div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step3.svg" >
+            </div>
+            <div class="click-box">
+               <h3>smkjikfkij</h3>
+               <p>ekkfkigkkymijyy</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src="" alt="user image">
+            </div>
+         </div>
+         <div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step4.svg" >
+            </div>
+            <div class="click-box">
+               <h3>dnjmjdnjnd</h3>
+               <p>skmkdmkmfjjf</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src="" alt="user image">
+            </div>
+         </div>-->
+<!--</div>
+   </div>
+</section>-->
+
+<section class="instappy-steps-section">
+   <div class="container">
+      <div class="bold-heading text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500"
+         *ngIf="home_contents[1]">
+         <h3>{{home_contents[1].title}}</h3>
+         <!-- <p>{{home_contents[2].description}}</p> -->
+         <p> Instappy's application development platform has a simple yet stunning interface where you can seamlessly
+            choose and
+            customise from an ocean of templates, without any coding. Yes, it's that easy!</p>
+      </div>
+   </div>
+   <div class="container">
+      <div class="tabbing-custom" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="500">
+
+         <div class="insta-click-tab active">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step1.svg">
+            </div>
+            <div class="click-box">
+               <h3>Pick a Template</h3>
+               <p> Pick from a variety of templates to suit your style and preference.</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img
+                     src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src="assets/images/tutorial-steps.png" alt="user image">
+            </div>
+         </div>
+
+         <div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step2.svg">
+            </div>
+            <div class="click-box">
+               <h3>Brand your app</h3>
+               <p>Customise the app for your brand, from colour, font, icon, to size.</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img
+                     src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src="assets/images/tutorial-steps.png" alt="user image">
+            </div>
+         </div>
+         <div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step3.svg">
+            </div>
+            <div class="click-box">
+               <h3>Edit content</h3>
+               <p> Modify the template content as per your needs.</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img
+                     src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src="assets/images/tutorial-steps.png" alt="user image">
+            </div>
+         </div>
+         <div class="insta-click-tab">
+            <div class="click-box-icons">
+               <img img src="assets/images/step-tutorials/app-step4.svg">
+            </div>
+            <div class="click-box">
+               <h3>Launch your app instantly</h3>
+               <p>Submit and download your app directly from the iOS and Android store</p>
+            </div>
+         </div>
+         <div class="insta-click-desc-box">
+            <div class="steps-image-box">
+               <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img img
+                     src="assets/images/tinyicon.png" alt="ios icon"></span>
+               <img img src="assets/images/tutorial-steps.png" alt="user image">
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+
+
+<section class="powerfull-feature-section">
+   <div class="container">
+      <div class="bold-heading text-center" *ngIf="home_contents[2]" data-aos="fade-up" data-aos-easing="linear"
+         data-aos-duration="500">
+         <h3>{{home_contents[2].title}}</h3>
+         <p>{{home_contents[2].description}}</p>
+      </div>
+      <div class="slide-relative">
+         <div class="swiper-container slide-feature-box" [swiper]="slidefeaturebox" data-aos="fade-top"
+            data-aos-easing="linear" data-aos-duration="500">
+            <div class="swiper-wrapper">
+               <div class="swiper-slide" *ngFor="let appFeatures of data5_index1">
+                  <div class="instappy-features-box">
+                     <div class="features-icon">
+                        <img img src={{siteURL+appFeatures.icon}} alt="user image">
+                     </div>
+                     <h4>{{appFeatures.title}}</h4>
+                     <p> {{appFeatures.description}}</p>
+                  </div>
+               </div>
+               <!--<div class="swiper-slide">
+                  <div class="instappy-features-box">
+                     <div class="features-icon">
+                        <img img src={{data4_index1.image_icon2}} alt="user image">
+                     </div>
+                     <h4>{{data4_index1.sub_heading2}}</h4>
+                     <p> {{data4_index1.sub_description2}}</p>
+                  </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="instappy-features-box">
+                     <div class="features-icon">
+                        <img img src={{data4_index1.image_icon3}} alt="user image">
+                     </div>
+                     <h4>{{data4_index1.sub_heading3}}</h4>
+                     <p> {{data4_index1.sub_description3}}</p>
+                  </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="instappy-features-box">
+                     <div class="features-icon">
+                        <img img src={{data4_index1.image_icon4}} alt="user image">
+                     </div>
+                     <h4>{{data4_index1.sub_heading4}}</h4>
+                     <p> {{data4_index1.sub_description4}}</p>
+                  </div>
+               </div>-->
+            </div>
+         </div>
+         <div class="swiper-button-next feature-next"></div>
+         <div class="swiper-button-prev feature-prev"></div>
+      </div>
+      <ul class="banner-btn-box text-center">
+         <li><a (click)="getStart()" class="primary-btn">Get Started </a></li>
+         <li>
+            <a class="secondary-btn" href="javascript:void(0)" data-toggle="modal"
+               data-target="#edit-app-content_modal">
+               <span>
+                  <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                     <defs>
+                        <style>
+                           .cls-1 {
+                              fill: #121313;
+                           }
+
+                           .cls-1,
+                           .cls-2 {
+                              fill-rule: evenodd;
+                           }
+
+                           .cls-2 {
+                              fill: #0e0f0f;
+                           }
+                        </style>
+                     </defs>
+                     <g id="Arrow_Drop_Right_Circle" data-name="Arrow Drop Right Circle">
+                        <path class="cls-1"
+                           d="M0,16A16,16,0,1,0,16,0,16,16,0,0,0,0,16Zm30,0A14,14,0,1,1,16,2,14,14,0,0,1,30,16Z" />
+                        <path class="cls-2"
+                           d="M13.08,8.63a.85.85,0,0,0-.07.42V23a1,1,0,0,0,1.7.74l6.9-7a1,1,0,0,0,0-1.43l-6.89-7a1,1,0,0,0-1.64.32c-.06.13.15-.37,0,0-.06.13.15-.37,0,0C13,8.76,13.23,8.26,13.08,8.63Z" />
+                     </g>
+                  </svg>
+               </span>
+               View Demo
+            </a>
+         </li>
+      </ul>
+   </div>
+</section>
+<section class="native-apps-section">
+   <div class="container">
+      <div class="native-apps-warp">
+         <div class="native-apps-left-box" *ngIf="home_contents[3]">
+            <img _ngcontent-ybk-c54="" src={{siteURL+home_contents[3].image}} alt="native-apps"
+               class="native-apps-screen aos-init aos-animate">
+            <span class="native-apps-bg-icon">
+               <img _ngcontent-ybk-c54="" src="../../assets/images/native-apps-bg-icon.png" alt="native-apps"
+                  class="aos-init aos-animate">
+            </span>
+         </div>
+         <div class="native-apps-right-box">
+            <div data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500" *ngIf="home_contents[3]">
+               <h4>{{home_contents[3].title}}</h4>
+            </div>
+            <div class="native-apps-right-content">
+               <ul class="native-apps-list" data-aos="flip-up">
+                  <li *ngFor="let nativeApps of nativeApps">
+                     <span class="list-dots">{{nativeApps.title}}</span>
+                     <span class="list-dots-line"></span>
+                     <span class="native-apps-para">{{nativeApps.description}}</span>
+                  </li>
+                  <!--<li>
+                     <span class="list-dots">02</span>
+                     <span class="list-dots-line-1"></span>
+                     <span class="native-apps-para">{{data5_index1.description2}}</span>
+                  </li>
+                  <li>
+                     <span class="list-dots">03</span>
+                     <span class="native-apps-para last-child">{{data5_index1.description3}} </span>
+                  </li>
+                  <li>
+                     <span class="list-dots">04</span>
+                     <span class="list-dots-line"></span>
+                     <span class="native-apps-para">{{data5_index1.description4}} </span>
+                  </li>
+                  <li>
+                     <span class="list-dots">05</span>
+                     <span class="list-dots-line-1"></span>
+                     <span class="native-apps-para">{{data5_index1.description5}} </span>
+                  </li>
+                  <li>
+                     <span class="list-dots">06</span>
+                     <span class="native-apps-para last-child">{{data5_index1.description6}}</span>
+                  </li>-->
+               </ul>
+               <ul class="native-apps-btn-box">
+                  <li><a (click)="getStart()" class="primary-btn">Get Started</a></li>
+                  <!-- <li><a routerLink ="/panel" class="primary-btn" target="_blank">Get Started {{data5.data[0].Home_List5[0].get_started_url}} </a></li> -->
+                  <li>
+                     <a class="secondary-btn" href="javascript:void(0)" data-toggle="modal"
+                        data-target="#edit-app-content_modal">
+                        <span>
+                           <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                              <defs>
+                                 <style>
+                                    .cls-1 {
+                                       fill: #121313;
+                                    }
+
+                                    .cls-1,
+                                    .cls-2 {
+                                       fill-rule: evenodd;
+                                    }
+
+                                    .cls-2 {
+                                       fill: #0e0f0f;
+                                    }
+                                 </style>
+                              </defs>
+                              <g id="Arrow_Drop_Right_Circle" data-name="Arrow Drop Right Circle">
+                                 <path class="cls-1"
+                                    d="M0,16A16,16,0,1,0,16,0,16,16,0,0,0,0,16Zm30,0A14,14,0,1,1,16,2,14,14,0,0,1,30,16Z" />
+                                 <path class="cls-2"
+                                    d="M13.08,8.63a.85.85,0,0,0-.07.42V23a1,1,0,0,0,1.7.74l6.9-7a1,1,0,0,0,0-1.43l-6.89-7a1,1,0,0,0-1.64.32c-.06.13.15-.37,0,0-.06.13.15-.37,0,0C13,8.76,13.23,8.26,13.08,8.63Z" />
+                              </g>
+                           </svg>
+                        </span>
+                        View Demo
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<section class="customstories-section">
+   <div class="container">
+      <div class="bold-heading text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500"
+         *ngIf="home_contents[4]">
+         <h3>{{home_contents[4].title}}</h3>
+         <p> {{home_contents[4].description}}</p>
+      </div>
+      <div class="slide-relative">
+         <div class="swiper-container slide-customstories-box" [swiper]="customstories" data-aos="fade-top"
+            data-aos-easing="linear" data-aos-duration="500">
+            <div class="swiper-wrapper">
+               <div class="swiper-slide" *ngFor="let customerstories of customerStory">
+                  <div class="instappy-customstories-box">
+                     <div class="bix_story">
+                        <div class="customstories-icon">
+                           <img src={{siteURL+customerstories.icon}} alt="user image">
+                           <ul class="customstories-star">
+                              <li>
+                                 <ngb-rating [max]="5" [rate]="customerstories.rating" [readonly]="true"
+                                    class="rating_list"></ngb-rating>
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="instappy-customstories-box-desc">
+                           <h4><span>{{customerstories.name}}</span> | {{customerstories.company_name}}</h4>
+                           <p>{{customerstories.description}} </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="swiper-button-next customstories-next"></div>
+         <div class="swiper-button-prev customstories-prev"></div>
+      </div>
+   </div>
+</section>
+<section class="instappy-blog">
+   <div class="container">
+      <div class="bold-heading text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500"
+         *ngIf="home_contents[5]">
+         <h3>{{home_contents[5].title}}</h3>
+         <p>{{home_contents[5].description}} </p>
+      </div>
+      <div class="instappy-blog-post" data-aos="fade-up">
+         <div class="instappyblog-post-list" *ngFor="let currentBlogData of currentBlogList">
+            <a routerLink="/blog" class="blog-post-link">
+               <!-- <img src="assets/images/videos/1.png" alt="ios icon"> -->
+               <img class="image-width-height-set" [src]="currentBlogData.blog_featured_image"
+                  alt="{{currentBlogData.blog_title}}">
+               <p>Category</p>
+               <h6> {{currentBlogData.blog_title}}</h6>
+            </a>
+         </div>
+      </div>
+      <div class="all-post-link">
+         <a _ngcontent-rct-c54="" _ngcontent-jrq-c54="" routerLink="/blog" class="primary-btn">Read all Blogs</a>
+      </div>
+   </div>
+</section>
+<section class="instappy-wizard-section">
+   <div class="container">
+      <ul class="instappy-wizard-box">
+         <li>
+            <div class="wizard-content-box" data-aos="flip-up" *ngIf="home_contents[6]">
+               <h3>{{home_contents[6].title}}
+               </h3>
+               <ul class="design-pj-bx" style="height: 152px;">
+                  <p class="box_type" style="padding-top: 15px; font-size: 20px;"> Customise and get your app in 5
+                     minutes, without any coding.</p>
+                  <!-- <li *ngFor="let designProperties of properties">{{designProperties.title}}</li> -->
+               </ul>
+               <div class="btn-bx">
+                  <a (click)="getStart()" class="primary-btn mobile-view">Start for Free</a>
+               </div>
+            </div>
+         </li>
+         <li class="relative-box" data-aos="fade-top" data-aos-easing="linear" data-aos-duration="500">
+            <div class="wizard-image-box">
+               <div class="image-box-design" *ngIf="home_contents[6]">
+                  <img img src="{{siteURL+home_contents[6].image}}" alt="ios icon">
+                  <span class="tin-icon elem" style="transform: perspective(100px) rotateY(0deg) rotateX(0deg);"><img
+                        img src="assets/images/tinyicon.png" alt="ios icon"></span>
+               </div>
+            </div>
+         </li>
+      </ul>
+   </div>
+</section>
+<section class="faq">
+   <div class="container">
+      <div class="bold-heading text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500"
+         *ngIf="home_contents[7]">
+         <h3>{{home_contents[7].title}}</h3>
+         <p>{{home_contents[7].description}}</p>
+      </div>
+      <div class="accordion" id="accordionfaq">
+         <div class="faq-accordion" data-aos="fade-up" *ngFor="let faqs of faqList;let index = index;">
+            <div class="faq-card">
+               <div class="faq-header" data-toggle="collapse" [attr.data-target]="'#collapse_'+ index"
+                  aria-expanded="false" aria-controls="collapseOne">
+                  <span class="accicon-faq"><i class="fa fa-caret-right"></i></span>
+                  <span class="faq-title">{{faqs.faq_question}} </span>
+               </div>
+               <div id="{{'collapse_'+index}}" class="collapse" data-parent="#accordionfaq">
+                  <div class="accordion-content">
+                     <p> {{faqs.faq_answer}} </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<app-footer></app-footer>

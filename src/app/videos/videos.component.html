@@ -1,0 +1,105 @@
+<app-header></app-header>
+<section class="instappy-wizard-section">
+   <div class="container">
+      <div class="video-bg">
+         <h2>Video Tutorials</h2>
+         <p>Lorem ipsum dolor sit amet, malis vocent cu cum, vel exprobo percipitur, eam paulo dicunt delicatissimi in.
+         </p>
+      </div>
+   </div>
+</section>
+<section class="faq-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <ul class="list-video-tab">
+               <li id="all" [class.tab-active]="id === 'all'" (click)="tabChange('all')">All </li>
+               <li id="design" [class.tab-active]="id === 'design'" (click)="tabChange('design')">Design</li>
+               <li id="content" [class.tab-active]="id === 'content'" (click)="tabChange('content')">Content</li>
+            </ul>
+            <div class="video-tab">
+               <div class="all" id="all" *ngIf="id ===  'all'">
+                  <div class="video-list">
+                     <div class="video-box" *ngFor="let getallvideo of allvideo.data[0].all_video">
+                        <div class="video-play">
+                           <img src={{getallvideo?.video}} alt="ios icon">
+                           <div class="play-button">
+                              <a href="javascript:void(0)" class="play-hover" data-toggle="modal"
+                                 data-target="#edit-app-content_modal">
+                                 <img src={{getallvideo?.video_icon}} alt="ios icon">
+                              </a>
+                           </div>
+                        </div>
+                        <div class="video-title">
+                           <p>{{getallvideo?.video_title}}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!---All tb-->
+               <div class="all" *ngIf="id ===  'design'">
+                  <div class="video-list">
+                     <div class="video-box" *ngFor="let getdesign of designvideo.data[0].design_video">
+                        <div class="video-play">
+                           <img src={{getdesign?.video}} alt="ios icon">
+                           <div class="play-button">
+                              <a href="javascript:void(0)" class="play-hover" data-toggle="modal"
+                                 data-target="#edit-app-content_modal">
+                                 <img src={{getdesign?.video_icon}} alt="ios icon">
+                              </a>
+                           </div>
+                        </div>
+                        <div class="video-title">
+                           <p>{{getdesign?.video_title}}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!--- Desgin tab-->
+               <div class="all" id="content" *ngIf="id ===  'content'">
+                  <div class="video-list">
+                     <div class="video-box" *ngFor="let getcontent of contentvideo.data[0].content_video">
+                        <div class="video-play">
+                           <img src={{getcontent?.video}} alt="ios icon">
+                           <div class="play-button">
+                              <a href="javascript:void(0)" class="play-hover" data-toggle="modal"
+                                 data-target="#edit-app-content_modal">
+                                 <img src={{getcontent?.video_icon}} alt="ios icon">
+                              </a>
+                           </div>
+                        </div>
+                        <div class="video-title">
+                           <p>{{getcontent?.video_title}}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!---Content tab-->
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<div class="modal top fade" id="edit-app-content_modal">
+   <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content notification_modal-box border-0">
+         <div class="modal-header d-block border-0">
+            <h4 class="modal-title notification-modal-title"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         <div class="modal-body">
+            <div class="notification_content">
+               <div class="embed-responsive embed-responsive-16by9">
+                  <iframe id="ContentVideo" class="embed-responsive-item" width="100%" height="auto"
+                     src="https://www.youtube.com/embed/Dr_5PzRK7a0" title="YouTube video player" frameborder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowfullscreen></iframe>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!--edit-app-content_modal-->
+<app-footer></app-footer>

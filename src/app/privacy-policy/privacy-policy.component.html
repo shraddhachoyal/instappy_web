@@ -1,0 +1,23 @@
+<app-header></app-header>
+<section class="instappy-wizard-section">
+   <div class="container">
+      <div class="terms-condition">
+         <div class="row">
+            <div class="col-md-12">
+               <h2> Privacy Policy</h2>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <div class="terms-para" *ngFor="let privacylist of privacy_policy">
+                  <!-- <h4 *ngIf="privacylist">{{privacylist?.heading}}</h4> -->
+                  <div class="box_para" *ngIf="privacylist" [innerHtml]="privacylist?.content">
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<app-footer></app-footer>

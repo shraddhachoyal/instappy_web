@@ -1,0 +1,483 @@
+<app-panel-header></app-panel-header>
+<section  class="publish-app-warp">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="scp-breadcrumb">
+          <ul class="breadcrumb ml-0 pl-0">
+            <li class="font-weight-bold ml-0 pl-0"><a routerLink="#" class="font-dark">
+              <i aria-hidden="true" class="fa fa-angle-left mr-1"></i> Back</a>
+            </li>
+          </ul>
+          <h2>Publish you App</h2>
+          <p>Lorem ipsum dolor sit amet, velit paulo veritus eos an, ut sit ornatus nostrum  </p>
+        </div>
+        <div class="publish-para">
+          <ul class="publish-para-list">
+            <li>
+              <h3>I’ll do it myself</h3>
+              <p> Lorem ipsum dolor sit amet, eam eu dicam latine. Id quot vero menandri eos, est no natum diceret persequeris.</p>
+              <div class="icon-preview">
+                <img src="../../assets/images/panel/publish-icon.png" alt="">
+              </div>
+              <a routerLink="#"> Publish App</a>
+              <div class="cost-data-apps">
+                <p>Free of cost</p>
+              </div>
+            </li>
+            <li>
+              <h3>We will publish your app</h3>
+              <p> Lorem ipsum dolor sit amet, eam eu dicam latine. Id quot vero menandri eos, est no natum diceret persequeris.</p>
+              <div class="icon-preview">
+                <img src="../../assets/images/panel/publish-icon.png" alt="">
+              </div>
+              <a routerLink="#"> Publish App</a>
+              <div class="cost-data-apps">
+                <p>Charges <span class="text-primary">$50</span> Only</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section  class="publish-app-warp" id="steps_1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="scp-breadcrumb">
+          <ul class="breadcrumb ml-0 pl-0">
+            <li class="font-weight-bold ml-0 pl-0"><a routerLink="#" class="font-dark">
+              Publish <i aria-hidden="true" class="fa fa-angle-right mr-1 ml-1"></i></a>
+            </li>
+            <li class="font-weight-bold ml-0 pl-0">
+              Instappy will publish app
+              <p></p>
+            </li>
+          </ul>
+          <h2>Instappy will publish app</h2>
+          <p>Lorem ipsum dolor sit amet, velit paulo veritus eos an, ut sit ornatus nostrum   </p>
+        </div>
+        <div class="tabbing-custom">
+          <ul class="list-publish-app-tab">
+            <li id="steps_1"  [class.tab-active] ="id === 'steps_1'" (click) ="tabChange('steps_1')"><span class="number-count">1</span> App type</li>
+            <li id="steps_2"  [class.tab-active] ="id === 'steps_2'"(click) ="tabChange('steps_2')"><span class="number-count">2</span>Create developer account</li>
+            <li id="steps_3"  [class.tab-active] ="id === 'steps_3'"(click) ="tabChange('steps_3')"><span class="number-count">3</span>App details</li>
+            <!-- <li id="steps_4"  [class.tab-active] ="id === 'steps_4'"(click) ="tabChange('steps_4')"><span class="number-count">4</span>Download app build</li> -->
+          </ul>
+          <div class="publish-app-tab">
+            <div class="all" id="steps_1" *ngIf="id ===  'steps_1'">
+              <div class="publish-app-list">
+                <h3>Select your app type to publish </h3>
+                <form class="form cf">
+                  <div class="plan cf pl-0">
+                    <div class="check-box-para">
+                      <input type="radio" name="radio1" id="basic_ios" value="basic" checked>
+                      <label class="basic-label four" for="basic_ios">
+                        <div class="box-middle">
+                          <i class="fa fa-android" aria-hidden="true"></i>
+                          <p>Android</p>
+                        </div>
+                      </label>
+                      <input type="radio" name="radio1" id="free_ios" value="free">
+                      <label class="free-label four" for="free_ios">
+                        <div class="box-middle">
+                          <i class="fa fa-apple" aria-hidden="true"></i>
+                          <p>IOS</p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!---steps_1 end-->
+            <div class="all"  *ngIf="id ===  'steps_2'">
+              <div class="publish-app-list">
+                <div class="steps_2_para">
+                  <h4>Create a developer account </h4>
+                  <p class="text_1">To publish an android app you must have a google developer account </p>
+                  <p>If you already have a google developer account click next or create your account at
+                    <span class="text-primary"> Google play console </span>
+                  </p>
+                  <h5 class="need-help"> Need help?</h5>
+                  <p  class="faq-firebase"><a  routerLink="/"><i  aria-hidden="true" class="fa fa-caret-right"></i> How to create a developer account? </a></p>
+                </div>
+              </div>
+            </div>
+            <!--- steps_2 end-->
+            <div class="all" id="content" *ngIf="id ===  'steps_3'">
+              <div class="publish-app-list">
+                <div class="steps_3_para">
+                  <h5>Fill in the form </h5>
+                  <div class="card-edit-app-content-data appearance-tab mb-3">
+                    <div class="app-details">
+                      <form novalidate="" class="tbfs-form" >
+                        <div class="apps-screen-app-details">
+                          <h6>Google developer account details</h6>
+                          <p>Fill in the credentials so that we can connect to your developer account.</p>
+                          <div class="app-details-form">
+                            <ul class="d-block p-0 mb-0">
+                              <div class="documents-para">
+                                <li>
+                                  <input type="text"  formControlName="email" placeholder="Google account email id" class="input-sample">
+                                </li>
+                                <li>
+                                  <input type="password" formControlName="password" class="input-sample" placeholder="Password">
+                                </li>
+                              </div>
+                              <div class="documents-para">
+                                <li>
+                                  <input type="text" formControlName="phone"  placeholder="Phone number" class="input-sample">
+                                  <p class="short-d"> (Please include your country code. Ex: +91)</p>
+                                </li>
+                                <li>
+                                  <input type="password" formControlName="name" class="input-sample" placeholder="Google play developer name">
+                                </li>
+                              </div>
+                              <h5  class="need-help"> Need help?</h5>
+                              <p  class="faq-firebase mb-0">
+                                <a  routerLink="/">
+                                <i  aria-hidden="true" class="fa fa-caret-right"></i>
+                                How to create a developer account 
+                                </a>
+                              </p>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="apps-screen-app-details">
+                          <h6>App Information</h6>
+                          <p>Give your app a beautiful description for the user to understand about the app.</p>
+                          <div class="app-details-form">
+                            <ul class="d-block p-0 mb-0">
+                              <div class="documents-para d-block">
+                                <li>
+                                  <input type="text"  formControlName="characters" placeholder="Short Description (upto 80 characters)" class="input-sample">
+                                  <p class="short-d"> (This information will help in conveying important message to the potential user and has a higher impact on conversion rates)</p>
+                                </li>
+                                <li>
+                                  <textarea placeholder="Short description (upto 4000 character)" formControlName="description"  class="input-sample description-box-para"></textarea>
+                                  <p class="short-d"> (This information highlight the features and functionality of your app)</p>
+                                </li>
+                              </div>
+                              <h5  class="need-help"> Need help?</h5>
+                              <p  class="faq-firebase mb-0">
+                                <a  routerLink="/">
+                                <i  aria-hidden="true" class="fa fa-caret-right"></i>
+                                How to write the perfect App Description
+                                </a>
+                              </p>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="apps-screen-app-details">
+                          <h6>Pricing and distribution</h6>
+                          <div class="app-details-form">
+                            <ul class="d-block p-0 mb-0">
+                              <div class="documents-para d-block">
+                                <li class="mb-0">
+                                  <h5  class="need-help"> App Type</h5>
+                                  <div class="notification_content-para-right radio-btn mt-2">
+                                    <div class="mb-2">
+                                      <label class="radio-inline pl-0 ml-0">
+                                      <input type="radio" name="now">Free </label>
+                                    </div>
+                                    <div class="mb-2">
+                                      <label class="radio-inline pl-0 ml-0">
+                                      <input type="radio" name="now" checked="">Paid </label>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="mb-0">
+                                  <h6>Distribute the app in the following countries</h6>
+                                  <div class="notification_content-para-right radio-btn mt-2">
+                                    <div class="mb-0">
+                                      <label class="radio-inline pl-0 ml-0">
+                                      <input type="radio" name="now">Worldwide </label>
+                                    </div>
+                                    <div class="mb-0">
+                                      <label class="radio-inline pl-0 ml-0 mb-0">
+                                      <input type="radio" name="now" checked="">Only the following countries </label>
+                                    </div>
+                                  </div>
+                                </li>
+                              </div>
+                            </ul>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---steps_3 tab end-->
+            <div class="nextprev-button">
+              <a href="javascript:void(0)" class="trans">Back</a>
+              <a href="javascript:void(0)" class="trans active">Next</a>
+            </div>
+          </div>
+          <div class="successful-msg">
+            <div  class="payment-successful-title">
+              <img  src="../../assets/images/panel/payment-successful.png">
+              <h3 class="mb-0">Request Received</h3>
+            </div>
+            <p>Sit back and relax! We have received your request of publishing<span class="text-primary font-weight-bold"> App Name</span> for android.<br> 
+              Our team will compile your app for you in 1-2 business days and your app will be ready for testing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--steps_1 end-->
+<!--Instappy will publish app-->
+
+
+<section  class="publish-app-warp" id="steps_2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="scp-breadcrumb">
+          <ul class="breadcrumb ml-0 pl-0">
+            <li class="font-weight-bold ml-0 pl-0"><a routerLink="#" class="font-dark">
+              Publish <i aria-hidden="true" class="fa fa-angle-right mr-1 ml-1"></i></a>
+            </li>
+            <li class="font-weight-bold ml-0 pl-0">
+              Submit app on your own
+              <p></p>
+            </li>
+          </ul>
+          <h2>Publish you App</h2>
+          <p>Lorem ipsum dolor sit amet, velit paulo veritus eos an, ut sit ornatus nostrum   </p>
+        </div>
+        <div class="tabbing-custom">
+          <ul class="list-publish-app-tab">
+            <li id="steps_1"  [class.tab-active] ="id === 'steps_1'" (click) ="tabChange('steps_1')"><span class="number-count">1</span>App type</li>
+            <li id="steps_2"  [class.tab-active] ="id === 'steps_2'"(click) ="tabChange('steps_2')"><span class="number-count">2</span>Create developer account</li>
+            <li id="steps_3_"  [class.tab-active] ="id === 'steps_3_'"(click) ="tabChange('steps_3_')"><span class="number-count">3</span>Package & API's</li>
+            <li id="steps_4"  [class.tab-active] ="id === 'steps_4'"(click) ="tabChange('steps_4')"><span class="number-count">4</span>Download app build</li>
+          </ul>
+          <div class="publish-app-tab">
+            <div class="all" id="steps_1" *ngIf="id ===  'steps_1'">
+              <div class="publish-app-list">
+                <h3>Select your app type to publish </h3>
+                <form class="form cf">
+                  <div class="plan cf pl-0">
+                    <div class="check-box-para">
+                      <input type="radio" name="radio1" id="own-app" value="own-app" checked>
+                      <label class="basic-label four" for="own-app">
+                        <div class="box-middle">
+                          <i class="fa fa-android" aria-hidden="true"></i>
+                          <p>Android</p>
+                        </div>
+                      </label>
+                      <input type="radio" name="radio1" id="own-app_1" value="own-app">
+                      <label class="free-label four" for="own-app_1">
+                        <div class="box-middle">
+                          <i class="fa fa-apple" aria-hidden="true"></i>
+                          <p>IOS</p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!---steps_1 end-->
+            <div class="all"  *ngIf="id ===  'steps_2'">
+              <div class="publish-app-list">
+                <div class="steps_2_para">
+                  <h4>Create a developer account </h4>
+                  <p class="text_1">To publish an android app you must have a google developer account </p>
+                  <p>If you already have a google developer account click next or create your account at
+                    <span class="text-primary"> Google play console </span>
+                  </p>
+                  <h5 class="need-help"> Need help?</h5>
+                  <p  class="faq-firebase"><a  routerLink="/"><i  aria-hidden="true" class="fa fa-caret-right"></i> How to create a developer account? </a></p>
+                </div>
+              </div>
+            </div>
+            <!--- steps_2 end-->
+            <div class="all" id="content" *ngIf="id ===  'steps_3_'">
+              <div class="publish-app-list">
+                <div class="steps_3_para">
+                  <div class="row">
+                    <div class="col-8">
+                      <!-- <ul class="list-publish-app-tab">
+                        <li id="steps_1"  [class.tab-active] ="id === 'steps_1'" (click) ="tabChange('steps_1')"> Package Name</li>
+                        <li id="steps_2"  [class.tab-active] ="id === 'steps_2'"(click) ="tabChange('steps_2')">API's</li>
+                        <li id="steps_3"  [class.tab-active] ="id === 'steps_3'"(click) ="tabChange('steps_3')">Firebase push</li>
+                        <li id="steps_4"  [class.tab-active] ="id === 'steps_4'"(click) ="tabChange('steps_4')">Google Services</li>
+                      </ul>                       -->
+                      <ul class="List_1">
+                        <li> Package Name</li>
+                        <li>API's</li>
+                        <li >Firebase Push</li>
+                        <li >Google Services</li>
+                      </ul>                      
+                    </div>
+                  </div>
+                  <!-- <h5>Fill in the form </h5> -->
+                  <div class="card-edit-app-content-data appearance-tab mb-3">
+                    <div class="app-details">
+                      <form novalidate="" class="tbfs-form" >
+                        <!-- <div class="apps-screen-app-details">
+                          <h6>Google3 developer account details</h6>
+                          <p>Fill in the credentials so that we can connect to your developer account.</p>
+                          <div class="app-details-form">
+                            <ul class="d-block p-0 mb-0">
+                              <div class="documents-para">
+                                <li>
+                                  <input type="text"  formControlName="email" placeholder="Google account email id" class="input-sample">
+                                </li>
+                                <li>
+                                  <input type="password" formControlName="password" class="input-sample" placeholder="Password">
+                                </li>
+                              </div>
+                              <div class="documents-para">
+                                <li>
+                                  <input type="text" formControlName="phone"  placeholder="Phone number" class="input-sample">
+                                  <p class="short-d"> (Please include your country code. Ex: +91)</p>
+                                </li>
+                                <li>
+                                  <input type="password" formControlName="name" class="input-sample" placeholder="Google play developer name">
+                                </li>
+                              </div>
+                              <h5  class="need-help"> Need help?</h5>
+                              <p  class="faq-firebase mb-0">
+                                <a  routerLink="/">
+                                <i  aria-hidden="true" class="fa fa-caret-right"></i>
+                                How to create a developer account 
+                                </a>
+                              </p>
+                            </ul>
+                          </div>
+                        </div> -->
+                        
+                        <div class="apps-screen-app-details">
+                          <div class="row">
+                            <div class="col-6">
+                          <h5 class="package">Package Name</h5>                          
+                          <!-- <div class="app-details-form"> -->
+                            <ul class="d-block p-0 mb-0">
+                              <div class="documents-para d-block">
+                                <li>
+                                  <input type="text"  formControlName="characters" placeholder="com.instappy.myappname" class="input-sample">
+                                  <p class="short-d"> The Package name of an android app uniquely identifies your app on the device, in Google Play Store, and in supported third party Android stores</p>
+                                </li>
+                                <!-- <li>
+                                  <textarea placeholder="Short description (upto 4000 character)" formControlName="description"  class="input-sample description-box-para"></textarea>
+                                  <p class="short-d"> (This information highlight the features and functionality of your app)</p>
+                                </li> -->
+                              </div>
+                              <h5  class="need-help"> Need help?</h5>
+                              <p  class="faq-firebase mb-0">
+                                <a  routerLink="/">
+                                <i  aria-hidden="true" class="fa fa-caret-right"></i>
+                                How to publish your android app
+                                </a>
+                              </p>
+                            </ul>
+                          <!-- </div> -->
+                        </div>
+                      </div>
+                      </div>
+                        <!-- <div class="apps-screen-app-details">
+                          <h6>Pricing and distribution</h6>
+                          <div class="app-details-form">
+                            <ul class="d-block p-0 mb-0">
+                              <div class="documents-para d-block">
+                                <li class="mb-0">
+                                  <h5  class="need-help"> App Type</h5>
+                                  <div class="notification_content-para-right radio-btn mt-2">
+                                    <div class="mb-2">
+                                      <label class="radio-inline pl-0 ml-0">
+                                      <input type="radio" name="now">Free </label>
+                                    </div>
+                                    <div class="mb-2">
+                                      <label class="radio-inline pl-0 ml-0">
+                                      <input type="radio" name="now" checked="">Paid </label>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="mb-0">
+                                  <h6>Distribute the app in the following countries</h6>
+                                  <div class="notification_content-para-right radio-btn mt-2">
+                                    <div class="mb-0">
+                                      <label class="radio-inline pl-0 ml-0">
+                                      <input type="radio" name="now">Worldwide </label>
+                                    </div>
+                                    <div class="mb-0">
+                                      <label class="radio-inline pl-0 ml-0 mb-0">
+                                      <input type="radio" name="now" checked="">Only the following countries </label>
+                                    </div>
+                                  </div>
+                                </li>
+                              </div>
+                            </ul>
+                          </div>
+                        </div> -->
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="all" id="steps_4" *ngIf="id ===  'steps_4'">
+              <div class="publish-app-list">
+                <h3>Download app build </h3>
+                <p>Click on the button below to download your .AAB file</p>
+                <button type="button" id="download_button" class="btn btn-outline-primary">Download .AAB file</button>                
+                <h3 class="h3_H">Need Help?</h3>
+                <p  class="faq-firebase mb-0">
+                  <a  routerLink="/">
+                  <i  aria-hidden="true" class="fa fa-caret-right"></i>
+                  Submit your android app on google play store
+                  </a>
+                </p>     
+              </div>
+            </div>
+
+
+            <!---steps_3 tab end-->
+            <div class="help-para">
+              <!-- <div class="help-para-left">
+            <h5  class="need-help"> Need help?</h5>
+            <p  class="faq-firebase">
+              <a  routerLink="/">
+                <i  aria-hidden="true" class="fa fa-caret-right"></i> Submit your android app on google play store
+               </a>
+              </p>
+            </div> -->
+            <div class="help-para-left">
+            <div class="nextprev-button">
+              <a href="javascript:void(0)" class="trans">Back</a>
+              <a href="javascript:void(0)" class="trans active">Next</a>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="successful-msg">
+            <div  class="payment-successful-title">
+              <img  src="../../assets/images/panel/payment-successful.png">
+              <h3 class="mb-0">Payment Successful</h3>
+            </div>
+            <p>Sit back and relax! We have received your request of publishing<span class="text-primary font-weight-bold"> App Name</span> for android.<br> 
+              Our team will compile your app for you in 1-2 business days and your app will be ready for testing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+

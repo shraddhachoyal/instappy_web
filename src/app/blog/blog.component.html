@@ -1,0 +1,88 @@
+<app-header></app-header>
+<section class="blog-search-box">
+  <div class="container">
+    <div class="blog-search-section text-center">
+      <h2>We write about making</h2>
+      <p class="great-apps">great apps</p>
+    </div>
+    <ul class="blog-list-content-box">
+      <li>
+        <div class="blog-img-box">
+          <a routerLink="/blog-details/{{newBlog.blog_id}}">
+          <img [src]="newBlog.blog_featured_image" alt="{{newBlog.blog_title}}">
+          </a>
+        </div>
+        <div class="blog-content-box" *ngIf="newBlog">
+          <p class="newestltag">
+            <a routerLink class="newest">newest</a>
+          </p>
+          <h3>{{ newBlog.blog_title }}</h3>
+          <p [innerHtml]="doHtmlDisplay(newBlog.blogcontent,1000)" class="box_blog">
+            <!-- {{ (newBlog.content.length> 500) ? (newBlog.content.substr(0,500)) :newBlog.content }} -->
+          </p>
+          <!--<div class="read-time">
+            5 min read
+            </div>-->
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="list-blog-category">
+  <div class="container">
+    <div class="category-blog">
+      <div class="row">
+        <div class="col-12">
+          <div class="blog-category-scroll">
+            <ul class="blog-category-tab" id="pills-tab" role="tablist" id="content">
+              <!-- <li id="{{category.id}}" (click)="getBlogListing(category.id)"
+                *ngFor="let category of allCategories" [class.tab-active]="id === 'testOne'">
+                {{category.name}}
+                </li> -->
+              <li id="{{category.id}}" (click)="getBlogListing(category.id)"
+              *ngFor="let category of allCategories" [ngClass]="category.id === id ? 'tab-active' : ''">
+              {{category.name}}
+              </li>
+            </ul>
+            <div class="dots_points">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="blog-c-tab">
+            <!-- *ngIf="id === 'blogdata.category'" -->
+            <div class="categoryall">
+              <div class="category-list">
+                <div class="category-box" data-aos="fade-up"  *ngFor="let blogdata of blogList | paginate :{ 
+                  itemsPerPage: 6,
+                  currentPage: page, 
+                  totalItems: totalLength }; 
+                  let i = index">
+                  <div class="category-content">
+                    <a routerLink="/blog-details/{{blogdata.blog_id}}" class="newest-rede">
+                    <img [src]="blogdata.blog_featured_image" alt="{{blogdata.blog_title}}">
+                    </a>
+                  </div>
+                  <div class="category-title">
+                    <p><a routerLink="/blog-details/{{blogdata.blog_id}}" class="newest-rede" [innerHtml]="blogdata.blog_title"></a></p>
+                    <!-- <p><a routerLink class="newest-rede">{{blogdata.blog_title}}</a></p> -->
+                    <!--<div class="read-time"> 5 min read</div>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blog-paginatin-bx">
+      <div class="d-flex justify-content-center">
+        <pagination-controls class="my-pagination" previousLabel="Prev" nextLabel="Next"
+          (pageChange)="page = $event">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

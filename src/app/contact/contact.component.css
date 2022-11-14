@@ -1,0 +1,272 @@
+/* banerr css start */
+section.instappy-wizard-section {
+    background: url("../../assets/images/ctbanner.jpg") no-repeat;
+    background-position: top -100px center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 50px 0 40px;
+}
+
+.contact-bg h2 {
+    font-family: "Proxima Nova Rg";
+    font-size: 44px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #000;
+}
+
+.invalid-feedback {
+    color: red;
+}
+
+.message-cntact-form {
+    display: block;
+    width: 100%;
+    margin: 20px;
+    font-weight: 600;
+}
+
+.cntact-form .form-control {
+    font-size: 14px;
+}
+
+.form-control:visited,
+.form-control:active,
+.form-control:focus {
+    border-color: #000;
+    box-shadow: none;
+}
+
+.primary-btn {
+    background: #fdc40a;
+    color: #000;
+    font-family: "Proxima Nova Rg";
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid #fdc40a;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.primary-btn:hover,
+.primary-btn:active,
+.primary-btn:focus {
+    color: unset;
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.contact-bg p {
+    font-family: "Proxima Nova Rg";
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+    margin: 0 0 25px;
+}
+
+/* frm css start */
+.contact-form-box {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    padding: 40px;
+    border-radius: 20px;
+    background: #fff;
+    position: relative;
+}
+
+ul.contact-form-box:before {
+    content: "";
+    background: url("../../assets/images/hi.png") no-repeat;
+    position: absolute;
+    top: -156px;
+    width: 263px;
+    height: 208px;
+    background-position: center center;
+    background-size: 87%;
+    right: 100px;
+}
+
+.contact-ui li:first-child {
+    flex: 0 0 52%;
+}
+
+.contact-ui li:last-child {
+    flex: 0 0 45%;
+}
+
+.contact-form-box form h4 {
+    font-family: "Proxima Nova Rg";
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    color: #000;
+}
+
+.contact-form-box form label {
+    font-family: "Proxima Nova Rg";
+    font-size: 13px;
+    font-weight: 700;
+    width: 100%;
+    color: #000;
+}
+
+.contact-form-box form p {
+    font-family: "Proxima Nova Rg";
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    color: #000;
+    margin: 0;
+}
+
+.contact-form-box form .input-group-prepend select {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: none;
+}
+
+.contact-form-box form textarea {
+    resize: none;
+    position: relative;
+}
+
+/* frm css end */
+/* address css start */
+
+.gradient-bs {
+    background: linear-gradient(to bottom, #1894ad94, #04499eeb), url("../../assets/images/addressbg.png") no-repeat;
+    /* background-color: linear-gradient(to bottom, #1894ad, #04499e); */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 40px;
+    border-radius: 20px;
+    background-size: cover;
+}
+
+
+.address-bx h3 {
+    font-family: "Proxima Nova Rg";
+    font-size: 34px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #fff;
+}
+
+.address-bx p {
+    font-family: "Proxima Nova Rg";
+    font-size: 18px;
+    font-weight: normal;
+    width: 100%;
+    color: #fff;
+}
+
+.address-bx-detais h3 {
+    font-family: "Proxima Nova Rg";
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #fff;
+}
+
+.address-bx-detais p {
+    font-family: "Proxima Nova Rg";
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 5px;
+    color: #fff;
+}
+
+::-webkit-input-placeholder {
+    font-weight: 500;
+    font-family: "Proxima Nova Rg";
+    color: #000;
+}
+
+input.ng-invalid.ng-touched {
+    border-color: red;
+
+}
+
+input.ng-valid.ng-touched {
+    /*border-color: green;*/
+    border-color: black;
+}
+
+input:focus,
+select:focus {
+    outline: auto;
+    box-shadow: auto;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+
+}
+
+
+
+
+/* address css end */
+@media (max-width: 991.9px) {
+
+    ul.contact-form-box {
+        display: block;
+    }
+
+    ul.contact-form-box:before {
+        right: 0;
+    }
+
+    .cntact-form {
+        margin-bottom: 25px;
+    }
+
+    section.instappy-wizard-section {
+        background-size: 100% 40%;
+    }
+}
+
+@media (max-width: 767.9px) {
+    .address-bx h3 {
+        font-size: 28px;
+    }
+
+    .address-bx-detais p,
+    .address-bx p {
+        font-size: 14px;
+    }
+
+    .contact-bg h2 {
+        text-align: center;
+    }
+
+    .contact-bg p {
+        text-align: center;
+        margin-bottom: 100px;
+    }
+
+    .gradient-bs,
+    .contact-form-box {
+        padding: 20px;
+    }
+
+    ul.contact-form-box:before {
+        top: -135px;
+        width: 250px;
+        height: 206px;
+        background-position: center center;
+        background-size: 50%;
+        right: 50px;
+        left: 0;
+        margin: 0 auto;
+
+    }
+}
+
+.warning-btn.contact-submit {
+    background-color: #fdc40a;
+    font-weight: 600;
+}

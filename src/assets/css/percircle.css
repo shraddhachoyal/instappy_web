@@ -1,0 +1,137 @@
+.percircle {
+	position: relative;
+	font-size: 120px;
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	float: left;
+	margin: 0 .1em .1em 0;
+	background-color: #ccc;
+}
+
+.percircle.green .bar,
+.percircle.green .fill,
+.percircle.green.gt50 .fill {
+	border-color: #0da428
+}
+
+.percircle.blue.dark .bar,
+.percircle.blue.dark .fill {
+	border-color: #20cceb
+}
+
+.percircle.gt50 .slice,
+.percircle .rect-auto {
+	clip: rect(auto, auto, auto, auto)
+}
+
+.percircle .bar,
+.percircle.gt50 .fill,
+.percircle .pie {
+	position: absolute;
+	border: .08em solid #307bbb;
+	width: .84em;
+	height: .84em;
+	clip: rect(0, .5em, 1em, 0);
+	border-radius: 50%;
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	transform: rotate(0deg)
+}
+
+.percircle .bar {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden
+}
+
+.percircle.gt50 .bar:after,
+.percircle.gt50 .fill,
+.percircle .pie-fill {
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg)
+}
+
+.percircle *,
+.percircle :after,
+.percircle :before {
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box
+}
+
+.percircle .center {
+	float: none;
+	margin: 0 auto
+}
+
+.percircle.big {
+	font-size: 50px
+}
+
+.percircle.small {
+	font-size: 40px;
+}
+
+.percircle>span {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	top: 50%;
+	top: calc(50% - .1em);
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	height: 16px;
+	font-size: 10px;
+	color: #000;
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	white-space: nowrap;
+	line-height: 20px;
+
+}
+
+.percircle .perclock>span {
+	font-size: 8px;
+}
+
+.percircle:after {
+	position: absolute;
+	top: .08em;
+	left: .08em;
+	display: block;
+	content: " ";
+	border-radius: 50%;
+	background-color: #fff;
+	width: .84em;
+	height: .84em
+}
+
+.percircle .slice {
+	position: absolute;
+	width: 1em;
+	height: 1em;
+	clip: rect(0, 1em, 1em, .5em)
+}
+
+.percircle:hover {
+	cursor: default
+}
+
+.percircle.animate:after,
+.percircle.animate>span {
+	-webkit-transition: -webkit-transform .2s ease-in-out;
+	transition: -webkit-transform .2s ease-in-out;
+	-o-transition: transform .2s ease-in-out;
+	transition: transform .2s ease-in-out;
+	transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out
+}
+
+.percircle.animate .bar {
+	-webkit-transition: -webkit-transform .6s ease-in-out;
+	transition: -webkit-transform .6s ease-in-out;
+	-o-transition: transform .6s ease-in-out;
+	transition: transform .6s ease-in-out;
+	transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out
+}

@@ -1,0 +1,336 @@
+<app-header></app-header>
+<section class="pricing-heading-page">
+  <div class="container">
+    <div class="pricing-head-bx text-center">
+      <h2>Flexible <span>Pricing</span> Just for You.</h2>
+    </div>
+    <div class="container">
+      <div class="pricing-tab-bx">
+        <!-- <ul class="nav nav-tabs nav-fill pricing-taby" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#monthlyplan" role="tab" aria-controls="monthlyplan"
+              aria-selected="true">Monthly</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#annualyplan" role="tab" aria-controls="annualyplan"
+              aria-selected="false">Annualy</a>
+          </li>
+        </ul> -->
+        <div class="tab-content mt-3">
+          <div class="tab-pane active" id="monthlyplan" role="tabpanel" aria-labelledby="monthlyplan-tab">
+            <div class="plan-box">
+              <div class="basic-plan" *ngFor="let pricing of pricingArr">
+                <h3 class="plan-name">{{pricing.plan_name}}</h3>
+                <p class="price-tag">${{pricing.price}}</p>
+                <p class="package-time">per month, billed yearly</p>
+                <div class="divider-bx">
+                  <h4>for</h4>
+                </div>
+                <a class="primary-btn" href="panel">Get Started</a>
+                <ul class="plan-bx-icon">
+                  <li>
+                    <svg id="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48">
+                      <defs>
+                        <style>
+                          .cls-1 {
+                            fill: #0b0b0a;
+                            fill-rule: evenodd;
+                          }
+                        </style>
+                      </defs>
+                      <g id="Page-1">
+                        <g id="Social-Icons---Isolated">
+                          <path id="Apple" class="cls-1"
+                            d="M27.17,7.79A10.54,10.54,0,0,0,29.5,0a11.28,11.28,0,0,0-7.3,4c-1.59,1.93-2.89,4.81-2.38,7.6a9.48,9.48,0,0,0,7.35-3.76ZM41,35.22A35.08,35.08,0,0,1,37.9,41c-2,3.08-4.85,6.92-8.37,7-3.12,0-3.92-2-8.16-2S16.24,48,13.12,48C9.6,48,6.91,44.5,4.9,41.42-.73,32.8-1.32,22.68,2.15,17.3c2.47-3.82,6.37-6.06,10-6.06s6.07,2.06,9.15,2.06,4.81-2.06,9.12-2.06a12.15,12.15,0,0,1,9.17,4.86c-8.06,4.45-6.75,16,1.39,19.12Z"
+                            transform="translate(0)"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 265.34 289.78">
+                      <path
+                        d="M13.4,13.7a28.57,28.57,0,0,0-1.2,8V268.1a31.38,31.38,0,0,0,1.1,7.9L151.6,145C151.7,145,13.4,13.7,13.4,13.7Z"
+                        transform="translate(-12.2 0)"></path>
+                      <path d="M205.6,93.9,44.2,4.1C37.8.2,31.4-.8,26.1.6L165,132.5Z" transform="translate(-12.2 0)">
+                      </path>
+                      <path d="M265.1,127,222,103l-44.1,41.8,45,42.7,41.9-23C285.3,152.9,277.8,134.1,265.1,127Z"
+                        transform="translate(-12.2 0)"></path>
+                      <path
+                        d="M25.6,289.1c5.4,1.5,11.9.6,18.5-3.4L206,196.8l-41.4-39.4C164.7,157.4,25.6,289.1,25.6,289.1Z"
+                        transform="translate(-12.2 0)"></path>
+                    </svg>
+                  </li>
+                </ul>
+                <ul class="plan-detais">
+                  <li [innerHtml]="pricing.description"></li>
+                  <!-- <li>White label apps launched under your own account</li>
+                  <li>Unlimited push notifications</li>
+                  <li>Expert assistance in creating your app</li>
+                  <li>CMS panel for unlimited app updates</li>
+                  <li>Auto updates for iOS and Android</li> -->
+                </ul>
+              </div>
+              <!-- <div class="popular-plan">
+                <h5 class="popular-plan-tag">Popular</h5>
+                <h3 class="plan-name">Platinum</h3>
+                <p class="price-tag">$130</p>
+                <p class="package-time">per month, billed yearly</p>
+                <div class="divider-bx">
+                  <h4>For</h4>
+                </div>
+                <a routerLink="/panel" class="primary-btn">Get Started</a>
+                <ul class="plan-bx-icon">
+                  <li>
+                    <svg id="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48">
+                      <defs>
+                        <style>
+                          .cls-1 {
+                            fill: #0b0b0a;
+                            fill-rule: evenodd;
+                          }
+                        </style>
+                      </defs>
+                      <g id="Page-1">
+                        <g id="Social-Icons---Isolated">
+                          <path id="Apple" class="cls-1"
+                            d="M27.17,7.79A10.54,10.54,0,0,0,29.5,0a11.28,11.28,0,0,0-7.3,4c-1.59,1.93-2.89,4.81-2.38,7.6a9.48,9.48,0,0,0,7.35-3.76ZM41,35.22A35.08,35.08,0,0,1,37.9,41c-2,3.08-4.85,6.92-8.37,7-3.12,0-3.92-2-8.16-2S16.24,48,13.12,48C9.6,48,6.91,44.5,4.9,41.42-.73,32.8-1.32,22.68,2.15,17.3c2.47-3.82,6.37-6.06,10-6.06s6.07,2.06,9.15,2.06,4.81-2.06,9.12-2.06a12.15,12.15,0,0,1,9.17,4.86c-8.06,4.45-6.75,16,1.39,19.12Z"
+                            transform="translate(0)"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 265.34 289.78">
+                      <path
+                        d="M13.4,13.7a28.57,28.57,0,0,0-1.2,8V268.1a31.38,31.38,0,0,0,1.1,7.9L151.6,145C151.7,145,13.4,13.7,13.4,13.7Z"
+                        transform="translate(-12.2 0)"></path>
+                      <path d="M205.6,93.9,44.2,4.1C37.8.2,31.4-.8,26.1.6L165,132.5Z" transform="translate(-12.2 0)">
+                      </path>
+                      <path d="M265.1,127,222,103l-44.1,41.8,45,42.7,41.9-23C285.3,152.9,277.8,134.1,265.1,127Z"
+                        transform="translate(-12.2 0)"></path>
+                      <path
+                        d="M25.6,289.1c5.4,1.5,11.9.6,18.5-3.4L206,196.8l-41.4-39.4C164.7,157.4,25.6,289.1,25.6,289.1Z"
+                        transform="translate(-12.2 0)"></path>
+                    </svg>
+                  </li>
+                </ul>
+                <ul class="plan-detais">
+                  <li class="act-plan">All Features of the GOLD package</li>
+                  <li class="plus-icon">+</li>
+                  <li>Unlimited sales</li>
+                  <li>Billing/ Shopping Cart/ Favorites/ My Orders integrated</li>
+                  <li>Fully independent Inventory</li>
+                  <li>Management System including Payment Gateway</li>
+                  <li>Seamless integration with your e-Commerce website (optional)</li>
+                  <li>No transaction fee on sales</li>
+                </ul>
+              </div> -->
+            </div>
+          </div>
+          <!-- <div class="tab-pane active" id="annualyplan" role="tabpanel" aria-labelledby="annualyplan-tab">
+            <div class="plan-box">
+              <div class="basic-plan">
+                <h3 class="plan-name">Gold</h3>
+                <p class="price-tag">$48</p>
+                <p class="package-time">per month, billed yearly</p>
+                <div class="divider-bx">
+                  <h4>for</h4>
+                </div>
+                <a routerLink="/panel" class="primary-btn">Get Started</a>
+                <ul class="plan-bx-icon">
+                  <li>
+                    <svg id="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48">
+                      <defs>
+                        <style>
+                          .cls-1 {
+                            fill: #0b0b0a;
+                            fill-rule: evenodd;
+                          }
+                        </style>
+                      </defs>
+                      <g id="Page-1">
+                        <g id="Social-Icons---Isolated">
+                          <path id="Apple" class="cls-1"
+                            d="M27.17,7.79A10.54,10.54,0,0,0,29.5,0a11.28,11.28,0,0,0-7.3,4c-1.59,1.93-2.89,4.81-2.38,7.6a9.48,9.48,0,0,0,7.35-3.76ZM41,35.22A35.08,35.08,0,0,1,37.9,41c-2,3.08-4.85,6.92-8.37,7-3.12,0-3.92-2-8.16-2S16.24,48,13.12,48C9.6,48,6.91,44.5,4.9,41.42-.73,32.8-1.32,22.68,2.15,17.3c2.47-3.82,6.37-6.06,10-6.06s6.07,2.06,9.15,2.06,4.81-2.06,9.12-2.06a12.15,12.15,0,0,1,9.17,4.86c-8.06,4.45-6.75,16,1.39,19.12Z"
+                            transform="translate(0)"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 265.34 289.78">
+                      <path
+                        d="M13.4,13.7a28.57,28.57,0,0,0-1.2,8V268.1a31.38,31.38,0,0,0,1.1,7.9L151.6,145C151.7,145,13.4,13.7,13.4,13.7Z"
+                        transform="translate(-12.2 0)"></path>
+                      <path d="M205.6,93.9,44.2,4.1C37.8.2,31.4-.8,26.1.6L165,132.5Z" transform="translate(-12.2 0)">
+                      </path>
+                      <path d="M265.1,127,222,103l-44.1,41.8,45,42.7,41.9-23C285.3,152.9,277.8,134.1,265.1,127Z"
+                        transform="translate(-12.2 0)"></path>
+                      <path
+                        d="M25.6,289.1c5.4,1.5,11.9.6,18.5-3.4L206,196.8l-41.4-39.4C164.7,157.4,25.6,289.1,25.6,289.1Z"
+                        transform="translate(-12.2 0)"></path>
+                    </svg>
+                  </li>
+                </ul>
+                <ul class="plan-detais">
+                  <li>Native apps with core features</li>
+                  <li>White label apps launched unde your own account</li>
+                  <li>Unlimited push notifications</li>
+                  <li>Expert assistance in creating your app</li>
+                  <li>CMS panel for unlimited app updates</li>
+                  <li>Auto updates for iOS and Android</li>
+                </ul>
+              </div>
+              <div class="popular-plan">
+                <h5 class="popular-plan-tag">Popular</h5>
+                <h3 class="plan-name">Platinum</h3>
+                <p class="price-tag">$130</p>
+                <p class="package-time">per month, billed yearly</p>
+                <div class="divider-bx">
+                  <h4>For</h4>
+                </div>
+                <a class="primary-btn">Get Started</a>
+                <ul class="plan-bx-icon">
+                  <li>
+                    <svg id="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48">
+                      <defs>
+                        <style>
+                          .cls-1 {
+                            fill: #0b0b0a;
+                            fill-rule: evenodd;
+                          }
+                        </style>
+                      </defs>
+                      <g id="Page-1">
+                        <g id="Social-Icons---Isolated">
+                          <path id="Apple" class="cls-1"
+                            d="M27.17,7.79A10.54,10.54,0,0,0,29.5,0a11.28,11.28,0,0,0-7.3,4c-1.59,1.93-2.89,4.81-2.38,7.6a9.48,9.48,0,0,0,7.35-3.76ZM41,35.22A35.08,35.08,0,0,1,37.9,41c-2,3.08-4.85,6.92-8.37,7-3.12,0-3.92-2-8.16-2S16.24,48,13.12,48C9.6,48,6.91,44.5,4.9,41.42-.73,32.8-1.32,22.68,2.15,17.3c2.47-3.82,6.37-6.06,10-6.06s6.07,2.06,9.15,2.06,4.81-2.06,9.12-2.06a12.15,12.15,0,0,1,9.17,4.86c-8.06,4.45-6.75,16,1.39,19.12Z"
+                            transform="translate(0)"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 265.34 289.78">
+                      <path
+                        d="M13.4,13.7a28.57,28.57,0,0,0-1.2,8V268.1a31.38,31.38,0,0,0,1.1,7.9L151.6,145C151.7,145,13.4,13.7,13.4,13.7Z"
+                        transform="translate(-12.2 0)"></path>
+                      <path d="M205.6,93.9,44.2,4.1C37.8.2,31.4-.8,26.1.6L165,132.5Z" transform="translate(-12.2 0)">
+                      </path>
+                      <path d="M265.1,127,222,103l-44.1,41.8,45,42.7,41.9-23C285.3,152.9,277.8,134.1,265.1,127Z"
+                        transform="translate(-12.2 0)"></path>
+                      <path
+                        d="M25.6,289.1c5.4,1.5,11.9.6,18.5-3.4L206,196.8l-41.4-39.4C164.7,157.4,25.6,289.1,25.6,289.1Z"
+                        transform="translate(-12.2 0)"></path>
+                    </svg>
+                  </li>
+                </ul>
+                <ul class="plan-detais">
+                  <li class="act-plan">All Features of the GOLD package</li>
+                  <li class="plus-icon">+</li>
+                  <li>Unlimited sales</li>
+                  <li>Billing/ Shopping Cart/ Favorites/ My Orders integrated</li>
+                  <li>Fully independent Inventory</li>
+                  <li>Management System including Payment Gateway</li>
+                  <li>Seamless integration with your e-Commerce website (optional)</li>
+                  <li>No transaction fee on sales</li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="table-responsive-section">
+  <div class="table-responsive">
+    <div class="container table-pricing-box">
+      <div class="pricing-table-head-bx text-center">
+        <h2>Full <span>Feature</span> List</h2>
+        <p>Get flexible features at affordable prices with Instappy.</p>
+      </div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Features</th>
+            <th>Gold</th>
+            <th>Platinum</th>
+          </tr>
+          <tr>
+            <td><span data-placement="top" title="Tooltip on top" tooltip="Lorem ipsum."><i class="fa fa-info-circle"
+                  aria-hidden="true"></i>
+              </span> ipsum dolor sit amet, amet blandit perfecto ut sed
+            </td>
+            <td><span class="active-plan"></span></td>
+            <td><span class="active-plan"></span></td>
+          </tr>
+          <tr>
+            <td><span data-placement="top" title="Tooltip on top" tooltip="Lorem ipsum."><i class="fa fa-info-circle"
+                  aria-hidden="true"></i>
+              </span> ipsum dolor sit amet, amet blandit perfecto ut sed
+            </td>
+            <td><span class="active-plan"></span> </td>
+            <td><span class="active-plan"></span> </td>
+          </tr>
+          <tr>
+            <td><span data-placement="top" title="Tooltip on top" tooltip="Lorem ipsum."><i class="fa fa-info-circle"
+                  aria-hidden="true"></i>
+              </span> ipsum dolor sit amet, amet blandit perfecto ut sed
+            </td>
+            <td><span class="unactive-plan"></span> </td>
+            <td><span class="active-plan"></span> </td>
+          </tr>
+          <tr>
+            <td><span data-placement="top" title="Tooltip on top" tooltip="Lorem ipsum."><i class="fa fa-info-circle"
+                  aria-hidden="true"></i>
+              </span> ipsum dolor sit amet, amet blandit perfecto ut sed
+            </td>
+            <td><span class="active-plan"></span> </td>
+            <td><span class="active-plan"></span> </td>
+          </tr>
+          <tr>
+            <td><span data-placement="top" title="Tooltip on top" tooltip="Lorem ipsum."><i class="fa fa-info-circle"
+                  aria-hidden="true"></i>
+              </span> ipsum dolor sit amet, amet blandit perfecto ut sed
+            </td>
+            <td><span class="active-plan"></span> </td>
+            <td><span class="active-plan"></span> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="plan-benefits-section">
+  <div class="container">
+    <div class="plan-benefits-box">
+      <ul>
+        <li>
+          <div class="plan-img-qoute">
+            <img src="../../assets/images/feature/feature1.svg">
+            <p>No additional hidden fee</p>
+          </div>
+        </li>
+        <li>
+          <div class="plan-img-qoute">
+            <img src="../../assets/images/feature/feature1.svg">
+            <p>Unlimited usage</p>
+          </div>
+        </li>
+        <li>
+          <div class="plan-img-qoute">
+            <img src="../../assets/images/feature/feature1.svg">
+            <p>Unlimited updates</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,702 @@
+<app-panel-header></app-panel-header>
+<section class="blankspace">
+  <div class="container">
+    <div class="header-height"></div>
+    <div class="category-block-list">
+      <div class="panel-left dashboard_left-big-size">
+        <div class="float-left-clear">
+          <div class="get-start tab-list-category">
+            <div class="tab-warp-dashboard" id="category-block">
+              <div class="dashboard_left">
+                <div>
+                  <h1 class="h1-common">
+                    What do you want to build today?
+                  </h1>
+                  <p class="phara-common">
+                    Your needs comes first! Help us know what's in your mind.
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#edit-app-content_modal">
+                      <span class="play-video">
+                        <img src="../../assets/images/icons/video.png">Watch a Demo</span>
+                    </a>
+                  </p>
+                  <div class="category-block">
+                    <ul class="theme-ui step2-tab nav nav-tabs" role="tablist">
+                      <li class="eat_fresh">
+                        <div>
+                          <figure (click)="toggleShow(1)" target="_self" class="next_section_panel">
+                            <img src="../../assets/images/panel/food-cafe1.png">
+                          </figure>
+                          <div class="fresh_warp">
+                            <div class="more_datils_box">
+                              <div (click)="toggleShow(1)" target="_self" class="next_section_panel">
+                                <h3> Eat Fresh</h3>
+                                <p class="eat_fresh_data mb-1">Online food delivery service, using location-based data
+                                  to connect nearby
+                                  restaurant. Offers secure payment services and delivery slot booking.
+                                  <!-- <span data-toggle="modal" data-target="#eatfresh" class="view-more">More+</span> -->
+                                </p>
+                              </div>
+                              <span data-toggle="modal" data-target="#eatfresh" class="view-more">More+</span>
+                            </div>
+                            <div class="fresh_warp_data">
+                              <p class="mb-1"> Available in</p>
+                              <div class="available_now">
+                                <i aria-hidden="true" class="fa fa-android next_section_panel" (click)="toggleShow(1)"
+                                  target="_self"></i>
+                                <i aria-hidden="true" class="fa fa-apple ml-3 next_section_panel"
+                                  (click)="toggleShow(1)" target="_self"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!---left_side-->
+              <div class="dashboard_right">
+                <div class="mobile_wrap_1">
+                  <p class="text-center bold"> <i aria-hidden="true" class="fa fa-eye"></i> &nbsp;<b>App Preview</b></p>
+                  <div class="mobile-block">
+                    <div class="phone_para">
+                      <div class="swiper-container " [swiper]="slidedelivery">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="fj-expierence-tb-image">
+                              <img img src="../../assets/images/panel/sc.png" alt="user image">
+                            </div>
+                            <div class="swiper-slide-title">
+                              <h4> get the fastest delivery food for your</h4>
+                              <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="fj-expierence-tb-image">
+                              <img img src="../../assets/images/panel/slider_aap.png" alt="user image">
+                            </div>
+                            <div class="swiper-slide-title">
+                              <h4> get the fastest delivery food for your</h4>
+                              <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="fj-expierence-tb-image">
+                              <img img src="../../assets/images/panel/sc.png" alt="user image">
+                            </div>
+                            <div class="swiper-slide-title">
+                              <h4> get the fastest delivery food for your</h4>
+                              <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide-title">
+                          <a routerLink="#">Get Started</a>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!---right_side-->
+            </div>
+            <!--screen1-->
+            <div class="tab-content">
+              <div *ngIf="isShown" class="step2-wrapper" id="foodcafe show" class="active tab-pane foodcafe-block">
+                <div class="common_box_tab">
+                  <h1 class="h1-common">
+                    Almost There!
+                    <a routerLink="/videos">
+                      <span class="play-video">
+                        <img src="../../assets/images/icons/video.png">Watch a Demo
+                      </span>
+                    </a>
+                  </h1>
+                  <p class="phara-common">
+                    You just need to set an appearance for your app and your app is ready just like that.
+                  </p>
+                  <div class="tab-warp-dashboard">
+                    <div class="dashboard_left">
+                      <div class="success_msg center">
+                        <span *ngIf="message" class="{{ successMsg }}">{{ message }}</span>
+                      </div>
+                    </div>
+                    <div class="dashboard_right">
+                    </div>
+                  </div>
+                  <ul class="step2-tab nav nav-tabs foodcafe-nav-list" role="tablist">
+                    <li class="nav-item"><a data-toggle="tab" href="#appearance" class="trans active nav-link"
+                        target="_self">Appearance</a></li>
+                    <li class="nav-item"><a data-toggle="tab" href="#appicon" class="trans nav-link" target="_self">App
+                        Icon</a>
+                    </li>
+                    <li class="nav-item"><a data-toggle="tab" href="#splashscreen" class="trans nav-link"
+                        target="_self">Splashscreen</a></li>
+                  </ul>
+                </div>
+                <form [formGroup]="createAppForm" (ngSubmit)="createNewApp()">
+                  <div class="tab-content">
+                    <div id="appearance" class="active tab-pane appearance-block">
+                      <div class="tab-warp-dashboard">
+                        <div class="dashboard_left">
+                          <div class="raduis-box">
+                            <h2 class="h2-common">Give your app a name</h2>
+                            <div class="appname-form">
+                              <input type="text" formControlName="app_name" placeholder="Enter Your App Name"
+                                class="input-sample"
+                                [ngClass]="{ 'is-invalid': submitted && createappform.app_name.errors }"
+                                (keyup)="addAppname($event)" maxlength="20">
+                              <div *ngIf="submitted && createappform.app_name.errors" class="invalid-feedback">
+                                <div *ngIf="createappform.app_name.errors.required">Please enter your app name</div>
+                              </div>
+                            </div>
+                            <h2 class="h2-common">Choose a Color</h2>
+                            <ul class="pick-color">
+                              <li class="single-color-section">
+                                <p> <a (click)="selectClrType('single')">Single-Color Scheme </a></p>
+                                <ul class="singcolor-sample">
+                                  <li class="color1 color_box" (click)="selectClrCode('#ffdd00', 'color_one')"
+                                    id="color_one">
+                                    <input type="radio" value="#ffdd00" />
+                                  </li>
+                                  <li class="color2" id="color_two" (click)="selectClrCode('#7c58fe','color_two')">
+                                    <input type="radio" value="#ffdd00" />
+                                  </li>
+                                  <li class="color3" (click)="selectClrCode('#b1d8ff','color_three')" id="color_three">
+                                    <input type="radio" value="#ffdd00" name="" />
+                                  </li>
+                                  <li class="color4" (click)="selectClrCode('#ff7d51','color_four')" id="color_four">
+                                    <input type="radio" value="#ffdd00" name="" />
+                                  </li>
+                                  <li class="color5" (click)="selectClrCode('#c0de96','color_five')" id="color_five">
+                                    <input type="radio" value="#c0de96" name="" />
+                                  </li>
+                                  <li class="color6" (click)="selectClrCode('#7dde02e0','color_six')" id="color_six">
+                                    <input type="radio" value="#7dde02e0" name="" />
+                                  </li>
+                                  <li class="color7" (click)="selectClrCode('#6da7e7','color_seven')" id="color_seven">
+                                    <input type="radio" value="#6da7e7" name="" />
+                                  </li>
+                                  <li class="color8" (click)="selectClrCode('#f85964','color_eight')" id="color_eight">
+                                    <input type="radio" value="#f85964" name="" />
+                                  </li>
+                                </ul>
+                              </li>
+                              <!-- <li>
+                                <p> <a (click)="selectClrType('multi')">Multi-Color Scheme</a></p>
+                                <ul class="multicolor-sample">
+                                  <li>
+                                    <span class="color1">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </span>
+                                    <p class="color5">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <span class="color2">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </span>
+                                    <p class="color3">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <span class="color3">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </span>
+                                    <p class="color4">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <span class="color4">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </span>
+                                    <p class="color2">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <span class="color5">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </span>
+                                    <p class="color1">
+                                      <input type="color" value="#ffdd00" name="" />
+                                    </p>
+                                  </li>
+                                </ul>
+                              </li> -->
+                            </ul>
+                          </div>
+                          <div class="nextprev-button">
+                            <a (click)="backToMasterApps()" href="javascript:void(0)"
+                              class="trans btn btn-warning   btn_transparent" type="button">Back</a>
+                            <a href="javascript:void(0)" class="trans active btn btn-warning disabled"
+                              type="button">Next</a>
+                          </div>
+                        </div>
+                        <!---left_side-->
+                        <div class="dashboard_right">
+                          <div class="mobile_wrap">
+                            <p class="text-center"> <i aria-hidden="true" class="fa fa-eye"></i> &nbsp;App Preview</p>
+                            <div class="app_screen">
+                              <div class="phone">
+                                <div class="content">
+                                  <nav role="navigation" class="user_login_data">
+                                    <div id="menuToggle">
+                                      <input type="checkbox" onclick="menucollapseFunction()">
+                                      <div class="icon_line">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                      </div>
+                                      <ul id="menu">
+                                        <li><a href="javascript:void(0)" class="menu_mobile mob-active" id="menu_home"
+                                            onclick="homedataFunction()">Home</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)" id="menu_about"
+                                            onclick="aboutdataFunction()">About</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="user_loction">
+                                      <p> Location</p>
+                                      <p> Block 9, Kalkaji, Delhi 110019</p>
+                                    </div>
+                                    <div class="user_login">
+                                      <i class="fa fa-user" [ngStyle]="{color:userIconClr}"></i>
+                                    </div>
+                                  </nav>
+                                  <!----menu--->
+                                  <div id="search_box">
+                                    <div class="serch_box">
+                                      <form class="form-search form-inline">
+                                        <input type="text" class="search-query" placeholder="Search" />
+                                      </form>
+                                    </div>
+                                  </div>
+                                  <!----serch_box--->
+                                  <div class="mobile_scroll">
+                                    <div id="home_data">
+                                      <div class="slider_warp">
+                                        <h3>Near you</h3>
+                                        <p> Your needs comes first! Help us know what's in your mind.</p>
+                                        <div class="swiper-container " [swiper]="slideexpierencebox">
+                                          <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                              <div class="fj-expierence-tb-image">
+                                                <img img src="../../assets/images/panel/slider_aap.png"
+                                                  alt="user image">
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!----slider_warp--->
+                                      <div class="category_list_box">
+                                        <ul class="swiper-container " [swiper]="slidefooddelivery">
+                                          <div class="swiper-wrapper">
+                                            <li class="swiper-slide">
+                                              <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                              <p> north indian</p>
+                                            </li>
+                                            <li class="swiper-slide">
+                                              <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                              <p> north indian</p>
+                                            </li>
+                                            <li class="swiper-slide">
+                                              <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                              <p> north indian</p>
+                                            </li>
+                                            <li class="swiper-slide">
+                                              <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                              <p> north indian</p>
+                                            </li>
+                                            <li class="swiper-slide">
+                                              <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                              <p> north indian</p>
+                                            </li>
+                                            <li class="swiper-slide">
+                                              <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                              <p> north indian</p>
+                                            </li>
+                                            <li class="swiper-slide">
+                                              <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                              <p> north indian</p>
+                                            </li>
+                                          </div>
+                                        </ul>
+                                      </div>
+                                      <!----box_list_offer--->
+                                      <div class="box_list_offer">
+                                        <h4>Give your app a name</h4>
+                                        <ul>
+                                          <li>
+                                            <img img src="../../assets/images/panel/slider_aap1.png" alt="user image">
+                                          </li>
+                                          <li>
+                                            <img img src="../../assets/images/panel/slider_aap1.png" alt="user image">
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="mobile_home" id="about_data">
+                                      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusantium
+                                        iure
+                                        voluptas.
+                                        Voluptate architecto tempora debitis eius magnam velit consectetur blanditiis
+                                        deserunt
+                                        corrupti cum. Maxime repudiandae accusamus illum harum ea!
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <!---mobile_scroll-->
+                                  <!----box_list_offer--->
+                                  <div class="box_line"></div>
+                                  <div class="screen_footer">
+                                    <ul>
+                                      <li>
+                                        <a href="javascript:void(0)" class="active_list">
+                                          <i class="fa fa-home" [ngStyle]="{color:userIconClr}">&nbsp; <span
+                                              class="nav_active">Home</span></i>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="javascript:void(0)">
+                                          <i class="fa fa-home"> </i>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="javascript:void(0)">
+                                          <i class="fa fa-bell" aria-hidden="true"></i>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="javascript:void(0)">
+                                          <i class="fa fa-comment"> </i>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!---right_side-->
+                      </div>
+                    </div>
+                    <!--tab-1-->
+                    <div id="appicon" class="tab-pane appicon-block fade">
+                      <div class="tab-warp-dashboard">
+                        <div class="dashboard_left">
+                          <div class="raduis-box">
+                            <h2 class="h2-common">Upload App Icon</h2>
+                            <div class="appicon-form">
+                              <span class="Upload_file form-control">
+                                <label for="upload-photo" class="Upload">click to upload </label>
+                                <input type="file" id="upload-photo" (change)="onChange($event,'appIcon')"
+                                  name="appIconNm">
+                              </span>
+                              <span id="appIconName"></span>
+                            </div>
+                            <p>Or</p>
+                            <div class="create-icon-wrapper">
+                              <div class="tbfs-change">
+                                <h2 class="h2-common">Create App Icon</h2>
+                                <div class="tbfs-form">
+                                  <ul>
+                                    <li class="olor-box">
+                                      <label class="label-sample" for="colorpicker">Background Color</label>
+                                      <div class="hexcolor_para">
+                                        <input type="color" id="colorpicker" (change)="reflactIcon('clr', $event)"
+                                          name="" formControlName="app_icon_color" [value]=appIconClr
+                                          [(ngModel)]="appIconClr">
+                                        <div id="hexcolor">{{appIconClr}}</div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample d-block">App Icon Text</label>
+                                      <input type="text" formControlName="app_icon_name" maxlength="2"
+                                        (keyup)="reflactIcon('txt', $event)" [value]="appIconTxt"
+                                        [(ngModel)]="appIconTxt" placeholder="AP" class="input-sample"
+                                        [ngClass]="{ 'is-invalid': submitted && createappform.app_icon_name.errors }">
+                                      <div *ngIf="submitted && createappform.app_icon_name.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="createappform.app_icon_name.errors.required">Please enter your app
+                                          name
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample">Font</label>
+                                      <select class="select-sample" formControlName="app_icon_font"
+                                        (change)="reflactIcon('font', $event)" value=""
+                                        [ngClass]="{ 'is-invalid': submitted && createappform.app_icon_font.errors }">
+                                        <option value="" selected>Select Font-Family</option>
+                                        <option value="Helvetica">Helvetica</option>
+                                        <option value="Arial">Arial</option>
+                                        <option value="Cursive">Cursive</option>
+                                      </select>
+
+                                      <div *ngIf="submitted && createappform.app_icon_font.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="createappform.app_icon_font.errors.required">Please select app icon
+                                          font</div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample">Size</label>
+                                      <select class="select-sample" (change)="reflactIcon('size', $event)"
+                                        formControlName="app_icon_size" value=""
+                                        [ngClass]="{ 'is-invalid': submitted && createappform.app_icon_size.errors }">
+                                        <option value="" selected>Select Font-Size</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="14">16</option>
+                                        <option value="14">20</option>
+                                        <option value="14">32</option>
+                                      </select>
+                                      <div *ngIf="submitted && createappform.app_icon_size.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="createappform.app_icon_size.errors.required">Please select app icon
+                                          font size </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample">Icon Font Color</label>
+                                      <div class="hexcolor_para">
+                                        <input type="color" id="colorpicker" (change)="reflactIcon('fontclr', $event)"
+                                          name="" formControlName="icon_font_color" [value]=iconFontColor
+                                          [(ngModel)]="iconFontColor">
+                                        <div id="hexcolor">{{iconFontColor}}</div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                              <div class="aip-block">
+                                <h2 class="h2-common">Preview</h2>
+                                <div class="icon-preview" *ngIf="icon_type === 'custom'"
+                                  [ngStyle]="{background:appIconClr}">
+                                  <div
+                                    [ngStyle]="{'color': iconFontColor,'font-size':appIconSize, 'font-family':appIconFont}">
+                                    {{appIconTxt}}
+                                  </div>
+                                </div>
+                                <div class="icon-preview" id="appIconPrevImg"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="nextprev-button">
+                            <a (click)="backToMasterApps()" href="javascript:void(0)"
+                              class="trans btn_transparent">Back</a>
+                            <a href="javascript:void(0)" class="trans active btn btn-warning disabled">Next</a>
+                          </div>
+                        </div>
+                        <!--LEFTSIDE-->
+                        <div class="dashboard_right">
+                          <div class="mobile_wrap">
+                            <p class="text-center"> <i aria-hidden="true" class="fa fa-eye"></i> &nbsp;App Preview</p>
+                            <div class="mobile-block">
+                              <div class="phone_para bag_reltiver">
+                                <div class="app_icon_bg">
+                                  <div class="icon_priew">
+                                    <div class="icon_priew_box">
+                                      <div class="list_name text-center">
+                                        <div class="icon_priew_bg" *ngIf="icon_type === 'custom'"
+                                          [ngStyle]="{background:appIconClr}">
+                                          <p class="appIconLogo"
+                                            [ngStyle]="{ 'color': iconFontColor, 'font-family':appIconFont }">
+                                            {{appIconTxt}}</p>
+                                        </div>
+                                        <div class="" id="newAppIconImg"></div>
+                                        <p class="appname">My App</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--tab2-->
+                    <div id="splashscreen" class="tab-pane appisplash-block fade">
+                      <div class="tab-warp-dashboard">
+                        <div class="dashboard_left">
+                          <div class="raduis-box">
+                            <h2 class="h2-common">Upload App Icon</h2>
+                            <div class="appicon-form">
+                              <span class="Upload_file form-control">
+                                <label for="upload-photo_1" class="Upload">click to upload </label>
+                                <input type="file" id="upload-photo_1" (change)="onChange($event,'splashIcon')"
+                                  name="splashIconNm">
+                              </span>
+                              <span id="splashIconName"></span>
+                            </div>
+                            <p>Or</p>
+                            <div class="create-icon-wrapper">
+                              <div class="tbfs-change">
+                                <h2 class="h2-common">Create Splashscreen</h2>
+                                <div class="tbfs-form">
+                                  <ul>
+                                    <li>
+                                      <label class="label-sample">Background Color</label>
+                                      <div class="hexcolor_para">
+                                        <input type="color" id="colorpicker" (change)="reflactSplashIcon('clr', $event)"
+                                          value="#fecd01" formControlName="splash_appclr" [value]=appSplashIconClr
+                                          [(ngModel)]="appSplashIconClr">
+                                        <div id="hexcolor">{{appSplashIconClr}}</div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample">App Icon Text</label>
+                                      <input type="text" formControlName="splash_app_icon_name"
+                                        (keyup)="reflactSplashIcon('txt', $event)" value="" placeholder="AP"
+                                        class="input-sample" maxlength="2"
+                                        [ngClass]="{ 'is-invalid': submitted && createappform.splash_app_icon_name.errors }">
+                                      <div *ngIf="submitted && createappform.splash_app_icon_name.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="createappform.splash_app_icon_name .errors.required">Please enter
+                                          your app splash app icon text</div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample">Font</label>
+                                      <select class="select-sample" formControlName="splash_app_icon_font" value=""
+                                        (change)="reflactSplashIcon('font', $event)"
+                                        [ngClass]="{ 'is-invalid': submitted && createappform.splash_app_icon_font.errors }">
+                                        <option value="" selected>Select Font-Family</option>
+                                        <option selected="" value="Helvetica">Helvetica</option>
+                                        <option value="Arial">Arial</option>
+                                      </select>
+                                      <div *ngIf="submitted && createappform.splash_app_icon_font.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="createappform.splash_app_icon_font .errors.required">Please select
+                                          your app splash app icon font</div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample">Size</label>
+                                      <select class="select-sample" name="splash_app_icon_size"
+                                        formControlName="splash_app_icon_size" value=""
+                                        (change)="reflactSplashIcon('size', $event)"
+                                        [ngClass]="{ 'is-invalid': submitted && createappform.splash_app_icon_size.errors }">
+                                        <option value="" selected>Select Font-Size</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                      </select>
+                                      <div *ngIf="submitted && createappform.splash_app_icon_size.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="createappform.splash_app_icon_size .errors.required">Please select
+                                          your app splash app icon font size</div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample">Icon Font Color</label>
+                                      <div class="hexcolor_para">
+                                        <input type="color" id="colorpicker"
+                                          (change)="reflactSplashIcon('fontclr', $event)" name=""
+                                          formControlName="splashicon_font_color" [value]=appSplashIconFontClr
+                                          [(ngModel)]="appSplashIconFontClr">
+                                        <div id="hexcolor">{{appSplashIconFontClr}}</div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                              <div class="aip-block">
+                                <h2 class="h2-common">Preview</h2>
+                                <div class="icon-preview" *ngIf="splash_icon_type === 'custom'"
+                                  [ngStyle]="{ background:appSplashIconClr }">
+                                  <div
+                                    [ngStyle]="{'color':appSplashIconFontClr, 'font-size':appSplashIconSize, 'font-family':appSplashIconFont}">
+                                    {{appSplashIconTxt}}
+                                  </div>
+                                </div>
+                                <div class="" id="newappsplashIconPrevImg"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="nextprev-button">
+                            <a (click)="backToMasterApps()" href="javascript:void(0)"
+                              class="trans  btn_transparent">Back</a>
+                            <button type="submit" class="trans active">Next</button>
+                          </div>
+                        </div>
+                        <!--LEFTSIDE-->
+                        <div class="dashboard_right">
+                          <div class="mobile_wrap">
+                            <p class="text-center"> <i aria-hidden="true" class="fa fa-eye"></i> &nbsp;App Preview</p>
+                            <div class="mobile-block d-block">
+                              <div class="phone_para">
+                                <div class="app_icon_para" *ngIf="splash_icon_type === 'custom'"
+                                  [ngStyle]="{background:appSplashIconClr}">
+                                  <h4 class="appname1"
+                                    [ngStyle]="{'color':appSplashIconFontClr,'font-size':appSplashIconSize, 'font-family':appSplashIconFont}">
+                                    {{appSplashIconTxt}}</h4>
+                                </div>
+                                <div class="" id="appsplashIconPrevImg"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--tab-3-->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="blankspace_bottom"></div>
+<div class="modal top fade" id="eatfresh">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content notification_modal-box border-0">
+      <div class="modal-header d-flex border-0 pb-0">
+        <!-- <h4 class="modal-title notification-modal-title">Apps information and features</h4> -->
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="eatfresh_content">
+          <p>Online food delivery service, using location-based data to connect nearby restaurant. Offers secure payment
+            services and delivery slot booking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="alert_1">
+  <p> This Panel can be viewed only on Desktop and Laptop screen resolution.</p>
+</div>
+<div class="modal top fade" id="edit-app-content_modal">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content notification_modal-box border-0">
+      <div class="modal-header d-block border-0">
+        <h4 class="modal-title notification-modal-title"></h4>
+        <button type="button" class="close video-btn" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="notification_content">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="ContentVideo" class="embed-responsive-item" width="100%" height="auto"
+              src="https://www.youtube.com/embed/Dr_5PzRK7a0" title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

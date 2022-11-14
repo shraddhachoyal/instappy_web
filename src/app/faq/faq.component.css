@@ -1,0 +1,156 @@
+section.instappy-wizard-section {
+	background: url("../../assets/images/faq/banner.png") no-repeat;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.faq-banner {
+	padding: 60px 0px;
+}
+
+.faq-title {
+	text-align: center;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.faq-title p {
+	font-size: 18px;
+}
+
+.faq-title h2 {
+	color: #222f37;
+	font-family: "Proxima Nova Rg";
+	font-weight: bold;
+	font-size: 44px;
+	margin: 0 0 5px;
+}
+
+.faq-search-input input {
+	font-weight: 500;
+	width: 100%;
+	background: #fff;
+	text-align: left;
+	font-size: 16px;
+	box-shadow: 0px 0px 4px 2px #cccccc1c;
+	padding: 12px 12px 12px 58px;
+	border-radius: 7px;
+}
+
+.faq-search-bar {
+	max-width: 60%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.faq-search-input {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.faq-search-input .input-group {
+	display: block;
+}
+
+.faq-search-input input:focus {
+	outline: 0;
+	box-shadow: 0px 0px 4px 2px #1184cc2e;
+}
+
+.search-icon {
+	position: absolute;
+	top: 13px;
+	left: 30px;
+}
+
+.search-icon i {
+	color: #786c6c;
+	font-weight: lighter;
+}
+
+.faq-warp {
+	margin: 40px 0px;
+}
+
+.faq-accordion {
+	border-radius: 10px;
+	padding: 20px 25px;
+	background: #fff;
+	box-shadow: rgb(99 99 99 / 12%) 0px 2px 8px 0px;
+	margin-bottom: 25px;
+}
+
+.accordion-content p {
+	color: #000000;
+	margin-bottom: 0px;
+}
+
+.accordion-content {
+	border-radius: 10px;
+	padding: 20px 30px;
+	background: #fafcfe;
+	margin: 15px 18px 5px 18px;
+}
+
+.faq-header {
+	display: block;
+	cursor: pointer;
+}
+
+.accicon-faq {
+	margin-right: 15px;
+}
+
+.faq-title {
+	font-weight: 600;
+}
+
+@media (max-width: 767px) {
+	.faq-title h2 {
+		font-size: 30px;
+	}
+
+	.faq-title p {
+		font-size: 16px;
+	}
+
+	.faq-search-bar {
+		max-width: 100%;
+	}
+
+	.faq-banner {
+		padding: 40px 0px;
+	}
+
+	.faq-title {
+		text-align: center;
+		font-size: 14px;
+	}
+
+	.accordion-content {
+		padding: 8px 8px;
+		margin: 9px 0px 0px 0px;
+	}
+
+	.faq-accordion {
+		padding: 11px 10px;
+		margin-bottom: 15px;
+	}
+
+	.accordion-content p {
+		margin-bottom: 5px;
+		font-size: 14px;
+	}
+
+	.faq-header {
+		display: flex;
+
+	}
+
+	.faq-title {
+		max-width: 100%;
+		margin: 0;
+		text-align: left;
+	}
+}

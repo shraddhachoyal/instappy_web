@@ -1,0 +1,2866 @@
+<app-dashboard-header></app-dashboard-header>
+<div class="header-height-mobile"></div>
+<div class="dashboard-wrapper  position-relative">
+  <div class="left-fixed-wrapper">
+    <ul class="dashboard-list">
+      <li id="tab_1" onclick="icon_1Change()" [class.tab-active]="id === 'tab_1'" (click)="tabChange('tab_1')"
+        data-toggle="tooltip" data-placement="right" title="Dashboard Home">
+        <img id="icon_1" src="assets/images/panel/icon_1g.png" alt="icon" />
+      </li>
+      <li id="tab_2" onclick="icon_2Change()" [class.tab-active]="id === 'tab_2'" (click)="tabChange('tab_2')"
+        data-toggle="tooltip" data-placement="right" title="Edit App Content">
+        <img id="icon_2" src="assets/images/panel/icon_2.png" alt="icon" />
+      </li>
+      <li id="tab_3" onclick="icon_3Change()" [class.tab-active]="id === 'tab_3'" (click)="tabChange('tab_3')"
+        data-toggle="tooltip" data-placement="right" title="Appearance">
+        <img id="icon_3" src="assets/images/panel/icon_3.png" alt="icon" />
+      </li>
+      <li id="tab_4" onclick="icon_4Change()" [class.tab-active]="id === 'tab_4'" (click)="getNotifications('tab_4')"
+        data-toggle="tooltip" data-placement="right" title="Push Notifications">
+        <img id="icon_4" src="assets/images/panel/icon_4.png" alt="icon" />
+      </li>
+      <li id="tab_5" onclick="icon_5Change()" [class.tab-active]="id === 'tab_5'" (click)="tabChange('tab_5')"
+        data-toggle="tooltip" data-placement="right" title="Settings">
+        <img id="icon_5" src="assets/images/panel/icon_5.png" alt="icon" />
+      </li>
+      <li id="tab_6">
+        <img src="assets/images/panel/icon_6.png" alt="icon" />
+      </li>
+      <li id="tab_7" [class.tab-active]="id === 'tab_7'" onclick="icon_7Change()" (click)="tabChange('tab_7')"
+        data-toggle="tooltip" data-placement="right" title="Additional Apps">
+        <img id="icon_7" src="assets/images/panel/icon_7.png" alt="icon" />
+      </li>
+    </ul>
+  </div>
+  <!--left-fixed-wrapper-->
+  <div class="container">
+    <div class="center-box">
+      <div class="dashboard_warp">
+        <div id="tab_1" *ngIf="id ===  'tab_1'" class="tab-warp-dashboard divtab_1">
+          <div class="dashboard_left">
+            <div class="main-heading">
+              <h1 class="h1-common">Dashboard</h1>
+            </div>
+            <div class="message_box">
+              <p><span *ngIf="message" class="{{ msgClass }}">{{ message }}</span></p>
+            </div>
+            <div class="npaw-wrapper">
+              <div class="dan-block box-two" *ngIf="appDetailRes">
+                <div class="dimage-block">
+                  <figure *ngIf="appDetailRes.icon_type == 'custom'"
+                    [ngStyle]="{background:appDetailRes.icon_values[1]}">
+                    <div
+                      [ngStyle]="{'color':appDetailRes.icon_values[4],'font-size':appDetailRes.icon_values[3], 'font-family':appDetailRes.icon_values[2]}">
+                      {{appDetailRes.icon_values[0]}}
+                    </div>
+                  </figure>
+                  <figure *ngIf="appDetailRes.icon_type == 'upload'"
+                    [ngStyle]="{background:appDetailRes.icon_values[1]}">
+                    <img class="app-img" src="{{siteURL+'/media/'+appDetailRes.icon_values}}" alt="">
+                  </figure>
+                  <figcaption class="text-center">{{app_state}}</figcaption>
+                </div>
+                <div class="danedit-block">
+                  <div class="deditname">
+                    <h2 id="myappname">{{appDetailRes.app_name}}</h2>
+                    <span id="editAppname" (click)="editName()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                    <div class="updateappname">
+                      <form><input type="text" id="myAppName" maxlength="20" value="{{appDetailRes.app_name}}" />
+                        <span (click)="updateAppName()" class="save_tag"><i class="fa fa-check" aria-hidden="true"></i>
+                        </span>
+                      </form>
+                    </div>
+                  </div>
+                  <p class="ddt">{{appDetailRes.created_at}}</p>
+                  <p class="don">By : {{appDetailRes.owner_name}}</p>
+                  <P class="pack">Package Type : <span
+                      *ngIf="appDetailRes.plan_name == ''">None</span>{{appDetailRes.plan_name}}</P>
+                </div>
+              </div>
+              <div class="danalytics-block">
+                <div class="analytics-head">
+                  <div class="additional-app">
+                    <h2 class="anaheading">
+                      <span class="star-icon">
+                        <img src="assets/images/panel/star-icon.jpg" alt="Additional Apps">
+                      </span>
+                      <span class="additional-apps"> Additional Apps</span>
+                    </h2>
+                    <p> Connect your customer app with Restaurant & Rider app for better experience.</p>
+                  </div>
+                </div>
+                <div class="dnumbers-restaurant-app d-flex justify-content-between"
+                  *ngFor="let apps of additionalAppList">
+                  <div class="restaurantleft">
+                    <h4>{{apps.app_name}}</h4>
+                    <p>{{apps.app_descriptions}}</p>
+                    <a href="javascript:void(0)"
+                      (click)="learnMoreApp(apps.app_type,apps.additional_id,apps.app_name,apps.app_descriptions,apps.price,apps.pyment_status)">Learn
+                      more</a>
+                    <!-- <a href="javascript:void(0)"
+                      (click)="additionalAppsForm(apps.app_type,apps.additional_id,apps.app_name,apps.app_descriptions,apps.price,apps.pyment_status)">
+                      Learn more</a> -->
+                  </div>
+                  <div class="restaurantleft" *ngIf="apps.pyment_status === 0">
+                    <h4 class="price text-center">${{apps.price}}*</h4>
+                    <div class="" *ngIf="apps.pyment_status === 0">
+                      <button
+                        class="add-price small bg-light border cartbtn_{{apps.additional_id}} addBtn_{{apps.additional_id}}"
+                        (click)="addToCart(apps.app_type,apps.additional_id,apps.app_name,apps.price,$event)">+&nbsp;Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="danalytics-block box-two">
+                <div class="analytics-head demo-section">
+                  <div class="additional-app">
+                    <h3>Watch a demo</h3>
+                    <div class="watch-video d-flex justify-content-center">
+                      <a href="javascript:void(0)" data-toggle="modal" data-target="#edit-app-content_modal_1">
+                        <img src="../../assets/images/icons/video-btn.png" alt="icon" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="border-right"></div>
+                <div class="analytics-head demo-section">
+                  <div class="additional-app">
+                    <h3 class="mb-0">Resources</h3>
+                    <p>Get the help you need from our resources.</p>
+                    <div class="play-box">
+                      <p> <a routerLink="/faq" target="_blank"> <span class="play-video"><img
+                              src="../../assets/images/icons/faq.png">
+                            FAQ</span></a>
+                      </p>
+                      <p> <a href="javascript:void(0)" data-toggle="modal" data-target="#edit-app-content_modal_1">
+                          <span class="play-video"><img src="../../assets/images/icons/video.png"> Video
+                            Tutorials</span></a></p>
+                      <p class="need-box">Need more help?</p>
+                      <a routerLink="/contact"> <b>Contact Support</b></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rider_partner_last_space"></div>
+            <div class="rider_partner_last">
+              <div class="card-edit-app-content-data appearance-tab bg-primary text-white mb-3 checkoutDiv"
+                style="display: none;">
+                <div class="tab-content">
+                  <div class="additional-apps_para p-0">
+                    <div class="additional-apps-child rider-partner">
+                      <!-- <h2 class="h2-common">Rider Partner App</h2> -->
+                      <h4 class="price">$&nbsp;{{totAmmount}}</h4>
+                    </div>
+                    <div class="additional-apps-child_1">
+                      <div class="restaurantleft billed-yearly">
+                        <button class="add-price small bg-white font-weight-bold">
+                          <p class="checkout_list" onclick="restaurantartnerFunction()" (click)="checkout()">Checkout
+                          </p>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--  <div class="dashboard_right" id="tab_2" *ngIf="id ===  'tab_2'">
+            <div class="main-heading-right"> </div>
+            <div class="danalytics-block dashboard_box">
+              <div class="analytics-head set-up-your-app">
+                <div class="additional-app set-up-your-app-para">
+                  <div class="box-count-para">
+                    <div class="box-count">
+                      <img src="../../assets/images/panel/progress-bar.png" alt="edt" />
+                    </div>
+                  </div>
+                </div>
+                <div class="restaurantleft">
+                  <h4>Set up your app</h4>
+                  <p class="mb-0">This will guide you through the basic steps
+                    of your app to set up and get it published.
+                  </p>
+                </div>
+              </div>
+              <div class="dnumbers-restaurant-app rider-app">
+                <div class="restaurantleft">
+                  <div class="edit-para">
+                    <h4> App design & content</h4>
+                    <span>
+                      <img src="../../assets/images/panel/edit.png" alt="edit" />
+                      Edit
+                    </span>
+                  </div>
+                  <p class="edit-wawp">Easily edit the color, images & content of your app as per
+                    your preference.
+                  </p>
+                </div>
+              </div>
+              <div class="dnumbers-restaurant-app rider-app">
+                <div class="restaurantleft w-100">
+                  <div class="edit-para">
+                    <h4>Connect a payment gateway</h4>
+                    <span>
+                      <img src="../../assets/images/panel/connect.png" alt="edit" />
+                      Connect
+                    </span>
+                  </div>
+                  <p class="edit-wawp">Add a payment gateway so that your customer can pay.
+                  </p>
+                </div>
+              </div>
+              <div class="dnumbers-restaurant-app rider-app ">
+                <div class="restaurantleft w-100">
+                  <div class="edit-para">
+                    <h4>Google analytics</h4>
+                    <span>
+                      <img src="../../assets/images/panel/edit.png" alt="edit" />
+                      Edit
+                    </span>
+                  </div>
+                  <p class="edit-wawp">Connect firebase account to start analysing app data.
+                  </p>
+                </div>
+              </div>
+              <div class="dnumbers-restaurant-app rider-app ">
+                <div class="restaurantleft w-100">
+                  <div class="edit-para">
+                    <h4>Upgrade account</h4>
+                    <span>
+                      <img src="../../assets/images/panel/upgrade.png" alt="edit" />
+                      Upgrade
+                    </span>
+                  </div>
+                  <p class="edit-wawp">Upgrade your account to publish your app.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!---LEFT-SIDE-->
+          <div class="dashboard_right">
+            <div class="main-heading-right">
+            </div>
+            <div class="danalytics-block dashboard_box">
+              <div class="analytics-head set-up-your-app">
+                <div class="additional-app set-up-your-app-para">
+                  <div class="box-count-para">
+                    <div class="box-count">
+                      <div class="progress_blue_para">
+                        <div id="bluecircle" data-percent="25" class="big"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="restaurantleft">
+                  <h4>Set up your app</h4>
+                  <p class="mb-0">This will guide you through the basic steps
+                    of your app to set up and get it published.
+                  </p>
+                </div>
+              </div>
+              <div class="dnumbers-restaurant-app rider-app">
+                <div class="restaurantleft">
+                  <div class="edit-para">
+                    <h4>App design & content</h4>
+                    <span (click)="tabChange('tab_2')">
+                      <img src="../../assets/images/panel/edit.png" alt="edit" />
+                      Edit
+                    </span>
+                  </div>
+                  <p class="edit-wawp">Easily edit the color, images & content of your app as per
+                    your preference.
+                  </p>
+                </div>
+              </div>
+              <div class="dnumbers-restaurant-app rider-app">
+                <div class="restaurantleft w-100">
+                  <div class="edit-para">
+                    <h4>Connect a payment gateway</h4>
+                    <span (click)="tabChange('tab_5')">
+                      <img src="../../assets/images/panel/connect.png" alt="edit" />
+                      Connect
+                    </span>
+                  </div>
+                  <p class="edit-wawp">Add a payment gateway so that your customer can pay.
+                  </p>
+                </div>
+              </div>
+              <div class="dnumbers-restaurant-app rider-app ">
+                <div class="restaurantleft w-100">
+                  <div class="edit-para">
+                    <h4>Google analytics</h4>
+                    <span (click)="tabChange('tab_5')">
+                      <img src="../../assets/images/panel/edit.png" alt="edit" />
+                      Edit
+                    </span>
+                  </div>
+                  <p class="edit-wawp">Connect firebase account to start analysing app data.
+                  </p>
+                </div>
+              </div>
+              <div class="dnumbers-restaurant-app rider-app ">
+                <div class="restaurantleft w-100">
+                  <div class="edit-para">
+                    <h4>Upgrade account</h4>
+                    <span><a (click)="checkout()">
+                        <img src="../../assets/images/panel/upgrade.png" alt="edit" />
+                        Upgrade
+                      </a></span>
+                  </div>
+                  <p class="edit-wawp">Upgrade your account to publish your app.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--RIGHT-SIDE-->
+        </div>
+        <!--------------tab-1 end------------->
+        <div class="tab-edit-app">
+
+
+
+          <div id="tab_2" *ngIf="id ===  'tab_2'" class="tab-warp-dashboard">
+            <div class="dashboard_left-big-size">
+              <div class="edit-app-content-top-warp">
+                <div class="main-heading edit-app-content-top">
+                  <h1 class="h1-common mb-0">Edit App Content</h1>
+                </div>
+                <div class="edit-app-content-top">
+                  <div class="form-group mb-0">
+                    <select class="form-control edit-app-conten-form" id="selectMenu"
+                      onchange="terms_listdataFunction()">
+                      <option class="status-list" id="home_change" value="1">Home
+                      </option>
+                      <option class="status-list" id="terms_change" value="2">Terms &
+                        Condition
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <!-- <div class="edit-app-content">
+                    <div class="additional-features">
+                    <p id="add-data" data-toggle="modal" data-target="#edit-app-content_modal">
+                    Additional Features &nbsp;
+                    <img src="assets/images/panel/add-icon.png" alt="ad">
+                    </p>
+                    </div>
+                    </div> -->
+              </div>
+              <div id="product_list" class="product_list">
+                <h4>Terms & Condition</h4>
+                <br>
+
+
+                <!-- <editor [(ngModel)]="this.privacyPolicyTermsCondData.data.content" (onKeyPress)="eventHandler()"> </editor> -->
+
+                <!-- <p class="nextprev-button pull-right m-3 mr-0"><button type="submit" class="add-price"
+                    (click)="PostPrivacyPolicyTermsCond()">Save Changes</button></p> -->
+
+              </div>
+              <div id="contact_list" class="product_list">
+                <h4>Contact Us</h4>
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard
+                  dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                  make a type specimen
+                  book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                  remaining essentially
+                  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more
+                  recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+              </div>
+              <div id="edit_app_data">
+                <div class="edit-app-content-data">
+                  <p class="mb-0">Enhance your app experience by adding content and images you desire.</p>
+                  <p class="user-link-para">
+                    <a routerLink="/faq" target="_blank">
+                      <span class="play-video ml-0">
+                        <img src="../../assets/images/panel/info.png"> More info
+                      </span>
+                    </a>
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#edit-app-content_modal_1">
+                      <span class="play-video">
+                        <img src="../../assets/images/panel/watch-t.png"> Watch Tutorials
+                      </span>
+                    </a>
+                  </p>
+                </div>
+
+                <div class="npaw-wrapper mt-5">
+                  <form [formGroup]="addCatBanForm" (ngSubmit)="submitCatBanData()">
+                    <div id="edit-app-content-data" class="mb-4">
+                      <div class="card-edit-app-content-data p-0">
+                        <!-- <form #catbanForm="ngForm"> -->
+                        <!-- <form [formGroup]="appDataForm" (ngSubmit)="additionalAppForminfoSubmit()"> -->
+                        <div class="top-content-arrow">
+                          <div class="card-edit-app-content-data p-0">
+                            <div class="card-header-data-accordion" id="heading-3">
+                              <h5 class="mb-0 border-line">
+                                <a role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="true"
+                                  aria-controls="collapse-3" class="title-collapse">
+                                  <b>Top Banner</b>
+                                </a>
+                              </h5>
+                            </div>
+                            <div id="collapse-3" class="collapse show" data-parent="#edit-app-content-data"
+                              aria-labelledby="heading-3">
+                              <div class="card-body pb-0 pt-2">
+                                <div id="accordion-3">
+                                  <div class="card-content-data">
+                                    <div class="top-banner-para">
+                                      <div class="upload-banner">
+                                        <p><span class="bold-para">Upload banner</span> (Upto 4 banners can be uploaded)
+                                        </p>
+                                      </div>
+                                      <div class="upload-banner add-data-para">
+                                        <p class="add_icon_box"><a (click)="addMoreBanner();">Add <img
+                                              src="assets/images/panel/add-icon.png" alt="ad"></a>
+                                          <input type="hidden" ngModel name="auto_id" value="{{auto_id}}" id="auto_id">
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div class="tbfs-form bg-white">
+                                      <ul class="topbanner-form" id="topbannerform__">
+                                        <li class="olor-box" id="topbannerform1">
+                                          <label><span class="bold-para">Banner 1</span> </label>
+                                          <span class="Upload_file form-control">
+                                            <label for="upload-photo" class="Upload pl-0">Banner 1
+                                            </label>
+
+
+
+                                            <input type="file" id="upload-photo" formControlName="bannerimg_1"
+                                              (change)="BannerImages($event,1)" value=""
+                                              [ngClass]="{ 'is-invalid': bannerCatSubmitted && addCatBanform.bannerimg_1.errors }">
+
+                                            <div *ngIf="bannerCatSubmitted && addCatBanform.bannerimg_1.errors"
+                                              class="invalid-feedback">
+                                              <div *ngIf="addCatBanform.bannerimg_1.errors.required">Please select app
+                                                icon
+                                              </div>
+                                            </div>
+
+                                            <span class="cross_icon_img"> <i class="fa fa-times"
+                                                aria-hidden="true"></i></span>
+                                          </span>
+
+                                          <label class="size_title">(Max. size 15 kb, Format :jpg, png, svg
+                                            supported)</label>
+                                          <input type="hidden" name="bannerimg_val1" id="bannerimg_val1" value="" />
+                                          <span class="file-datils" id="bannerimg_1"></span>
+                                          <div id="bannerimg1_img"></div>
+                                        </li>
+
+                                        <div *ngFor="let val of bannerArray" class="olor-box">
+                                          <li class="olor-box" id="topbannerform{{val}}">
+                                            <label class="label-sample"><span class="bold-para">Banner
+                                                {{val}}</span></label>
+                                            <span class="Upload_file form-control">
+                                              <label for="upload-photo" class="Upload pl-0">Banner {{val}} </label>
+                                              <input type="file" name="photo" id="upload-photo{{val}}"
+                                                class="file_hide_list" name="files" value="" multiple="multiple"
+                                                (change)="BannerImages($event,val)" #banner_name>
+                                              <span class="cross_icon_img"> <i class="fa fa-times"
+                                                  aria-hidden="true"></i></span>
+                                            </span>
+
+                                            <label class="size_title">(Max. size 15 kb, Format :jpg, png, svg
+                                              supported)</label>
+                                            <input type="hidden" name="bannerimg_val{{val}}" id="bannerimg_val{{val}}"
+                                              value="" />
+                                            <span class="file-datils" id="bannerimg_{{val}}"></span>
+                                            <div id="bannerimg{{val}}_img"></div>
+                                          </li>
+                                        </div>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card-edit-app-content-data pl-0 pr-0 pb-0">
+                            <div class="card-header-data-accordion" id="heading-4">
+                              <h5 class="mb-0 border-line">
+                                <a role="button" data-toggle="collapse" href="#collapse-4" aria-expanded=""
+                                  aria-controls="collapse-4" class="title-collapse">
+                                  <b>Category</b>
+                                </a>
+                              </h5>
+                            </div>
+                            <div id="collapse-4" class="collapse" data-parent="#edit-app-content-data"
+                              aria-labelledby="heading-4">
+                              <div class="card-body pb-0">
+                                <div id="accordion-4">
+                                  <div class="card-content-data">
+                                    <div class="top-banner-para">
+                                      <div class="upload-banner">
+                                        <p class="total_count"><b>{{totCat}} categories added </b>(Upto 8 categories can
+                                          be added)</p>
+                                      </div>
+                                      <div class="upload-banner add-data-para">
+                                        <p><a (click)="addMoreCategory();">Add <img
+                                              src="assets/images/panel/add-icon.png" alt="ad"></a>
+                                          <input type="hidden" ngModel name="auto_id" value="{{auto_id}}" id="auto_id">
+                                          <input type="hidden" ngModel name="auto_id" value="{{auto_idd}}"
+                                            id="auto_idd">
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div class="card-header-data" id="heading-1-3">
+                                      <h5 class="mb-0 border-line border-0">
+                                        <a class="collapsed border-0 pt-0" role="button" data-toggle="collapse"
+                                          href="#collapse-1-3" aria-expanded="false" aria-controls="collapse-1-3"
+                                          class="collapsed-edit">
+                                          <b>Category 1</b>
+                                        </a>
+                                      </h5>
+                                    </div>
+
+                                    <!-- First Category -->
+                                    <div id="collapse-1-3" class="collapse show" data-parent="#accordion-1"
+                                      aria-labelledby="heading-1-3">
+                                      <div class="card-body-data">
+                                        <div class="appicon-form pt-0">
+                                          <label><span class="bold-para">Category 1</span> (Max. 12 character)</label>
+
+                                          <input type="text" formControlName="category_name1" id="category_name1"
+                                            value="" class="input-sample  bg-white"
+                                            [ngClass]="{ 'is-invalid': bannerCatSubmitted && addCatBanform.category_name1.errors }">
+
+                                          <div *ngIf="bannerCatSubmitted && addCatBanform.category_name1.errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="addCatBanform.category_name1.errors.required">Please enter
+                                              Category1 name</div>
+                                          </div>
+
+                                          <!-- <input type="text" formcontrolname="category_name1" placeholder="Healthy"
+                                            class="input-sample  bg-white" id="category_name1" value=""
+                                            [ngClass]="{ 'is-invalid': bannerCatSubmitted && addCatBanform.category_name1.errors }">
+
+                                          <div *ngIf="bannerCatSubmitted && addCatBanform.category_name1.errors"
+                                            class="invalid-feedback err-bannerimg1">
+                                            <div *ngIf="addCatBanform.category_name1.errors.required">Please enter
+                                              Category name</div>
+                                          </div> -->
+
+                                          <label><span class="bold-para">Upload Category 1</span> (Max. size 15 kb,
+                                            Format : jpg,png, svg supported)</label>
+                                          <span class="Upload_file form-control bg-white">
+                                            <label class="Upload pl-0">click to upload </label>
+
+                                            <input type="file" id="upload-photo1" formControlName="categoryimg_1"
+                                              (change)="CategoryImages($event,1)" value="" class="file_hide_list"
+                                              [ngClass]="{ 'is-invalid': bannerCatSubmitted && addCatBanform.categoryimg_1.errors }">
+
+                                            <div *ngIf="bannerCatSubmitted && addCatBanform.categoryimg_1.errors"
+                                              class="invalid-feedback">
+                                              <div *ngIf="addCatBanform.categoryimg_1.errors.required">Please select
+                                                Category icon </div>
+                                            </div>
+                                          </span>
+                                          <input type="hidden" name="categoryimg_val1" id="categoryimg_val1" value="" />
+                                          <span class="file-datils" id="categoryimg_1"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- This line will call on add more Category -->
+                                    <div id="collapse-1-3" class="collapse show" data-parent="#accordion-1"
+                                      aria-labelledby="heading-1-3" *ngFor="let val of categoryArray">
+                                      <div class="card-body-data mb-0">
+                                        <div class="appicon-form pt-0">
+                                          <label><span class="bold-para">Category {{val}}</span> (Max. 12
+                                            character)</label>
+                                          <input type="text" placeholder="Healthy" class="input-sample  bg-white"
+                                            id="category_name{{val}}" value="">
+                                          <label><span class="bold-para">Upload Category {{val}}</span> (Max. size 15
+                                            kb, Format : jpg,png, svg supported)</label>
+                                          <span class="Upload_file form-control bg-white">
+                                            <label class="Upload pl-0">click to upload </label>
+                                            <input type="file" name="photo" id="upload-photo{{val}}" value=""
+                                              multiple="multiple" class="file_hide_list"
+                                              (change)="CategoryImages($event,val)">
+                                          </span>
+                                          <input type="hidden" name="categoryimg_val{{val}}"
+                                            id="categoryimg_val{{val}}" />
+                                          <span class="file-datils" id="categoryimg_{{val}}"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- <div *ngFor="let val of categoryArray">
+                                                            <div id="collapse-1-3" class="collapse show" data-parent="#accordion-1"
+                                                            aria-labelledby="heading-1-3">
+                                                            <div class="card-body-data">
+                                                            <form class="appicon-form pt-0">
+                                                            <label><span class="bold-para">Category {{val}}</span> (Max. 12
+                                                            character)</label>
+                                                            <input type="text" ngModel placeholder="Healthy" class="input-sample"
+                                                            id="category_name{{val}}" value="">
+                                                            <label><span class="bold-para">Upload Category {{val}}</span> (Max. size 15
+                                                            kb, Format : jpg,png, svg supported)</label>
+                                                            <input type="file" ngModel name="photo" id="upload-photo{{val}}" value=""
+                                                            multiple="multiple" (change)="CategoryImages($event,val)">
+                                                            <span class="file-datils" id="categoryimg_{{val}}"></span>
+                                                            </form>
+                                                            </div>
+                                                            </div>
+                                                            </div> -->
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <!-- </form> -->
+                      </div>
+                    </div>
+                    <div class="bannCat">
+                      <span class="{{catBanMsgCls}}">{{catBanMsg}}</span>
+                      <p class="nextprev-button pull-right m-0">
+                        <button type="submit" class="add-price">Save</button>
+                        <!-- <button type="submit" class="add-price" (click)="submitCatBanData()">Save</button> -->
+                      </p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- App Preview 2 -->
+            <div id="edit_data_right_1">
+              <div class="dashboard_right big_sise25">
+                <div class="mobile_wrap">
+                  <!-- <p class="text-center"> <i aria-hidden="true" class="fa fa-eye"></i> &nbsp;App Preview </p> -->
+                  <div class="app_screen">
+                    <div class="phone">
+                      <div class="content">
+                        <nav role="navigation" class="user_login_data">
+                          <div id="menuToggle">
+                            <input type="checkbox" onclick="menucollapseFunction()">
+                            <div class="icon_line">
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </div>
+                            <ul id="menu">
+                              <li><a href="javascript:void(0)" class="menu_mobile mob-active" id="menu_home"
+                                  onclick="homedataFunction()">Home</a>
+                              </li>
+
+                              <li><a href="javascript:void(0)" id="menu_contact" onclick="contactdataFunction()">Contact
+                                  Us</a>
+                              </li>
+                              <li><a href="javascript:void(0)" id="menu_terms" onclick="termsConditionFunction()">Terms
+                                  &
+                                  Condition</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="user_loction">
+                            <p> Location</p>
+                            <p> Block 9, Kalkaji, Delhi 110019</p>
+                          </div>
+                          <div class="user_login">
+                            <i class="fa fa-user" [ngStyle]="{color:userIconClr}"></i>
+                          </div>
+                        </nav>
+                        <!----menu--->
+                        <div id="search_box">
+                          <div class="serch_box">
+                            <form class="form-search form-inline">
+                              <input type="text" class="search-query" placeholder="Search" />
+                            </form>
+                          </div>
+                        </div>
+                        <div class="mobile_scroll">
+                          <!----serch_box--->
+                          <div id="home_data">
+                            <div class="slider_warp">
+                              <h3>Near you</h3>
+                              <p> Your needs comes first! Help us know what's in your mind.</p>
+                              <div class="swiper-container" [swiper]="slideexpierencebox">
+                                <div class="swiper-wrapper" *ngIf="banerSliderImg===1">
+                                  <div class="swiper-slide" *ngFor="let banner of bannerList">
+                                    <div class="fj-expierence-tb-image mobile_right">
+                                      <img img src="{{siteURL+ '/media/' +banner.banner_name}}" alt="user image"
+                                        style="width:150px">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="swiper-wrapper" *ngIf="banerSliderImg===0">
+                                  <div class="swiper-slide">
+                                    <div class="fj-expierence-tb-image mobile_right">
+                                      <img img src="../../assets/images/panel/slider_aap1.png" alt="user image"
+                                        style="width:150px">
+                                    </div>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <div class="fj-expierence-tb-image mobile_right">
+                                      <img img src="../../assets/images/panel/slider_aap.png" alt="user image">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!----slider_warp--->
+                            <div class="category_list_box">
+                              <ul class="swiper-container " [swiper]="slidefooddelivery">
+                                <!-- Static categories if no category is added -->
+                                <div class="swiper-wrapper" *ngIf="cateSliderImg ===0">
+                                  <li class="swiper-slide">
+                                    <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                    <p> category</p>
+                                  </li>
+                                  <li class="swiper-slide">
+                                    <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                    <p>category2</p>
+                                  </li>
+                                  <li class="swiper-slide">
+                                    <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                    <p> category3</p>
+                                  </li>
+                                </div>
+                                <!-- dynamic categories if added -->
+                                <div class="swiper-wrapper" *ngIf="cateSliderImg===1">
+                                  <li class="swiper-slide category_name" *ngFor="let category of categoryList">
+                                    <img img src="{{siteURL+'/media/'+category.category_image}}" alt="user image">
+                                    <p> {{category.category_name}}</p>
+                                  </li>
+                                </div>
+                              </ul>
+                            </div>
+                            <!----box_list_offer--->
+                            <div class="box_list_offer">
+                              <h4>Give your app a name</h4>
+                              <ul>
+                                <li>
+                                  <img img src="../../assets/images/panel/slider_aap1.png" alt="user image">
+                                </li>
+                                <li>
+                                  <img img src="../../assets/images/panel/slider_aap1.png" alt="user image">
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <!---home_data-->
+                          <div class="mobile_home" id="contact_data">
+                            <h4> Contact Us</h4>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusantium
+                              iurevoluptas.
+                              Voluptate architecto tempora debitis eius magnam velit consectetur blanditiis deserunt
+                              corrupti cum. Maxime repudiandae accusamus illum harum ea!
+                            </p>
+                          </div>
+                          <!--contact_data_data-->
+                          <div class="mobile_home" id="terms_data">
+                            <h4>Terms & Condition</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusantium
+                              iure
+                              voluptas.
+                              Voluptate architecto tempora debitis eius magnam velit consectetur blanditiis deserunt
+                              corrupti cum. Maxime repudiandae accusamus illum harum ea!
+                            </p>
+                          </div>
+                          <!--contact_data_data-->
+                        </div>
+                        <!----mobile_scroll--->
+                        <div class="box_line"></div>
+                        <div class="screen_footer">
+                          <ul>
+                            <li>
+                              <a href="javascript:void(0)" class="active_list nav_active">
+                                <i class="fa fa-home" [ngStyle]="{color:userIconClr}">&nbsp; <span
+                                    class="nav_active">Home</span></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void(0)">
+                                <i class="fa fa-home"> </i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void(0)">
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void(0)">
+                                <i class="fa fa-comment"> </i>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--RIGHT-SIDE-->
+          </div>
+
+
+
+          <div class="space_mb mb-4"></div>
+        </div>
+        <!--------------tab-2 end------------->
+        <div id="tab_3" *ngIf="id ===  'tab_3'" class="tab-warp-dashboard">
+          <div class="dashboard_left-big-size">
+            <div class="edit-app-content-top-warp">
+              <div class="main-heading edit-app-content-top">
+                <h1 class="h1-common mb-0">Appearance</h1>
+              </div>
+            </div>
+            <div class="edit-app-content-data">
+              <p>Update your app appearance as per your preference</p>
+            </div>
+
+            <div class="npaw-wrapper">
+              <ul class="step2-tab nav nav-tabs foodcafe-nav-list" role="tablist">
+                <li class="nav-item"><a data-toggle="tab" href="#appearance" class="trans active nav-link"
+                    target="_self">General</a></li>
+                <li class="nav-item"><a data-toggle="tab" href="#appicon" class="trans nav-link" target="_self">App
+                    Icon</a>
+                </li>
+                <li class="nav-item"><a data-toggle="tab" href="#splashscreen" class="trans nav-link"
+                    target="_self">Splashscreen</a></li>
+              </ul>
+              <form [formGroup]="updateAppForm" (ngSubmit)="updateApp()">
+                <div class="tab-content">
+                  <div id="appearance" class="active tab-pane appearance-block">
+                    <div class="flex_box_section">
+                      <div class="left_75">
+                        <div class="edit-app-radius">
+                          <h2 class="h2-common">Give your app a name</h2>
+                          <input type="text" [(ngModel)]="appDetailRes.app_name" (keyup)="addAppname($event)"
+                            placeholder="Food Cafe" class="input-sample" formControlName="app_name" maxlength="20"
+                            [ngClass]="{ 'is-invalid': appsubmitted && updateappform.app_name.errors }">
+                          <div *ngIf="appsubmitted && updateappform.app_name.errors" class="invalid-feedback">
+                            <div *ngIf="updateappform.app_name.errors.required">Please enter your app name</div>
+                          </div>
+                          <h2 class="h2-common">Pick a color scheme you like </h2>
+                          <ul class="pick-color">
+                            <li class="single-color-section">
+                              <p> <a (click)="selectClrType('single')">Single-Color Scheme</a></p>
+                              <ul class="singcolor-sample">
+                                <li class="color1 {{appDetailRes.color_code === '#ffdd00'? 'color_box':''}}"
+                                  (click)="selectClrCode('#ffdd00', 'color_one')" id="color_one">
+                                  <input type="radio" value="#ffdd00" />
+                                </li>
+                                <li class="color2 {{appDetailRes.color_code === '#7c58fe'? 'color_box':''}} "
+                                  id="color_two" (click)="selectClrCode('#7c58fe','color_two')">
+                                  <input type="radio" value="#7c58fe" />
+                                </li>
+                                <li class="color3 {{appDetailRes.color_code === '#b1d8ff'? 'color_box':''}} "
+                                  (click)="selectClrCode('#b1d8ff','color_three')" id="color_three">
+                                  <input type="radio" value="#b1d8ff" name="" />
+                                </li>
+                                <li class="color4 {{appDetailRes.color_code === '#ff7d51'? 'color_box':''}} "
+                                  (click)="selectClrCode('#ff7d51','color_four')" id="color_four">
+                                  <input type="radio" value="#ff7d51" name="" />
+                                </li>
+                                <li class="color5 {{appDetailRes.color_code === '#c0de96'? 'color_box':''}} "
+                                  (click)="selectClrCode('#c0de96','color_five')" id="color_five">
+                                  <input type="radio" value="#c0de96" name="" />
+                                </li>
+                                <li class="color6 {{appDetailRes.color_code === '#7dde02e0'? 'color_box':''}} "
+                                  (click)="selectClrCode('#7dde02e0','color_six')" id="color_six">
+                                  <input type="radio" value="#7dde02e0" name="" />
+                                </li>
+                                <li class="color7 {{appDetailRes.color_code === '#6da7e7'? 'color_box':''}} "
+                                  (click)="selectClrCode('#6da7e7','color_seven')" id="color_seven">
+                                  <input type="radio" value="#6da7e7" name="" />
+                                </li>
+                                <li class="color8 {{appDetailRes.color_code === '#f85964'? 'color_box':''}} "
+                                  (click)="selectClrCode('#f85964','color_eight')" id="color_eight">
+                                  <input type="radio" value="#f85964" name="" />
+                                </li>
+                              </ul>
+                            </li>
+                            <!-- <li>
+                        <p> <a (click)="selectClrType('multi')">Multi-Color Scheme</a></p>
+                        <ul class="multicolor-sample">
+                          <li>
+                            <span class="color1">
+                              <input type="color" value="#ffdd00" name="" />
+                            </span>
+                            <p class="color5">
+                              <input type="color" value="#ffdd00" name="" />
+                            </p>
+                          </li>
+                          <li>
+                            <span class="color2">
+                              <input type="color" value="#ffdd00" name="" />
+                            </span>
+                            <p class="color3">
+                              <input type="color" value="#ffdd00" name="" />
+                            </p>
+                          </li>
+                          <li>
+                            <span class="color3">
+                              <input type="color" value="#ffdd00" name="" />
+                            </span>
+                            <p class="color4">
+                              <input type="color" value="#ffdd00" name="" />
+                            </p>
+                          </li>
+                          <li>
+                            <span class="color4">
+                              <input type="color" value="#ffdd00" name="" />
+                            </span>
+                            <p class="color2">
+                              <input type="color" value="#ffdd00" name="" />
+                            </p>
+                          </li>
+                          <li>
+                            <span class="color5">
+                              <input type="color" value="#ffdd00" name="" />
+                            </span>
+                            <p class="color1">
+                              <input type="color" value="#ffdd00" name="" />
+                            </p>
+                          </li>
+                        </ul>
+                        </li> -->
+                          </ul>
+                        </div>
+                        <!-- <div class="nextprev-button">
+                          <a (click)="backToMasterApps()" href="javascript:void(0)"
+                            class="trans btn btn-warning   btn_transparent" type="button">Back</a>
+                          <a href="javascript:void(0)" class="trans active btn btn-warning disabled"
+                            type="button">Next</a>
+                        </div> -->
+                        <!-- <p class="nextprev-button pull-right m-3 mr-0">
+                          <button type="submit" class="add-price" >Save</button>
+                        </p> -->
+                      </div>
+
+                      <div class="right_25">
+                        <div id="edit_data_right_1">
+                          <div class="dashboard_right big_sise25">
+                            <div class="mobile_wrap_top">
+                              <p class="text-center"> <i aria-hidden="true" class="fa fa-eye"></i> &nbsp;App Preview
+                              </p>
+                              <div class="app_screen">
+                                <div class="phone">
+                                  <div class="content">
+                                    <nav role="navigation" class="user_login_data">
+                                      <div id="menuToggle">
+                                        <input type="checkbox" onclick="menucollapseFunction()">
+                                        <div class="icon_line">
+                                          <span class="icon-bar"></span>
+                                          <span class="icon-bar"></span>
+                                          <span class="icon-bar"></span>
+                                        </div>
+                                        <ul id="menu">
+                                          <li><a href="javascript:void(0)" class="menu_mobile mob-active" id="menu_home"
+                                              onclick="homedataFunction1()">Home</a>
+                                          </li>
+                                          <li><a href="javascript:void(0)" id="menu_contact"
+                                              onclick="contactdataFunction2()">Contact
+                                              Us</a>
+                                          </li>
+                                          <li><a href="javascript:void(0)" id="menu_terms"
+                                              onclick="termsConditionFunction3()">Terms
+                                              &
+                                              Condition</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div class="user_loction">
+                                        <p> Location</p>
+                                        <p> Block 9, Kalkaji, Delhi 110019</p>
+                                      </div>
+                                      <div class="user_login">
+                                        <i class="fa fa-user" [ngStyle]="{color:userIconClr}"></i>
+                                      </div>
+                                    </nav>
+                                    <!----menu--->
+                                    <div id="search_box">
+                                      <div class="serch_box">
+                                        <form class="form-search form-inline">
+                                          <input type="text" class="search-query" placeholder="Search" />
+                                        </form>
+                                      </div>
+                                    </div>
+                                    <div class="mobile_scroll">
+                                      <!----serch_box--->
+                                      <div id="home_data">
+                                        <div class="slider_warp">
+                                          <h3>Near you</h3>
+                                          <p> Your needs comes first! Help us know what's in your mind.</p>
+                                          <div class="swiper-container" [swiper]="slideexpierencebox">
+                                            <div class="swiper-wrapper" *ngIf="banerSliderImg===1">
+                                              <div class="swiper-slide" *ngFor="let banner of bannerList">
+                                                <div class="fj-expierence-tb-image mobile_right">
+                                                  <img img src="{{siteURL+ '/media/' +banner.banner_name}}"
+                                                    alt="user image" style="width:150px">
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="swiper-wrapper" *ngIf="banerSliderImg===0">
+                                              <div class="swiper-slide">
+                                                <div class="fj-expierence-tb-image mobile_right">
+                                                  <img img src="../../assets/images/panel/slider_aap1.png"
+                                                    alt="user image" style="width:150px">
+                                                </div>
+                                              </div>
+                                              <div class="swiper-slide">
+                                                <div class="fj-expierence-tb-image mobile_right">
+                                                  <img img src="../../assets/images/panel/slider_aap.png"
+                                                    alt="user image">
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!----slider_warp--->
+                                        <div class="category_list_box">
+                                          <ul class="swiper-container " [swiper]="slidefooddelivery">
+                                            <!-- Static categories if no category is added -->
+                                            <div class="swiper-wrapper" *ngIf="cateSliderImg ===0">
+                                              <li class="swiper-slide">
+                                                <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                                <p> category</p>
+                                              </li>
+                                              <li class="swiper-slide">
+                                                <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                                <p>category2</p>
+                                              </li>
+                                              <li class="swiper-slide">
+                                                <img img src="../../assets/images/panel/food_icon.png" alt="user image">
+                                                <p> category3</p>
+                                              </li>
+                                            </div>
+                                            <!-- dynamic categories if added -->
+                                            <div class="swiper-wrapper" *ngIf="cateSliderImg===1">
+                                              <li class="swiper-slide category_name"
+                                                *ngFor="let category of categoryList">
+                                                <img img src="{{siteURL+'/media/'+category.category_image}}"
+                                                  alt="user image">
+                                                <p> {{category.category_name}}</p>
+                                              </li>
+                                            </div>
+                                          </ul>
+                                        </div>
+                                        <!----box_list_offer--->
+                                        <div class="box_list_offer">
+                                          <h4>Give your app a name</h4>
+                                          <ul>
+                                            <li>
+                                              <img img src="../../assets/images/panel/slider_aap1.png" alt="user image">
+                                            </li>
+                                            <li>
+                                              <img img src="../../assets/images/panel/slider_aap1.png" alt="user image">
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <!---home_data-->
+                                      <div class="mobile_home" id="contact_data">
+                                        <h4> Contact Us</h4>
+                                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusantium
+                                          iurevoluptas.
+                                          Voluptate architecto tempora debitis eius magnam velit consectetur blanditiis
+                                          deserunt
+                                          corrupti cum. Maxime repudiandae accusamus illum harum ea!
+                                        </p>
+                                      </div>
+                                      <!--contact_data_data-->
+                                      <div class="mobile_home" id="terms_data">
+                                        <h4>Terms & Condition</h4>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusantium
+                                          iure
+                                          voluptas.
+                                          Voluptate architecto tempora debitis eius magnam velit consectetur blanditiis
+                                          deserunt
+                                          corrupti cum. Maxime repudiandae accusamus illum harum ea!
+                                        </p>
+                                      </div>
+                                      <!--contact_data_data-->
+                                    </div>
+                                    <!----mobile_scroll--->
+                                    <div class="box_line"></div>
+                                    <div class="screen_footer">
+                                      <ul>
+                                        <li>
+                                          <a href="javascript:void(0)" class="active_list nav_active">
+                                            <i class="fa fa-home" [ngStyle]="{color:userIconClr}">&nbsp; <span
+                                                class="nav_active">Home</span></i>
+                                          </a>
+                                        </li>
+
+                                        <li>
+                                          <a href="javascript:void(0)">
+                                            <i class="fa fa-home"> </i>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="javascript:void(0)">
+                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="javascript:void(0)">
+                                            <i class="fa fa-comment"> </i>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--tab-1-->
+                  <div id="appicon" class="tab-pane appicon-block fade ">
+                    <div class="flex_box_section">
+                      <div class="left_75">
+                        <div class="edit-app-radius">
+                          <h2 class="h2-common">Upload App Icon</h2>
+                          <!-- <input type="file" placeholder="Click to Upload" class="input-sample"> -->
+                          <span class="Upload_file form-control"> <label for="upload-photo" class="Upload">click to
+                              upload
+                            </label> <input type="file" name="appIconTxt" id="upload-photo"
+                              (change)="onChangeFile($event,'appIcon')">
+                          </span>
+                          <span id="appIconName"></span>
+                          <p>Or</p>
+                          <div class="create-icon-wrapper">
+                            <div class="tbfs-change">
+                              <h2 class="h2-common">Create App Icon</h2>
+                              <div class="tbfs-form">
+                                <ul class="box_list">
+                                  <li class="olor-box">
+                                    <label class="label-sample">Background Color</label>
+                                    <div class="hexcolor_para">
+                                      <input type="color" id="colorpicker" class="input-sample"
+                                        (change)="reflactIcon('clr', $event)" formControlName="app_icon_color"
+                                        [(ngModel)]="appIconClr">
+                                      <div id="hexcolor">{{appIconClr}}</div>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <label class="label-sample">App Icon Text</label>
+                                    <input type="text" placeholder="AP" class="input-sample" [(ngModel)]="appIconTxt"
+                                      (keyup)="reflactIcon('txt', $event)" formControlName="app_icon_name" maxlength="2"
+                                      [ngClass]="{ 'is-invalid': appsubmitted && updateappform.app_icon_name.errors }">
+                                    <div *ngIf="appsubmitted && updateappform.app_icon_name.errors"
+                                      class="invalid-feedback">
+                                      <div *ngIf="updateappform.app_icon_name.errors.required">Please enter your app
+                                        icon name</div>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <label class="label-sample">Font</label>
+                                    <select class="select-sample" formControlName="app_icon_font"
+                                      (change)="reflactIcon('font', $event)" [(ngModel)]="appIconFont">
+                                      <option [selected]="appIconFont === 'Helvetica'" value="Helvetica"> Helvetica
+                                      </option>
+                                      <option [selected]="appIconFont === 'Arial'" value="Arial">Arial </option>
+                                      <option [selected]="appIconFont === 'Cursive'" value="Cursive">Cursive</option>
+                                    </select>
+                                  </li>
+                                  <li>
+                                    <label class="label-sample">Size</label>
+                                    <select class="select-sample" (change)="reflactIcon('size', $event)"
+                                      formControlName="app_icon_size" [(ngModel)]="appIconSize">
+                                      <option [selected]="appIconSize === '12'" value="12">12</option>
+                                      <option [selected]="appIconSize === '13'" value="13">13</option>
+                                      <option [selected]="appIconSize === '14'" value="14">14</option>
+                                    </select>
+                                  </li>
+                                  <li>
+                                    <label class="label-sample">Icon Font Color</label>
+                                    <div class="hexcolor_para">
+                                      <!-- <input type="color" id="colorpicker"> -->
+                                      <input type="color" id="colorpicker" (change)="reflactIcon('fontclr', $event)"
+                                        name="" formControlName="icon_font_color" [value]=iconFontColor
+                                        [(ngModel)]="iconFontColor">
+                                      <div id="hexcolor"></div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="aip-block">
+                              <h2 class="h2-common">Preview</h2>
+                              <div class="icon-preview" *ngIf="icon_type==='custom'"
+                                [ngStyle]="{background:appIconClr}">
+                                <div
+                                  [ngStyle]="{'color': iconFontColor,'font-size':appIconSize, 'font-family':appIconFont}">
+                                  {{appIconTxt}}
+                                </div>
+                              </div>
+                              <div class="{{icon_type === 'upload'? 'icon-preview':''}}" id="appIconPrevImg">
+                                <img src="{{siteURL+'/media/'+appDetailRes.icon_values}}" alt=""
+                                  *ngIf="appDetailRes.icon_type==='upload'" width="137px" height="126px;">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="nextprev-button shadow-none bg-none">
+                          <button type="submit" class=" trans active btn btn-warning mr-0 trans active">Save1</button>
+                        </div> -->
+                      </div>
+                      <div class="right_25">
+                        <div class="mobile_wrap_top">
+                          <p class="text-center">
+                            <i aria-hidden="true" class="fa fa-eye"></i> &nbsp;App Preview
+                          </p>
+                          <div class="mobile-block">
+                            <div class="phone_para bag_reltiver">
+                              <div class="app_icon_bg">
+                                <div class="icon_priew">
+                                  <div class="icon_priew_box">
+                                    <div class="list_name text-center">
+                                      <div class="icon_priew_bg" *ngIf="icon_type === 'custom'"
+                                        [ngStyle]="{background:appIconClr}">
+                                        <!-- [innerHtml]="doHtmlDisplay(appIconTxt,5)" -->
+                                        <p class="appIconLogo"
+                                          [ngStyle]="{ 'color': iconFontColor, 'font-family':appIconFont }">
+                                          {{appIconTxt}}
+                                        </p>
+                                      </div>
+
+                                      <div *ngIf="icon_type === 'upload'" id="newAppIconImg">
+                                        <img src="{{siteURL+'/media/'+icon_values}}" width="32px" height="32px;"
+                                          style="border-radius:3px;">
+                                      </div>
+                                      <p class="appname">{{app_name}}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--tab2-->
+                  <div id="splashscreen" class="tab-pane appisplash-block fade">
+                    <div class="flex_box_section">
+                      <div class="left_75">
+                        <div class="edit-app-radius">
+                          <h2 class="h2-common">Upload App Icon</h2>
+                          <div class="appsplash-form">
+                            <span class="Upload_file form-control"> <label for="upload-photo_1" class="Upload">click to
+                                upload
+                              </label> <input type="file" (change)="onChangeFile($event,'splashIcon')"
+                                name="splashIconNm" id="upload-photo_1">
+                            </span>
+                            <span id="splashIconName"></span>
+                          </div>
+                          <p>Or</p>
+                          <div class="create-icon-wrapper">
+                            <div class="tbfs-change">
+                              <h2 class="h2-common">Create Splashscreen</h2>
+                              <div class="tbfs-form">
+                                <ul>
+                                  <li>
+                                    <label class="label-sample">Background Color</label>
+                                    <div class="hexcolor_para">
+                                      <input type="color" id="colorpicker" class="input-sample"
+                                        (change)="reflactSplashIcon('clr', $event)" [(ngModel)]="appSplashIconClr"
+                                        formControlName="splash_appclr">
+                                      <div id="hexcolor">{{appSplashIconClr}}</div>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <label class="label-sample">App Icon Text</label>
+                                    <input type="text" class="input-sample" name=""
+                                      (keyup)="reflactSplashIcon('txt', $event)" [(ngModel)]="appSplashIconTxt"
+                                      formControlName="splash_app_icon_name" placeholder="AP" maxlength="2"
+                                      [ngClass]="{ 'is-invalid': appsubmitted && updateappform.splash_app_icon_name.errors }">
+                                    <div *ngIf="appsubmitted && updateappform.splash_app_icon_name.errors"
+                                      class="invalid-feedback">
+                                      <div *ngIf="updateappform.splash_app_icon_name.errors.required">Please enter your
+                                        Splashscreen icon name
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <label class="label-sample">Font</label>
+                                    <select class="select-sample" (change)="reflactSplashIcon('font', $event)"
+                                      [(ngModel)]="appSplashIconFont" formControlName="splash_app_icon_font">
+                                      <option [selected]="appSplashIconFont === 'Helvetica'" value="Helvetica">Helvetica
+                                      </option>
+                                      <option [selected]="appSplashIconFont === 'Arial'" value="Arial">Arial</option>
+                                      <option [selected]="appSplashIconFont === 'Cursive'" value="Cursive">Cursive
+                                      </option>
+                                    </select>
+                                  </li>
+                                  <li>
+                                    <label class="label-sample">Size</label>
+                                    <select class="select-sample" (change)="reflactSplashIcon('size', $event)"
+                                      [(ngModel)]="appSplashIconSize" formControlName="splash_app_icon_size">
+
+                                      <option [selected]="appSplashIconSize === '12'" value="12">12
+                                      </option>
+                                      <option [selected]="appSplashIconSize === '13'" value="13">13
+                                      </option>
+                                      <option [selected]="appSplashIconSize === '14'" value="14">14
+                                      </option>
+                                    </select>
+                                  </li>
+                                  <li>
+                                    <label class="label-sample">Icon Font Color</label>
+                                    <div class="hexcolor_para">
+                                      <input type="color" id="colorpicker"
+                                        (change)="reflactSplashIcon('fontclr', $event)" name=""
+                                        formControlName="splashicon_font_color" [value]=appSplashIconFontClr
+                                        [(ngModel)]="appSplashIconFontClr">
+                                      <div id="hexcolor">{{appSplashIconFontClr}}</div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="aip-block">
+                              <h2 class="h2-common">Preview</h2>
+                              <div class="icon-preview" *ngIf="splashscreen_icon_type ==='custom'"
+                                [ngStyle]="{background:appSplashIconClr}">
+                                <div
+                                  [ngStyle]="{'color':appSplashIconFontClr,'font-size':appSplashIconSize, 'font-family':appSplashIconFont}">
+                                  {{appSplashIconTxt}}
+                                </div>
+                              </div>
+                              <div class="{{splashscreen_icon_type === 'upload' ?'icon-preview':''}}"
+                                id="newappsplashIconPrevImg">
+                                <img src="{{siteURL+'/media/'+appDetailRes.splashscreen_icon_value}}" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="nextprev-button bannCat_1">
+                          <span class="{{ msgClass }}">{{ message }}</span>
+                          <!-- <a href="javascript:void(0)" class="trans btn_transparent">Back</a>                             -->
+                          <button type="submit" class=" trans active btn btn-warning mr-0 trans active">Save</button>
+                        </div>
+                        <!-- <p><span *ngIf="message" class="{{ msgClass }}">Shraddha{{ message }}</span></p> -->
+                        <!-- <div class="nextprev-button">                         
+                          <button type="submit" class=" trans active btn btn-warning mr-0 trans active">Save</button>
+                        </div> -->
+                      </div>
+                      <div class="right_25">
+                        <div class="mobile_wrap_top">
+                          <p class="text-center">
+                            <i aria-hidden="true" class="fa fa-eye"></i> &nbsp;App Preview
+                          </p>
+                          <div class="mobile-block d-block">
+                            <div class="phone_para">
+                              <div class="app_icon_para" *ngIf="splashscreen_icon_type ==='custom'"
+                                [ngStyle]="{background:appSplashIconClr}">
+                                <div
+                                  [ngStyle]="{'color':appSplashIconFontClr,'font-size':appSplashIconSize, 'font-family':appSplashIconFont}">
+                                  {{appSplashIconTxt}}
+                                </div>
+                              </div>
+
+                              <div class="{{splashscreen_icon_type === 'upload' ?'app_icon_para':''}}"
+                                id="newappsplashIconPrevImg_right">
+                                <div *ngIf="splashscreen_icon_type === 'upload'">
+                                  <img src="{{siteURL+'/media/'+appDetailRes.splashscreen_icon_value}}" width="240px"
+                                    height="480px" style="border-radius:12px;" alt="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--------------tab-3 end------------->
+        <div id="tab_4" *ngIf="id === 'tab_4'" class="tab-warp-dashboard d-block">
+          <div class="dashboard_right-big-size">
+            <div class="edit-app-content-top-warp">
+              <div class="main-heading edit-app-content-top">
+                <h1 class="h1-common mb-0">Push Notifications</h1>
+              </div>
+            </div>
+            <div class="edit-app-content-data">
+              <p class="mb-0">Best way to connect with your users, delivering important and time-sensitive messages
+                directly to their mobile devices.
+              </p>
+              <p class="user-link-para">
+                <a routerLink="/faq" target="_blank">
+                  <span class="play-video">
+                    <img src="../../assets/images/panel/info.png"> More info
+                  </span>
+                </a>
+                <a href="javascript:void(0)" data-toggle="modal" data-target="#edit-app-content_modal_1">
+                  <span class="play-video">
+                    <img src="../../assets/images/panel/watch-t.png"> Watch Tutorials
+                  </span>
+                </a>
+              </p>
+            </div>
+            <div class="npaw-wrapper">
+              <div class="card-edit-app-content-data" *ngIf="firebaseConnected===0">
+                <h5><b>Connect to firebase to beging with push notification</b></h5>
+                <p>Go to Setting ><span class="firebase_not"> Firebase ></span> Upload files</p>
+                <div>
+                  <p><b>Need Help?</b></p>
+                  <p class="faq-firebase mb-1">
+                    <a routerLink="#"><i aria-hidden="true" class="fa fa-caret-right">
+                      </i> What are Push Notifications </a>
+                  </p>
+                  <p class="faq-firebase notifications notifications_m">
+                    <a routerLink="#"><i aria-hidden="true" class="fa fa-caret-right">
+                      </i> How to send Push Notifications </a>
+                  </p>
+                </div>
+              </div>
+              <div class="card-edit-app-content-data" *ngIf="firebaseConnected===1">
+                <ul role="tablist" class="step2-tab nav nav-tabs foodcafe-nav-list mt-0">
+                  <li *ngFor="let app_type of appListArr;" class="nav-item"><a class="trans nav-link"
+                      [ngClass]="app_type.app_uid === current_appuid ? 'active' : ''"
+                      (click)="showNotification(app_type.app_uid,0)">{{app_type.app_name}}</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="notifications-fitters">
+                    <div class="fitters-menu">
+                      <form>
+                        <div class="form-group mb-0" id="notificationFilter">
+                          <select class="form-control edit-app-conten-form pl-0" name="status"
+                            (change)="filterNotification($event)">
+                            <option value="0">All Notifications</option>
+                            <option value="2">Scheduled</option>
+                            <option value="1">Sent</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="notifications-add">
+                      <div class="additional-features">
+                        <p id="add-data" data-toggle="modal" data-target="#notification_modal"> New Notification &nbsp;
+                          <img src="assets/images/panel/add-icon.png" alt="ad">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="appearance" class="active tab-pane appearance-block">
+                    <span *ngIf="message" class="{{ msgClass }}">{{ message }}</span>
+                    <div class="card-body-data notifications-para" *ngFor="let notif of notiListArr">
+                      <div class="notifications-box img_box">
+                        <img src="{{notif.image}}" alt="notifications-box.png" width="90px">
+                      </div>
+                      <div class="notifications-box notifications_title_box">
+                        <div class="restaurantleft">
+                          <div class="notifications-add-icon">
+                            <h4>{{notif.notification_title}}</h4>
+                            <p class="notification-datils mb-2">{{notif.content}}</p>
+                            <p><small> {{notif.created_at}}</small>
+                              <!-- <button class="add-notifications text-white"> -->
+                              <button
+                                class="{{notif.status === 'Sent' ? 'add-notifications' : 'add-schedule'}} text-white">
+                                <small>{{notif.status}}</small>
+                              </button>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="add-icon-para right_box_title">
+                        <span *ngIf="notif.mstatus === 2" (click)="getNotificationDetails(notif.notification_id)"
+                          data-toggle="modal" data-target="#edit_notification_modal"><i aria-hidden="true"
+                            class="fa fa-pencil"></i>
+                        </span>
+                        <span (click)="deleteNotifications(notif.app_uid,notif.notification_id)"><i
+                            class="fa fa-trash-o"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <!--<img src="../../assets/images/panel/notifications-box.png" alt="notifications-box.png">-->
+                  </div>
+                  <!--tab-1-->
+                  <div id="appicon" class="tab-pane appicon-block fade">
+                    <div class="card-body-data notifications-para">
+                      <div class="notifications-box">
+                        <img src="../../assets/images/panel/notifications-box.png" alt="notifications-box.png">
+                      </div>
+                      <div class="notifications-box">
+                        <div class="restaurantleft">
+                          <div class="notifications-add-icon">
+                            <h4>Notification Title</h4>
+                            <div class="add-icon-para">
+                              <span><i aria-hidden="true" class="fa fa-pencil"></i> </span>
+                              <span><i class="fa fa-trash-o"></i> </span>
+                            </div>
+                          </div>
+                          <p class="notification-datils mb-0">Lorem ipsum dolor sit amet, docendi iracundia eam at. Est
+                            ad omnis adipisci, omnes propriae phaedrum has at. Et per legimus meliore sapientem
+                          </p>
+                          <p><small> on: 15th Oct, 2021 | 4:00pm</small> <button
+                              class="add-notifications text-white"><small>Scheduled</small> </button></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body-data notifications-para">
+                      <div class="notifications-box">
+                        <img src="../../assets/images/panel/notifications-box.png" alt="notifications-box.png">
+                      </div>
+                      <div class="notifications-box">
+                        <div class="restaurantleft">
+                          <div class="notifications-add-icon">
+                            <h4>Notification Title</h4>
+                            <div class="add-icon-para">
+                              <span><i aria-hidden="true" class="fa fa-pencil"></i> </span>
+                              <span><i class="fa fa-trash-o"></i> </span>
+                            </div>
+                          </div>
+                          <p class="notification-datils mb-0">Lorem ipsum dolor sit amet, docendi iracundia eam at. Est
+                            ad omnis adipisci, omnes propriae phaedrum has at. Et per legimus meliore sapientem
+                          </p>
+                          <p><small> on: 15th Oct, 2021 | 4:00pm</small> <button
+                              class="add-notifications text-white green-info"><small>Sent</small> </button></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--tab2-->
+                  <div id="splashscreen" class="tab-pane appisplash-block fade">
+                    <div class="card-body-data notifications-para">
+                      <div class="notifications-box">
+                        <img src="../../assets/images/panel/notifications-box.png" alt="notifications-box.png">
+                      </div>
+                      <div class="notifications-box">
+                        <div class="restaurantleft">
+                          <div class="notifications-add-icon">
+                            <h4>Notification Title</h4>
+                            <div class="add-icon-para">
+                              <span><i aria-hidden="true" class="fa fa-pencil"></i> </span>
+                              <span><i class="fa fa-trash-o"></i> </span>
+                            </div>
+                          </div>
+                          <p class="notification-datils mb-0">Lorem ipsum dolor sit amet, docendi iracundia eam at. Est
+                            ad omnis adipisci, omnes propriae phaedrum has at. Et per legimus meliore sapientem
+                          </p>
+                          <p><small> on: 15th Oct, 2021 | 4:00pm</small> <button
+                              class="add-notifications text-white"><small>Scheduled</small> </button></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body-data notifications-para">
+                      <div class="notifications-box">
+                        <img src="../../assets/images/panel/notifications-box.png" alt="notifications-box.png">
+                      </div>
+                      <div class="notifications-box">
+                        <div class="restaurantleft">
+                          <div class="notifications-add-icon">
+                            <h4>Notification Title</h4>
+                            <div class="add-icon-para">
+                              <span><i aria-hidden="true" class="fa fa-pencil"></i> </span>
+                              <span><i class="fa fa-trash-o"></i> </span>
+                            </div>
+                          </div>
+                          <p class="notification-datils mb-0">Lorem ipsum dolor sit amet, docendi iracundia eam at. Est
+                            ad omnis adipisci, omnes propriae phaedrum has at. Et per legimus meliore sapientem
+                          </p>
+                          <p><small> on: 15th Oct, 2021 | 4:00pm</small> <button
+                              class="add-notifications text-white green-info"><small>Sent</small> </button></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--tab-3-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--------------tab-4 end------------->
+        <div id="tab_5" *ngIf="id ===  'tab_5'" class="tab-warp-dashboard d-block">
+          <div class="dashboard_left-side">
+            <div class="edit-app-content-top-warp">
+              <div class="main-heading edit-app-content-top">
+                <h1 class="h1-common mb-0">Settings</h1>
+              </div>
+            </div>
+            <div class="edit-app-content-data">
+              <p class="mb-0">Lorem ipsum dolor sit amet, velit paulo veritus eos an, ut sit ornatus nostrum </p>
+            </div>
+            <div class="npaw-wrapper settings-tab" id="ecommerce_payment">
+              <div class="card-edit-app-content-data mb-4" id="ecommerce_payment1">
+                <div id="ecommerce_section">
+                  <div class="paymentstep_1" id="paymentstep_1">
+                    <div class="ecommerce-payment">
+                      <h5>Ecommerce & payment</h5>
+                    </div>
+                    <div class="faq-accordion">
+                      <div class="faq-card">
+                        <div class="faq-header">
+                          <div class="faq-accordion-left" onclick="myFunction()">
+                            <p class="payment-integration">Payment Integration</p>
+                            <span class="faq-title" id="payment-integration-para">
+                              Lorem ipsum dolor sit amet, docendi iracundia eam at. Est ad omnis adipisci, omnes
+                              propriae
+                              phaedrum has at. Et per legimus meliore sapientem
+                            </span>
+                          </div>
+                          <div class="faq-accordion-right">
+                            <span class="accicon-faq"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--paymentstep_1-->
+                  <div class="payment-integration-para paymentstep-1" id="paymentstep_2">
+                    <div class="payment-integration-para-content">
+                      <div class="scp-breadcrumb">
+                        <ul class="breadcrumb p-0">
+                          <li onclick="settingFunction()" class="pl-0 settingFunction">Settings</li>
+                          <li class="bold"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </li>
+                          <li class="active font-weight-bold">Payment Integration
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="payment-integration-box">
+                        <div class="d-flex" onclick="settingFunction()">
+                          <i aria-hidden="true" class="fa fa-angle-right"></i>
+                          <h5 class="box_payment">
+                            Payment Integration
+                          </h5>
+                        </div>
+                        <p class="payment-d">Lorem ipsum dolor sit amet, docendi iracundia eam at. Est ad omnis
+                          adipisci, omnes propriae phaedrum has at. Et per legimus meliore sapientem
+                        </p>
+                        <div class="payment-datils">
+                          <div class="payment-datils-data" *ngFor="let each of payMethodArr">
+                            <div class="payment_box">
+                              <div class="payment-datils-content">
+                                <img src="{{siteURL+'/media/'+each.image}}" alt="edt">
+                              </div>
+                              <div class="payment-datils-content">
+                                <h5 class="font-weight-bold">{{each.gateway_name}}</h5>
+                                <p class="mb-0">{{each.payment_desc}}</p>
+                                <p class="faq-firebase">
+                                  <a routerlink="#">
+                                    <i aria-hidden="true" class="fa fa-caret-right"></i> What are Push Notifications
+                                  </a>
+                                </p>
+                              </div>
+                              <div class="payment-datils-content conten-angle-right">
+                                <p id="paypal_show" onclick="paypalFunction()"><a
+                                    (click)="connectToPay(each.gateway_name)"> Connect</a>
+                                  <i aria-hidden="true" class="fa fa-angle-right"></i>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="payment-datils-demo mb-0">
+                        <div class="payment-demo-next">
+                          <img src="../../assets/images/panel/pay_pal.png" alt="edt">
+                        </div>
+                        <div class="payment-demo-next">
+                          <h4>Lorem ipsum dolor sit amet, docendi iracundia
+                          </h4>
+                          <p> 1 Restaurant partner apps to manage online orders. test
+                          </p>
+                          <a routerLink="/" class="checkprice">check price </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--paymentstep_2-->
+                <div id="tax_section">
+                  <div class="tax_step_1" id="tax_step_1">
+                    <div class="faq-card">
+                      <div class="faq-accordion">
+                        <div class="faq-card">
+                          <div class="faq-header">
+                            <div class="faq-accordion-left" onclick="taxFunction()">
+                              <p class="payment-integration">Tax</p>
+                              <span class="faq-title" id="payment-integration-para">
+                                Lorem ipsum dolor sit amet, docendi iracundia eam at. Est ad omnis adipisci, omnes
+                                propriae
+                                phaedrum has at. Et per legimus meliore sapientem
+                              </span>
+                            </div>
+                            <div class="faq-accordion-right">
+                              <span class="accicon-faq"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="payment-integration-para tax_step_2" id="tax_step_2">
+                    <div class="payment-integration-para-content">
+                      <div class="scp-breadcrumb">
+                        <ul class="breadcrumb p-0">
+                          <li onclick="settingFunction()" class="pl-0 settingFunction">Settings</li>
+                          <li class="bold"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </li>
+                          <li class="active font-weight-bold">Tax</li>
+                        </ul>
+                      </div>
+                      <div class="payment-integration-box">
+                        <div class="d-flex" onclick="settingFunction()">
+                          <i aria-hidden="true" class="fa fa-angle-right"></i>
+                          <h5 class="box_payment">Tax</h5>
+                        </div>
+                        <p class="payment-d">Manage how your business collects tax.</p>
+                        <!-- <p class="payment-d">Lorem ipsum dolor sit amet</p> -->
+                        <div class="payment-datils d-block mr-0 mb-0">
+                          <div class="country-name-para">
+                            <div class="country-name-para-list">
+                              <div class="payment-datils-country-name country_list">
+                                <h5 class="font-weight-bold"> country </h5>
+                              </div>
+                              <div class="payment-datils-country-name">
+                                <h5 class="font-weight-bold">tax rate</h5>
+                              </div>
+                            </div>
+                            <div class="country-name-para-list border-0 d-block">
+                              <form [formGroup]="taxForm" (ngSubmit)="taxFormSubmit()" novalidate=""
+                                class="tax_data_list">
+                                <div class="payment-datils-country-name d-flex justify-content-center">
+                                  <img src="../../assets/images/panel/india.png" alt="notifications-box.png">
+                                  <select class="select-sample mb-0" formControlName="country_name"
+                                    [(ngModel)]="taxDataArr.country_name" value="" placeholder="Select country"
+                                    [ngClass]="{'is-invalid': taxsubmitted && taxform.country_name.errors}">
+                                    <option *ngFor="let country of countryList" value="{{country.name}}"
+                                      ng-reflect-value="country" [selected]="country.name == taxDataArr.country_name">
+                                      {{country.name}}</option>
+                                  </select>
+                                  <div *ngIf="taxsubmitted && taxform.country_name.errors" class="invalid-feedback">
+                                    <div *ngIf="taxform.country_name.errors.required">Please select country</div>
+                                  </div>
+                                </div>
+                                <div class="payment-datils-country-name tax-rate">
+                                  <div novalidate="" class="appname-form w-100 pb-0 pt-0">
+                                    <input type="text" formControlName="tax_rate" placeholder="10%"
+                                      [(ngModel)]="taxDataArr.tax_rate" class="input-sample w-100 mb-0 font-weight-bold"
+                                      [ngClass]="{ 'is-invalid': taxsubmitted && taxform.tax_rate.errors }">
+                                    <div *ngIf="taxsubmitted && taxform.tax_rate.errors" class="invalid-feedback">
+                                      <div *ngIf="taxform.tax_rate.errors.required">Please enter Tax rate</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="nextprev-button payment-integration-button">
+                                  <button type="submit" class="add-price">Save</button>
+                                </div>
+                                <span *ngIf="addPayMsg" class="{{ addPayMsgCls }}">{{ addPayMsg }}</span>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--tax_section-->
+                <div id="shipping_section">
+                  <div class="faq-accordion mb-1">
+                    <div class="faq-card">
+                      <div class="faq-header" data-toggle="collapse" data-target="#collapse_4" aria-expanded="false">
+                        <div class="faq-accordion-left">
+                          <p class="payment-integration">Shipping</p>
+                          <span class="faq-title">
+                            Lorem ipsum dolor sit amet, docendi iracundia eam at. Est ad omnis adipisci, omnes propriae
+                            phaedrum has at. Et per legimus meliore sapientem
+                          </span>
+                        </div>
+                        <div class="faq-accordion-right">
+                          <span class="accicon-faq"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div id="collapse_4" class="collapse" data-parent="#accordionfaq">
+                        <div class="accordion-content">
+                          <p> Lorem ipsum dolor sit amet, an mei elitr civibus intellegat. Sit ei vero choro delicata.
+                          </p>
+                          <p> Lorem ipsum dolor sit amet, an mei elitr civibus intellegat. Sit ei vero choro delicata.
+                          </p>
+                          <p> Lorem ipsum dolor sit amet, an mei elitr civibus intellegat. Sit ei vero choro delicata.
+                          </p>
+                          <p> Lorem ipsum dolor sit amet, an mei elitr civibus intellegat. Sit ei vero choro delicata.
+                          </p>
+                          <p> Lorem ipsum dolor sit amet, an mei elitr civibus intellegat. Sit ei vero choro delicata.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--shipping_section-->
+              </div>
+              <!--tax-->
+              <div id="connection_section">
+                <div class="card-edit-app-content-data p-0">
+                  <div class="accordion">
+                    <div class="ecommerce-payment">
+                      <h5>External Connection</h5>
+                    </div>
+                    <div class="faq-accordion" id="connection_step_1">
+                      <div class="faq-card">
+                        <div class="faq-header" onclick="connectionFirebaseFunction()">
+                          <div class="faq-accordion-left">
+                            <p class="payment-integration">Firebase</p>
+                            <span class="faq-title">
+                              Lorem ipsum dolor sit amet, docendi iracundia eam at. Est ad omnis adipisci, omnes
+                              propriae
+                              phaedrum has at. Et per legimus meliore sapientem
+                            </span>
+                          </div>
+                          <div class="faq-accordion-right">
+                            <span class="accicon-faq"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion mt-4" id="connection_step_2">
+                      <div class="payment-integration-para">
+                        <div class="payment-integration-para-content">
+                          <div class="scp-breadcrumb">
+                            <ul class="breadcrumb p-0">
+                              <li onclick="settingFunction()" class="pl-0 settingFunction">Settings</li>
+                              <li><a href="#" class="font-dark"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                              </li>
+                              <li class="active font-weight-bold">Firebase</li>
+                            </ul>
+                          </div>
+                          <div class="payment-integration-box">
+                            <div class="d-flex" onclick="settingFunction()">
+                              <i aria-hidden="true" class="fa fa-angle-right"></i>
+                              <h5 class="box_payment">
+                                Firebase
+                              </h5>
+                            </div>
+                            <p class="payment-d">Upload Google Firebase Config Files</p>
+                            <div class="payment-datils-firebase">
+                              <div class="payment-datils-data-firebase mb-0">
+                                <div class="upload_file-firebase form-control">
+                                  <div class="upload_file-firebase-child">
+                                    <label for="upload-photo" class="Upload d-block">
+                                      <div class="center-box-firebase">
+                                        <i class="fa fa-android" aria-hidden="true"></i>
+                                        <span class="d-block firebase-file-type"> Browse .json file </span>
+                                      </div>
+                                    </label>
+                                    <input type="file" name="photo" id="upload-photo">
+                                  </div>
+                                </div>
+                                <p>
+                                  Upload the JSON config file for Android devices
+                                </p>
+                                <p class="faq-firebase">
+                                  <a routerLink="/">
+                                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                    How to Create a Firebase JSON File?
+                                  </a>
+                                </p>
+                              </div>
+                              <div class="payment-datils-data-firebase mb-0">
+                                <div class="upload_file-firebase form-control">
+                                  <div class="upload_file-firebase-child">
+                                    <label for="upload-photo" class="Upload d-block">
+                                      <div class="center-box-firebase">
+                                        <i class="fa fa-apple" aria-hidden="true"></i>
+                                        <span class="d-block firebase-file-type"> Browse .json file </span>
+                                      </div>
+                                    </label>
+                                    <input type="file" name="photo" id="upload-photo">
+                                  </div>
+                                </div>
+                                <p>
+                                  Upload the PLIST config file for iOS devices
+                                </p>
+                                <p class="faq-firebase">
+                                  <a routerLink="/">
+                                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                    How to Create a Firebase JSON File?
+                                  </a>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-edit-app-content-data p-0" id="api_section">
+                  <div class="faq-accordion">
+                    <div class="faq-card">
+                      <div class="faq-header">
+                        <div class="faq-accordion-left">
+                          <p class="payment-integration">API Keys</p>
+                          <span class="faq-title">
+                            Lorem ipsum dolor sit amet, docendi iracundia eam at. Est ad omnis adipisci, omnes propriae
+                            phaedrum has at. Et per legimus meliore sapientem
+                          </span>
+                        </div>
+                        <div class="faq-accordion-right">
+                          <span class="accicon-faq"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="faq-accordion mb-0">
+                    <div class="faq-card">
+                      <div class="faq-header">
+                        <div class="faq-accordion-left">
+                          <p class="payment-integration">Chatbox </p>
+                          <span class="faq-title">
+                            Lorem ipsum dolor sit amet, docendi iracundia eam at. Est ad omnis adipisci, omnes propriae
+                            phaedrum has at. Et per legimus meliore sapientem
+                          </span>
+                        </div>
+                        <div class="faq-accordion-right">
+                          <span class="accicon-faq"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--hide box--->
+            <div class="npaw-wrapper settings-tab" id="settings_paypal">
+              <div class="payment-integration-para paymentstep-1">
+                <div class="payment-integration-para-content">
+                  <div class="scp-breadcrumb p-0">
+                    <ul class="breadcrumb pt-0">
+                      <li class="pl-0 settingFunction" onclick="settingFunction()">Settings</li>
+                      <li class="bold"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                      </li>
+                      <li class="pl-0 settingFunction" onclick="paymentIntegrationFunction()">Payment Integration</li>
+                      <li class="bold"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                      </li>
+                      <li class="active font-weight-bold">{{payType}}</li>
+                    </ul>
+                  </div>
+
+                  <div class="payment-integration-box">
+                    <div class="d-flex" onclick="paymentIntegrationFunction()">
+                      <i aria-hidden="true" class="fa fa-angle-right"></i>
+                      <h5 class="box_payment">{{payType}}</h5>
+                    </div>
+                    <p class="payment-d mb-0">Lorem ipsum dolor sit amet, docendi iracundia eam at. Est ad omnis
+                      adipisci, omnes propriae phaedrum has at. Et per legimus meliore sapientem
+                    </p>
+
+                  </div>
+                  <div class="payment-datils d-block mt-0 mb-0">
+                    <form [formGroup]="paymentForm" (ngSubmit)="paymentFormSubmit()" novalidate=""
+                      class="appicon-form pb-0">
+                      <div class="payment-datils-form pt-1">
+                        <div class="razorpay_1">
+                          <input type="text" formControlName="client_ID" [(ngModel)]="clientId"
+                            placeholder="Client ID(PayPal live API credential)" class="input-sample"
+                            [ngClass]="{ 'is-invalid': paysubmitted && paymentform.client_ID.errors }">
+                          <div *ngIf="paysubmitted && paymentform.client_ID.errors" class="invalid-feedback">
+                            <div *ngIf="paymentform.client_ID.errors.required">
+                              <p>Please enter your client ID</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="razorpay_2">
+                          <input type="text" formControlName="secret" placeholder="Secret(PayPal live API credential)"
+                            class="input-sample" [(ngModel)]="seckretKey"
+                            [ngClass]="{ 'is-invalid': paysubmitted && paymentform.secret.errors }">
+                          <div *ngIf="paysubmitted && paymentform.secret.errors" class="invalid-feedback">
+                            <div *ngIf="paymentform.secret.errors.required">
+                              <p>Please enter your Secret Key</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="nextprev-button payment-integration-button">
+                        <span *ngIf="addPayMsg" class="{{ addPayMsgCls }}">{{ addPayMsg }}</span>
+                        <button type="submit" class="add-price">Save</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--------------tab-5 end------------->
+        <div id="tab_7_hide" class="tab-warp-dashboard">
+          <div class="dashboard_left-big-size">
+            <div class="edit-app-content-top-warp">
+              <div class="main-heading edit-app-content-top">
+                <h1 class="h1-common mb-0">Additional Apps</h1>
+              </div>
+            </div>
+            <div class="edit-app-content-data">
+              <p>Update your app appearance as per your preference</p>
+            </div>
+            <section>
+              <div class="npaw-wrapper" id="restaurant_step_1">
+                <div class="card-edit-app-content-data appearance-tab mb-3" *ngFor="let apps of additionalAppList">
+                  <div class="tab-content">
+                    <div class="additional-apps_para pt-0 pb-0">
+                      <div class="additional-apps-child">
+                        <h2 class="h2-common">{{apps.app_name}}</h2>
+                        <p>{{apps.app_descriptions}}</p>
+                        <p class="moredetail_retro"
+                          (click)="additionalAppsForm(apps.app_type,apps.additional_id,apps.app_name,apps.app_descriptions,apps.price,apps.pyment_status)">
+                          More Detail +</p>
+                      </div>
+                      <div class="additional-apps-child_1">
+                        <div class="restaurantleft billed-yearly" *ngIf="apps.pyment_status === 0">
+                          <h4 class="price">${{apps.price}}</h4>
+                          <small class="text-center d-block">Billed Yearly</small>
+                          <div class="">
+                            <button
+                              class="add-price small bg-light  border cartbtn_{{apps.additional_id}} addBtn_{{apps.additional_id}}"
+                              (click)="addToCart(apps.app_type,apps.additional_id,apps.app_name,apps.price,$event)">+&nbsp;Add</button>
+                            <!-- <button class="add-price addedBtn_{{apps.additional_id}}" style="display: none;">Added</button> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <div id="restaurant_step_2" class="additional_data_box">
+              <div class="card-edit-app-content-data appearance-tab mb-3">
+                <div class="tab-content">
+                  <div class="additional-apps_para pb-0 pt-0">
+                    <div class="additional-apps_para pt-0 pb-0">
+                      <div class="scp-breadcrumb mb-0">
+                        <ul class="breadcrumb pl-0 pb-0 mb-0 pt-0">
+                          <li class="pl-0">
+                            <p class="pl-0 settingFunctio" onclick="additional_appFunction()">Additional App</p>
+                          </li>
+                          <li>
+                            <a href="#" class="font-dark"><i aria-hidden="true" class="fa fa-angle-right"></i>
+                            </a>
+                          </li>
+                          <li class="active font-weight-bold">{{app_form_title}}</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div id="download_app_apk">
+                      <div class="restaurantleft billed-yearly">
+                        <div class="list_billd">
+                          <div class="box_month" *ngIf="aditionalAppDetails.apps_details_id">
+                            <h4 class="price_download">Download app apk </h4>
+                          </div>
+                          <div class="box_month" *ngIf="app_form_paystatus === 1">
+                            <button class="add-price small m-0" onclick="connectApp()"
+                              *ngIf="additionalapps_details_added === 0">Connect App</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="download_app_apk_1" *ngIf="app_form_paystatus === 0">
+                      <div class="restaurantleft billed-yearly">
+                        <div class="list_billd">
+                          <div class="box_month">
+                            <h4 class="price">${{app_form_price}}</h4>
+                            <small class="text-center d-block">Billed Yearly</small>
+                          </div>
+
+                          <div class="">
+                            <button
+                              class="add-price small bg-light  border cartbtn_{{app_form_appid}} addBtn_{{app_form_appid}}"
+                              (click)="addToCart(app_type,app_form_appid,app_form_title,app_form_price,$event)">+&nbsp;Add</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="box_partner">
+                    <h2 class="h2-common">{{app_form_title}}</h2>
+                    <p>{{app_form_desc}}</p>
+                  </div>
+                  <div class="multiple-apps-screen">
+                    <div class="multiple-apps-list">
+                      <h5>screens</h5>
+                      <div class="slide-relative">
+                        <ul class="swiper-container slide_partner_list" [swiper]="slidepartner">
+                          <div class="swiper-wrapper slide_partner">
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                            <li class="swiper-slide light_box_pop" data-toggle="modal"
+                              data-target="#restaurant_partner_pop">
+                              <img img src="../../assets/images/panel/partner-app-screen.png" alt="user image">
+                              <p>Screen Name</p>
+                            </li>
+                          </div>
+                        </ul>
+                        <div class="swiper-button-next partner-next"></div>
+                        <!-- <div class="swiper-button-prev partner-prev"></div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Lightbox -->
+
+              <div id="app_details" *ngIf="appDetailRes.app_progress === 2"
+                class="card-edit-app-content-data appearance-tab mt-0 pt-0">
+                <div class="app_datils_f">
+                  <h3>App Details</h3>
+                  <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                  <ul id="progressbar" class="progressbar">
+                    <li id="account" onclick="basicinfoFunction()"><span id="active1" class="tabs_f active">Basic
+                        Info</span>
+                    </li>
+                    <li id="personal" onclick="commissionFunction()"><span id="active2" class="tabs_f">Commission &
+                        Documents</span>
+                    </li>
+                    <li id="payment" onclick="terms_conditionFunction()"><span id="active3" class="tabs_f">Terms &
+                        Condition</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="npaw-wrapper">
+                  <div class="apps-screen-app-details">
+                    <div class="app-details">
+                      <div class="app-details-form">
+                        <div id="grad1">
+                          <div id="msform">
+                            <fieldset class="ms_data" id="formFirstState">
+                              <form [formGroup]="appDataForm" (ngSubmit)="additionalAppForminfoSubmit()">
+                                <div class="form-card">
+                                  <ul class="tab_list_partner d-block">
+                                    <li>
+                                      <label class="label-sample d-block">{{app_form_title}} name*</label>
+                                      <input type="text" placeholder="{{app_form_title}} name*" name="apps_name"
+                                        class="input-sample" [(ngModel)]="aditionalAppDetails.app_name"
+                                        formControlName="apps_name" value=""
+                                        [ngClass]="{'is-invalid': additionalAppSubmitted && appdataform.apps_name.errors}">
+
+                                      <input type="hidden" name="app_details_uid" class="input-sample"
+                                        [(ngModel)]="aditionalAppDetails.app_uid" id=""
+                                        formControlName="app_details_uid" value="">
+
+
+                                      <div *ngIf="additionalAppSubmitted && appdataform.apps_name.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="appdataform.apps_name.errors.required">Please enter your
+                                          {{app_form_title}} name</div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample"><span class="bold-para">Upload App
+                                          Icon*</span></label>
+                                      <span class="Upload_file form-control"><label for="upload-photo"
+                                          class="Upload pl-0">Click to Upload </label></span>
+                                      <input type="file" id="upload-photo" formControlName="icon_values"
+                                        (change)="onChangeFile($event,'additionalAppIcon')"
+                                        [ngClass]="{ 'is-invalid': additionalAppSubmitted && appdataform.icon_values.errors }">
+                                      <span class="splashscreen_list" id="additionalAppIcon_img"></span>
+                                      <div *ngIf="additionalAppSubmitted && appdataform.icon_values.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="appdataform.icon_values.errors.required">Please select app icon
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <label class="label-sample"><span class="bold-para">Upload
+                                          Splashscreen </span></label>
+                                      <span class="Upload_file form-control">
+                                        <label for="upload-photo" class="Upload pl-0">Click to Upload </label>
+                                        <input class="file_hide_list" type="file" id="upload-photo_"
+                                          formControlName="splashscreen_icon_value"
+                                          (change)="onChangeFile($event,'additionalAppSplashIcon')"
+                                          [ngClass]="{ 'is-invalid': additionalAppSubmitted && appdataform.splashscreen_icon_value.errors }">
+                                      </span>
+                                      <span class="splashscreen_list" id="additionalAppSplashIcon_img"></span>
+
+                                      <div *ngIf="additionalAppSubmitted && appdataform.splashscreen_icon_value.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="appdataform.splashscreen_icon_value.errors.required">Please select
+                                          splashscreen icon
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <button type="submit" class="next action-button add-price">Save & Next </button>
+                                <!-- <div *ngIf="aditionalAppDetails.apps_details_id">
+                                  <button type="button" class="action-button add-price"
+                                    (click)="additionalFormTab('formSecondState','formFirstState','formThirdState')">Next
+                                  </button>
+                                </div>
+                                <div *ngIf="aditionalAppDetails.length === 0">
+                                  <button type="submit" class="next action-button add-price">Save & Next </button>
+                                </div> -->
+                                <span class="{{addAdditionalSuccessCls}}">{{addAdditionalAppMsg}}</span>
+                              </form>
+                            </fieldset>
+                            <!---fieldset1-->
+                            <fieldset class="ms_data" id="formSecondState">
+                              <form [formGroup]="addDocsCommissionForm" (ngSubmit)="addDocsCommission()">
+                                <div class="form-card">
+                                  <ul class="tab_list_partner d-block">
+                                    <div class="documents-para">
+                                      <li id="commissionbox">
+                                        <label class="label-sample mb-0">Commission Rates %*</label>
+                                        <span class="d-block mb-2">Please add the commission rate you wish to charge
+                                        </span>
+
+                                        <input type="text" formControlName="commission" placeholder="5%"
+                                          class="input-sample" id="commission" value=""
+                                          [ngClass]="{ 'is-invalid': docommitionSubmitted && addDocsCommissionform.commission.errors }">
+
+                                        <div *ngIf="docommitionSubmitted && addDocsCommissionform.commission.errors"
+                                          class="invalid-feedback">
+                                          <div *ngIf="addDocsCommissionform.commission.errors.required">Please enter
+                                            commission</div>
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div class="document_puls-right"><label
+                                            class="label-sample mb-0">Documents*</label>
+                                          <span class="d-block mb-2">Add the document type required from
+                                            {{app_form_title}}
+                                          </span>
+                                        </div>
+                                      </li>
+                                    </div>
+                                    <li class="mb-0">
+                                      <div class="document_puls-right">
+                                        <!--*ngIf="docAddedStatus===0"-->
+                                        <div class="additional-features document_puls">
+                                          <p (click)="appenMoreDocs()"> Add&nbsp;
+                                            <img src="assets/images/panel/add-icon.png" alt="ad" />
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <div class="documents-para list_flex">
+                                      <li>
+                                        <div id="list_flex_box">
+                                          <div class="list_flex_box" *ngIf="docAddedStatus===0">
+                                            <!-- <span class="tick_mark"><i class="fa fa-times-circle-o"
+                                                aria-hidden="true"></i></span> -->
+                                            <input type="text" placeholder="Document Type 1"
+                                              formControlName="doc_type_1" id="doc_type_1" ngModel value=""
+                                              class="input-sample bg-white mb-0">
+
+                                            <input type="hidden" name="req_doc_id_1" id="req_doc_id_1" value="0">
+
+                                            <div class="notification_content-para-right radio-btn">
+                                              <p class="type_img">Image Type</p>
+                                              <label class="radio-inline pl-0 ml-0">
+                                                <input type="radio" name="image_required_1" class="radio_type" value="1"
+                                                  checked />
+                                                <span class="single_list">Single Image</span>
+                                              </label>
+                                              <label class="radio-inline">
+                                                <input type="radio" name="image_required_1" class="radio_type"
+                                                  value="2" />
+                                                <span class="single_list"> Front-back image</span>
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="list_flex_box_inner" *ngIf="docAddedStatus===1">
+                                            <!-- This section connected with db data -->
+                                            <div class="list_flex_box"
+                                              *ngFor="let val of docommissionListArr; let i=index;">
+                                              <span class="tick_mark"><a
+                                                  (click)="deleteDocument(val.required_document_id)"><i
+                                                    class="fa fa-times-circle-o" aria-hidden="true"></i></a></span>
+
+                                              <input type="text" formControlName="doc_type_{{i+1}}"
+                                                placeholder="Document Type {{i+1}}" id="doc_type_{{i+1}}"
+                                                [(ngModel)]="val.document_type"
+                                                value="{{val.document_type?val.document_type:''}}"
+                                                class="input-sample bg-white mb-0">
+
+                                              <input type="hidden" name="req_doc_id_{{i+1}}" id="req_doc_id_{{i+1}}"
+                                                value="{{val.required_document_id}}">
+
+                                              <div class="notification_content-para-right radio-btn">
+                                                <p class="type_img"> Image Type</p>
+                                                <label class="radio-inline pl-0 ml-0">
+                                                  <input type="radio" name="image_required_{{i+1}}" class="radio_type"
+                                                    value="1" [checked]="val.image_required === 1" />
+                                                  <span class="single_list">Single Image</span>
+                                                </label>
+                                                <label class="radio-inline">
+                                                  <input type="radio" name="image_required_{{i+1}}" class="radio_type"
+                                                    value="2" [checked]="val.image_required === 2" />
+                                                  <span class="single_list"> Front-back image</span>
+                                                </label>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="list_flex_box" *ngFor="let doc of documentsArr;">
+                                            <!-- This section will show after click on 'Add btn' -->
+                                            <div id="docDiv_{{doc}}">
+                                              <span class="tick_mark"> <a
+                                                  (click)="removeAppendedDiv('docDiv_'+ doc, doc)"><i
+                                                    class="fa fa-times-circle-o" aria-hidden="true"></i></a></span>
+
+                                              <input type="text" placeholder="Document Type {{doc}}"
+                                                id="doc_type_{{doc}}" class="input-sample bg-white mb-0">
+                                              <!-- formControlName="doc_type{{doc}}" -->
+                                              <input type="hidden" name="req_doc_id_{{doc}}" id="req_doc_id_{{doc}}"
+                                                value="0">
+
+                                              <div class="notification_content-para-right radio-btn">
+                                                <p class="type_img"> Image Type</p>
+                                                <label class="radio-inline pl-0 ml-0">
+                                                  <input type="radio" name="image_required_{{doc}}" class="radio_type"
+                                                    value="1" checked />
+                                                  <span class="single_list">Single Image</span>
+                                                </label>
+                                                <label class="radio-inline">
+                                                  <input type="radio" name="image_required_{{doc}}" class="radio_type"
+                                                    value="2" />
+                                                  <span class="single_list"> Front-back image</span>
+                                                </label>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </div>
+                                  </ul>
+                                </div>
+
+                                <button type="button" class="previous action-button-previous add-price"
+                                  (click)="additionalFormTab('formFirstState','formSecondState','formThirdState')">Previous</button>
+                                <!-- <div *ngIf="docNxtBtn===0">
+                                  <button type="submit" class="action-button add-price">Save & Next </button>
+                                </div>
+                                <div *ngIf="docNxtBtn===1">
+                                  <button type="button" class="action-button add-price"
+                                    (click)="additionalFormTab('formThirdState','formFirstState','formSecondState')">Next
+                                  </button>
+                                </div> -->
+                                <button type="submit" class="action-button add-price">Save & Next </button>
+                                <span class="{{addDocommissionMsgCls}}">{{addDocommissionMsg}}</span>
+                              </form>
+                            </fieldset>
+                            <!---fieldset2-->
+                            <fieldset class="ms_data mt-0" id="formThirdState">
+                              <form [formGroup]="addTermConditionForm" (ngSubmit)="addTermCondition()">
+                                <div class="form-card">
+                                  <div class="npaw-wrapper_list">
+                                    <div class="conditions">
+                                      <h5>
+                                        Terms & Conditions
+                                      </h5>
+                                      <p> Terms and Conditions agreement (T&C) is where you set out the rules and
+                                        restrictions for anyone who uses your mobile app.</p>
+                                      <textarea id="txtEditor" name="content" formControlName="content"
+                                        [ngClass]="{ 'is-invalid': termsCSubmitted && addTermConditionform.content.errors }"></textarea>
+                                      <!-- <textarea id="txtEditor"></textarea> -->
+                                      <div *ngIf="termsCSubmitted && addTermConditionform.content.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="addTermConditionform.content.errors.required">Please enter content
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <button type="button" class="previous action-button-previous add-price"
+                                  (click)="additionalFormTab('formSecondState','formFirstState','formThirdState')">Previous</button>
+                                <button class="action-button add-price" type="submit">Save </button>
+                                <span class="{{addtermsConditionMsgCls}}">{{addtermsConditionMsg}}</span>
+                              </form>
+                            </fieldset>
+                            <!---fieldset3-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rider_partner_last_space"></div>
+            <div class="rider_partner_last">
+              <div class="card-edit-app-content-data appearance-tab bg-primary text-white mb-3 checkoutDiv"
+                style="display: none;">
+                <div class="tab-content">
+                  <div class="additional-apps_para p-0">
+                    <div class="additional-apps-child rider-partner">
+                      <!-- <h2 class="h2-common">Rider Partner App</h2> -->
+                      <h4 class="price">$&nbsp;{{totAmmount}}</h4>
+                    </div>
+                    <div class="additional-apps-child_1">
+                      <div class="restaurantleft billed-yearly">
+                        <button class="add-price small bg-white font-weight-bold">
+                          <p class="checkout_list" (click)="checkout()">Checkout</p>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-----end tab-7----->
+      </div>
+    </div>
+  </div>
+</div>
+<!--Add-Notification_modal-->
+<div class="modal top fade" id="notification_modal">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content notification_modal-box border-0">
+      <div class="modal-header d-block border-0 pb-0">
+        <h4 class="modal-title notification-modal-title">Create New Notification</h4>
+        <p class="notification-modal-details">Drive engagement, increase app usage, influence conversions, and so much
+          more.</p>
+      </div>
+      <div class="modal-body">
+        <div class="notification_content">
+          <form [formGroup]="notificationForm" (ngSubmit)="addNotification()" id="notification-form" class="w-100"
+            enctype="multipart/form-data" method="post" action="#">
+            <div class="notification-form-data">
+              <div class="notification_content-para-left">
+                <h5>Notification Title</h5>
+                <p>Give a title to your notification</p>
+              </div>
+              <div class="notification_content-para-right">
+                <input type="text" formControlName="notification_title" placeholder="Write Title" class="input-sample"
+                  [ngClass]="{ 'is-invalid': submitted && notificationform.notification_title.errors }">
+                <div *ngIf="submitted && notificationform.notification_title.errors" class="invalid-feedback">
+                  <div *ngIf="notificationform.notification_title.errors.required">Please enter your notification title
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="notification-form-data">
+              <div class="notification_content-para-left">
+                <h5>Notification Description</h5>
+                <p>Add a relevant and engaging description</p>
+              </div>
+              <div class="notification_content-para-right">
+                <input type="text" formControlName="content" placeholder="Write Description" class="input-sample"
+                  [ngClass]="{ 'is-invalid': submitted && notificationform.content.errors }">
+                <div *ngIf="submitted && notificationform.content.errors" class="invalid-feedback">
+                  <div *ngIf="notificationform.content.errors.required">Please enter your content
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="notification-form-data">
+              <div class="notification_content-para-left">
+                <h5>Upload Image</h5>
+                <p>Drive more engagement with your users</p>
+              </div>
+              <div class="notification_content-para-right">
+                <span class="Upload_file form-control">
+                  <label for="upload-photo" class="Upload pl-0">Upload Image </label>
+                  <input class="file_hide_list" type="file" formControlName="notifImage" id="upload-photo1"
+                    (change)="onChangeFile($event,'notificationImg')" multiple="">
+                </span>
+                <span class="file-datils">Max. size 10 kb, Format : jpg, png, svg supported</span>
+                <div id="notificationImg_img"></div>
+              </div>
+            </div>
+            <div class="notification-form-data">
+              <div class="notification_content-para-left">
+                <h5>When</h5>
+                <p>Set when you want to send<br> notification </p>
+              </div>
+              <div class="notification_content-para-right radio-btn">
+                <label class="radio-inline pl-0 ml-0">
+                  <input type="radio" formControlName="scheduleNow" value="now" class="radio_type">Now
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" formControlName="scheduleNow" value="later" checked class="radio_type">Later
+                </label>
+                <div class="date-time-para">
+                  <div class="box-date">
+                    <label class="font-weight-bold"> Select Date</label>
+                    <input type="date" formControlName="notificationDate" placeholder="Select Date" class="input-sample"
+                      placeholder="Select Date">
+                  </div>
+                  <div class="box-date">
+                    <label class="font-weight-bold">Select Time</label>
+                    <input type="time" formControlName="notificationTime" placeholder="Select Date" class="input-sample"
+                      placeholder="Select Date">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nextprev-button notification_btn mb-0">
+              <button class="trans transparent_bg" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="add-price active" value="Save">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Edit Notification modal-->
+<div class="modal top fade" id="edit_notification_modal">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content notification_modal-box border-0">
+      <div class="modal-header d-block border-0">
+        <h4 class="modal-title notification-modal-title">Update Notification</h4>
+        <p class="notification-modal-details">Drive engagement, increase app usage, influence conversions, and so much
+          more.
+        </p>
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+      </div>
+      <div class="modal-body">
+        <div class="notification_content">
+          <form [formGroup]="editNotiForm" (ngSubmit)="updateNotification(notificationDetails.notification_id)"
+            id="edit-notification-form" class="w-100" enctype="multipart/form-data" method="post" action="#">
+            <div class="notification-form-data">
+              <div class="notification_content-para-left">
+                <h5>Notification Title</h5>
+                <p>Give a title to your notification</p>
+              </div>
+              <div class="notification_content-para-right">
+                <input type="text" formControlName="notification_title"
+                  [(ngModel)]="notificationDetails.notification_title" placeholder="Write Title" class="input-sample"
+                  [ngClass]="{ 'is-invalid': submitted && editnotificationform.notification_title.errors }">
+                <div *ngIf="submitted && editnotificationform.notification_title.errors" class="invalid-feedback">
+                  <div *ngIf="editnotificationform.notification_title.errors.required">Please enter your notification
+                    title
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="notification-form-data">
+              <div class="notification_content-para-left">
+                <h5>Notification Description</h5>
+                <p>Add a relevant and engaging description</p>
+              </div>
+              <div class="notification_content-para-right">
+                <input type="text" formControlName="content" [(ngModel)]="notificationDetails.content"
+                  placeholder="Write Description" class="input-sample"
+                  [ngClass]="{ 'is-invalid': submitted && editnotificationform.content.errors }">
+                <div *ngIf="submitted && editnotificationform.content.errors" class="invalid-feedback">
+                  <div *ngIf="editnotificationform.content.errors.required">Please enter your content
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="notification-form-data">
+              <div class="notification_content-para-left">
+                <h5>Upload Image</h5>
+                <p>Drive more engagement with your users</p>
+              </div>
+              <div class="notification_content-para-right">
+                <span class="Upload_file form-control">
+                  <label for="upload-photo_edit" class="Upload pl-0">Upload Image </label></span>
+                <input type="file" id="upload-photo_edit" (change)="onChangeFile($event,'editNotificationImg')"
+                  multiple="">
+                <span class="file-datils">Max. size 10 kb, Format : jpg, png, svg
+                  supported</span>
+                <div id="editNotificationImg_img"><img src="{{notificationDetails.image }}" width="40px"></div>
+              </div>
+            </div>
+            <div class="notification-form-data">
+              <div class="notification_content-para-left">
+                <h5>When</h5>
+                <p>Set when you want to send notification</p>
+              </div>
+              <div class="notification_content-para-right radio-btn">
+                <label class="radio-inline pl-0 ml-0">
+                  <input class="radio_type" type="radio" formControlName="scheduleNow" value="later" checked>Later
+                </label>
+                <div class="date-time-para">
+                  <div class="box-date">
+                    <label class="font-weight-bold"> Select Date </label>
+                    <input type="date" formControlName="notificationDate" placeholder="Select Date" class="input-sample"
+                      placeholder="Select Date" [(ngModel)]="notificationDetails.scheduled_date">
+                  </div>
+                  <div class="box-date">
+                    <label class="font-weight-bold">Select Time</label>
+                    <input type="time" formControlName="notificationTime" placeholder="Select Date" class="input-sample"
+                      placeholder="Select Date" [(ngModel)]="notificationDetails.scheduled_time">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nextprev-button notification_btn">
+              <button class="trans transparent_bg" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="add-price active" value="Save">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Notification Modal-->
+
+<!--Edit-app-content_modal-->
+<div class="modal top fade" id="edit-app-content_modal">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content notification_modal-box border-0">
+      <div class="modal-header d-block border-0">
+        <h4 class="modal-title notification-modal-title">Additional Features</h4>
+        <p class="notification-modal-details">Select as many features as you want from our additional feature sets </p>
+      </div>
+      <div class="modal-body">
+        <div class="notification_content">
+          <form id="notification-form" class="w-100" enctype="multipart/form-data">
+            <div class="addition-features-edit-app-content">
+              <ul class="edit-app-content-list">
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span data-toggle="tooltip" tooltip="Onboarding screens" tooltip-placement="right">Onboarding
+                      screens</span>
+                  </div>
+                </li>
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span data-toggle="tooltip" tooltip="Tutorials" tooltip-placement="right">Tutorials</span>
+                  </div>
+                </li>
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span data-toggle="tooltip" tooltip="Blog" tooltip-placement="right">Blog</span>
+                  </div>
+                </li>
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span>Multicurrency
+                      support</span>
+                  </div>
+                </li>
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span>Custom forms</span>
+                  </div>
+                </li>
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span>Language support</span>
+                  </div>
+                </li>
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span>Reservations</span>
+                  </div>
+                </li>
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span>Maps</span>
+                  </div>
+                </li>
+                <li class="list-active">
+                  <div class="list-child">
+                    <img src="../../assets/images/panel/features-icon.png" alt="icon">
+                    <span>Events</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="nextprev-button notification_btn">
+              <button class="trans transparent_bg" data-dismiss="modal">Cancel</button>
+              <button class="add-price active">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Edit-app-content_modal-->
+<!--Menu-Edit-->
+<div class="modal top fade" id="menu-edit">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content notification_modal-box border-0">
+      <div class="modal-body">
+        <div class="card-content-data">
+          <div class="card-header-data" id="heading-1-10">
+            <h5 class="mb-0">
+              <a class="collapsed menu-edit" role="button" data-toggle="collapse" href="#menu-edit-navigation-para"
+                aria-expanded="false" aria-controls="menu-edit-navigation-para" class="collapsed-edit navigation-para">
+                <b>Navigation</b>
+              </a>
+            </h5>
+          </div>
+          <div id="menu-edit-navigation-para" class="collapse show" data-parent="#menu-edit-navigation-para"
+            aria-labelledby="heading-1-10">
+            <div class="card-body-data-navigation-para">
+              <p>
+                <span class="app-menu font-weight-bold"> App Menu </span>
+              </p>
+              <p data-toggle="modal" data-target="#edit-app-content_modal" class="add-icon-para">
+                Add &nbsp;
+                <img src="assets/images/panel/add-icon.png" alt="ad">
+              </p>
+            </div>
+            <div class="app-menu-list">
+              <div class="dots-point-child">
+                <div class="times-circle">
+                  <p>Menu 1</p>
+                  <i class='fa fa-times-circle'></i>
+                </div>
+              </div>
+              <div class="dots-point-child">
+                <div class="times-circle">
+                  <p>Menu 2</p>
+                  <i class='fa fa-times-circle'></i>
+                </div>
+              </div>
+            </div>
+            <div class="app-menu-list">
+              <div class="dots-point-child">
+                <div class="times-circle">
+                  <p>Menu 3</p>
+                  <i class='fa fa-times-circle'></i>
+                </div>
+              </div>
+              <div class="dots-point-child mr-0">
+                <div class="times-circle">
+                  <p>Menu 4</p>
+                  <i class='fa fa-times-circle'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Menu-edit_modal-->
+<div class="modal top fade" id="edit-app-content_modal_1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content notification_modal-box border-0">
+      <div class="modal-header d-block border-0 p-0">
+        <h4 class="modal-title notification-modal-title"></h4>
+        <button type="button" class="close video-btn" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="notification_content">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="ContentVideo" class="embed-responsive-item" width="100%" height="auto"
+              src="https://www.youtube.com/embed/Dr_5PzRK7a0" title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="alert_1">
+  <p> This Panel can be viewed only on Desktop and Laptop screen resolution.</p>
+</div>
+<div class="modal top fade" id="restaurant_partner_pop">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content notification_modal-box border-0">
+      <div class="modal-header d-block border-0 p-0">
+        <h4 class="modal-title notification-modal-title"></h4>
+        <button type="button" class="close video-btn" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="notification_content">
+          <img src="assets/images/tutorial-steps.png" alt="user image">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

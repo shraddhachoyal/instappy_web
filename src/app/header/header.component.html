@@ -1,0 +1,79 @@
+<link crossorigin="use-credentials" rel="manifest" href="./manifest.json" />
+<section class="nstapp-navbar">
+  <div class="left_line_logo"></div>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false" id="btn_toggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+      <a class="navbar-brand" routerLink="/">
+        <img img src="assets/images/black-logo.svg">
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/" routerLinkActive="" [routerLinkActiveOptions]="{exact:true}">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/pricing" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}">Pricing</a>
+          </li>
+
+          <!-- <li class=" nav-item">
+              <a class="nav-link" href="#">Enterprise</a>
+          </li> -->
+          <!--    <li class="nav-item">
+              <a class="nav-link" href="#">Reseller</a>
+            </li> -->
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/blog" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}">Blog</a>
+          </li>
+          <li class="nav-item dropdown" [routerLinkActive]="['active']">
+            <a class="nav-link" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Resources <i class='fa fa-angle-down'></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+              <a class="dropdown-item" [routerLink]="['/faq']">Faq</a>
+              <a class="dropdown-item" [routerLink]="['/videos']">Videos</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}">Contact Us</a>
+          </li>
+          <!--<li class="nav-item" [ngStyle]="{'display': (checkLogin===true) ? 'block' : 'none'}">
+            <a class="nav-link secondary-btn" routerLink="/myaccount">Profile</a>
+          </li>
+          <li class="nav-item" [ngStyle]="{'display': (checkLogin===true) ? 'block' : 'none'}">
+            <a class="nav-link secondary-btn" (click)="logout()">Logout</a>
+          </li>
+          <li class="nav-item" [ngStyle]="{'display': (checkLogin===true) ? 'none' : 'block'}">
+            <a class="nav-link secondary-btn" routerLink="/login">Login</a>
+          </li>-->
+          <li class="nav-item" *ngIf="checkLogin===true">
+            <a class="nav-link secondary-btn" routerLink="/myaccount">Profile</a>
+          </li>
+          <li class="nav-item" *ngIf="checkLogin===true">
+            <a class="nav-link secondary-btn" (click)="logout()">Logout</a>
+          </li>
+          <li class="nav-item" *ngIf="checkLogin=== false">
+            <a class="nav-link secondary-btn" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link primary-btn" (click)="getStart()">Start for Free</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+<div class="header-height"></div>

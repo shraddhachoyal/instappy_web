@@ -1,0 +1,1520 @@
+ul.home-banner-main {
+    padding: 70px 0px !important;
+}
+
+/* ul.home-banner-main {height: 100vh; } */
+.home-banner-img {
+    position: relative;
+}
+
+ul.native-apps-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.home-banner-img {
+    text-align: right;
+}
+
+ngb-rating.d-inline-flex.rating_list {
+    color: #fcc748 !important;
+
+}
+
+.fj-expierence-tb-image>img {
+    border-radius: 0px !important;
+    width: auto;
+    filter: grayscale(1);
+}
+
+.image-width-height-set {
+    width: 400px;
+    height: 250px;
+    border-radius: 20px;
+
+}
+
+.img1a {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    max-width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    transition: ease all .3s;
+}
+
+.img2a {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    max-width: 100%;
+    margin-top: 0px;
+    margin-left: -85px;
+    transition: ease all .3s;
+}
+
+.img3a {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    max-width: 100%;
+    margin-top: 0px;
+    margin-left: -180px;
+    transition: ease all .3s;
+}
+
+
+
+/* Home banner css start */
+section.instappy-banner-section {
+    background: url("../../assets/images/top-banner/top-bg.png") no-repeat;
+    position: relative;
+    background-size: contain;
+}
+
+/* .slide-relative .swiper-wrapper {
+    margin: 0px 5px;
+} */
+
+.instappy-main-banner img {
+    max-width: 100%;
+}
+
+.banner-content-box {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 20px 0 0px;
+}
+
+.banner-content-box h2 {
+    font-family: "Proxima Nova Rg";
+    font-size: 44px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #000;
+}
+
+.banner-content-box p {
+    font-family: "Proxima Nova Rg";
+    font-size: 20px;
+    font-weight: normal;
+    width: 100%;
+    color: #000;
+}
+
+ul.banner-btn-box {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    margin: 10px 0 20px;
+}
+
+section.powerfull-feature-section ul.banner-btn-box {
+    justify-content: center;
+}
+
+ul.banner-btn-box li {
+    margin: 10px;
+}
+
+ul.banner-btn-box li:first-child {
+    margin-left: 0px;
+}
+
+.primary-btn {
+    background: #fdc40a;
+    color: #000;
+    font-family: "Proxima Nova Rg";
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid #fdc40a;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.blue-btn {
+    background: #197ad7;
+    color: #fff;
+    font-family: "Proxima Nova Rg";
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid #197ad7;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: #000;
+    font-family: "Proxima Nova Rg";
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1.5px solid #000;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: all 0.3s;
+}
+
+.primary-btn:hover,
+.primary-btn:active,
+.primary-btn:focus,
+.secondary-btn:hover,
+.secondary-btn:active,
+.secondary-btn:focus,
+.blue-btn:hover,
+.blue-btn:active,
+.blue-btn:focus {
+    color: unset;
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.secondary-btn:hover,
+.secondary-btn:active,
+.secondary-btn:focus {
+    color: #000 !important;
+    background: #fdc40a;
+    border-color: #fdc40a;
+}
+
+.secondary-btn i {
+    margin-right: 5px;
+}
+
+.blue-btn:hover,
+.blue-btn:active,
+.blue-btn:focus {
+    color: #fff;
+}
+
+.create-app-banner-box {
+    width: 60%;
+    margin: 0 auto 20px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 280px;
+}
+
+.create-app-banner-box input:focus,
+.create-app-banner-box input:visited,
+.create-app-banner-box input:active,
+.create-app-banner-box input {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    font-size: 16px;
+    color: #000;
+    height: calc(3em + 0.75rem + 2px);
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.transparent-btn:visited,
+.transparent-btn:focus,
+.transparent-btn:active {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.transparent-btn {
+    font-size: 16px;
+    color: #000;
+    font-family: "Proxima Nova Rg";
+    font-weight: 600;
+    background: #fff;
+}
+
+.transparent-btn i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.create-app-banner-box input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-size: 16px;
+    color: #000;
+    font-family: "Proxima Nova Rg";
+    font-weight: 500;
+}
+
+.create-app-banner-box input::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 16px;
+    color: #000;
+    font-family: "Proxima Nova Rg";
+    font-weight: 500;
+}
+
+.create-app-banner-box input:-ms-input-placeholder,
+.create-app-banner-box input:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 16px;
+    color: #000;
+    font-family: "Proxima Nova Rg";
+    font-weight: 500;
+}
+
+/* Home banner css end */
+/* New Home banner css start */
+.instappy-home-banner-section {
+    background: url(../../assets/images/background-img.jpg);
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+ul.home-banner-main {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.home-banner-img {
+    text-align: center;
+    padding: 25px;
+    min-height: 471px;
+}
+
+.home-banner-img img {
+    max-width: 100%;
+}
+
+.scale {
+    animation: scale 4s infinite alternate;
+}
+
+@keyframes scale {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+ul.home-banner-main>li {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+/* New Home banner css end */
+/* home page client logo section start */
+.client-slider-section {
+    padding: 20px 0;
+    background: #133150;
+}
+
+.base-heading h3 {
+    font-family: "Proxima Nova Rg";
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 25px;
+}
+
+/* home page client logo section end */
+/* home page feature box css start */
+.powerfull-feature-section {
+    /* background: url('../../assets/images/top-banner/top-bg.png')no-repeat; */
+    background: #f8fafd;
+    position: relative;
+    background-size: cover;
+    padding: 70px 0 50px;
+    background-position: center top;
+}
+
+.bold-heading {
+    margin-bottom: 50px;
+}
+
+.bold-heading h3 {
+    font-family: "Proxima Nova Rg";
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    color: #000;
+}
+
+.features-icon img {
+    width: 50px;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.instappy-features-box {
+    cursor: pointer;
+}
+
+.instappy-features-box .features-icon img {
+    -webkit-transition: 0.6s ease-out;
+    -moz-transition: 0.6s ease-out;
+    transition: 0.6s ease-out;
+}
+
+.instappy-features-box:hover .features-icon img {
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+}
+
+.secondary-btn span svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    margin-top: -2px;
+}
+
+.instappy-features-box h4 {
+    font-family: "Proxima Nova Rg";
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #000;
+}
+
+.steps-image-box {
+    position: relative;
+}
+
+.steps-image-box span.tin-icon {
+    left: auto;
+    right: 0;
+    bottom: auto;
+    top: -10px;
+}
+
+.instappy-features-box p {
+    font-family: "Proxima Nova Rg";
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 0 5px;
+    color: #000;
+    padding-right: 10px;
+}
+
+.slide-relative {
+    position: relative;
+}
+
+.slide-feature-box {
+    padding-bottom: 50px;
+}
+
+.bold-heading h3 span {
+    border-bottom: 5px solid #fdc40a;
+}
+
+.bold-heading p {
+    font-family: "Proxima Nova Rg";
+    font-size: 18px;
+    font-weight: normal;
+    width: 75%;
+    margin: 0 auto 10px;
+    color: #000;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgb(204 202 202 / 43%);
+    color: #000;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 12px;
+    color: #9d9d9d;
+}
+
+.swiper-button-prev {
+    left: -50px;
+}
+
+.swiper-button-next {
+    right: -50px;
+}
+
+/* Native apps for iOS and Android css start */
+
+.native-apps-section {
+    background: #fff;
+    position: relative;
+    padding: 70px 0 50px;
+
+}
+
+.native-apps-warp {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+
+
+}
+
+.native-apps-left-box {
+    flex: 0 0 25%;
+    position: relative;
+    z-index: 999;
+}
+
+.native-apps-left-box img {
+    max-width: 100%;
+}
+
+.native-apps-right-box {
+    margin-bottom: 30px;
+    flex: 0 0 72%;
+}
+
+.native-apps-bg-icon {
+    position: absolute;
+    right: -23px;
+    z-index: -1;
+    bottom: -26px;
+}
+
+.native-apps-screen {
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    border-radius: 25px;
+}
+
+.native-apps-right-box h4 {
+    font-family: "Proxima Nova Rg";
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    color: #000;
+}
+
+.native-apps-list {
+    padding: 0;
+    margin: 40px 0px 10px 0px;
+
+}
+
+.native-apps-warp li {
+    display: inline-block;
+    width: 33%;
+    position: relative;
+    z-index: 999;
+}
+
+.native-apps-list .list-dots {
+    background: #f8fafd;
+    border-radius: 20px;
+    box-shadow: 0 2px 15px rgb(204 202 202 / 43%);
+    text-align: center;
+    color: #197ad7;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 12px 16px;
+    font-family: "Proxima Nova Rg";
+}
+
+.list-dots-line {
+    border-bottom: 5px dotted #ccc;
+    position: absolute;
+    line-height: 0;
+    right: 0;
+    height: 10px;
+    width: 64%;
+    top: 8px;
+    left: 70px;
+    z-index: -1;
+    display: inline-block;
+
+}
+
+.list-dots-line-1 {
+    border-bottom: 5px dotted #ccc;
+    position: absolute;
+    line-height: 0;
+    right: 0;
+    height: 10px;
+    width: 64%;
+    top: 8px;
+    left: 75px;
+    z-index: -1;
+    display: inline-block;
+
+}
+
+.native-apps-para {
+    display: block;
+    margin: 25px 0px;
+    padding-right: 20px;
+}
+
+li:nth-child(4),
+li:nth-child(5),
+li:nth-child(6) {
+    margin-top: 30px;
+
+}
+
+.native-apps-btn-box li {
+    width: auto;
+}
+
+.native-apps-btn-box {
+    margin: 20px 0px;
+    padding-left: 0px;
+    gap: 20px;
+    display: flex;
+}
+
+
+
+
+
+
+/* blog*/
+
+section.instappy-blog {
+    background: #fff;
+    position: relative;
+    padding: 70px 0px 0px 0px;
+}
+
+.instappy-blog-post {
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: space-around;
+}
+
+.instappyblog-post-list {
+    flex: 0 0 31%;
+}
+
+.all-post-link {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.all-post-link a {
+    display: inline-block;
+    background-color: #fecd01;
+}
+
+.blog-post-link img {
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+
+.blog-post-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.blog-post-link h6 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.blog-post-link p {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+
+
+
+
+/* wizard section css start */
+section.instappy-wizard-section {
+    padding: 50px 0;
+}
+
+.image-box-design img {
+    max-width: 100%;
+}
+
+.instappy-wizard-box {
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    background: #f8fafd;
+    border-radius: 10px;
+    /* box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px; */
+    position: relative;
+}
+
+ul.design-pj-bx li,
+.relative-box {
+    position: relative;
+}
+
+ul.design-pj-bx li:before {
+    background: #fff;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 38%;
+    content: "";
+    vertical-align: middle;
+    border-radius: 50px;
+    border: 2px solid #197ad7;
+    left: -15px;
+}
+
+.instappy-wizard-box>li {
+    flex: 0 0 50%;
+}
+
+.instappy-wizard-box .btn-bx {
+    padding: 20px 0;
+}
+
+ul.design-pj-bx li {
+    flex: 0 0 43%;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+ul.design-pj-bx {
+    padding: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.image-box-design {
+    position: relative;
+}
+
+.wizard-image-box {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.wizard-content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: middle;
+    height: 100%;
+    padding: 50px;
+}
+
+.wizard-content-box h3 {
+    font-family: "Proxima Nova Rg";
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #000;
+}
+
+.wizard-content-box h3 span {
+    border-bottom: 5px solid #fdc40a;
+}
+
+.wizard-content-box p {
+    font-family: "Proxima Nova Rg";
+    font-size: 14px;
+    font-weight: normal;
+    margin: 10px 0;
+    color: #000;
+}
+
+.wizard-content-box h4 {
+    font-family: "Proxima Nova Rg";
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.wizard-download-box {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.fj-expierence-tb-image img {
+    max-width: 100%;
+    filter: grayscale(1);
+    margin-bottom: 0px;
+}
+
+.fj-expierence-tb-image img:hover {
+    filter: grayscale(1);
+}
+
+.wizard-download-box li {
+    margin-right: 15px;
+}
+
+.wizard-download-box li svg {
+    fill: #000;
+    width: 25px;
+    height: 25px;
+}
+
+.wizard-download-box li i {
+    color: #000;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.live-experience-box,
+.review-app-box {
+    position: absolute;
+}
+
+.review-app-box {
+    top: 150px;
+    left: -10px;
+}
+
+.live-experience-box {
+    bottom: 100px;
+    right: -10px;
+}
+
+#spin:after {
+    content: "";
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        content: "create";
+    }
+
+    50% {
+        content: "edit";
+    }
+
+    100% {
+        content: "publish";
+    }
+}
+
+/* wizard section css end */
+/* customstories section css start */
+.instappy-customstories-box {
+    position: relative;
+}
+
+.slide-customstories-box {
+    width: 99%;
+    padding: 0 0 20px;
+}
+
+.customstories-section {
+    background-color: #f8fafd;
+    padding: 50px 0px;
+}
+
+.instappy-customstories-box img {
+    max-width: 50px;
+    height: 100%;
+    z-index: 8;
+}
+
+.instappy-customstories-box-desc h4 {
+    font-size: 15px;
+    color: #000;
+    font-weight: 500;
+}
+
+.instappy-customstories-box-desc h4 span {
+    font-weight: 600;
+}
+
+.instappy-customstories-box-desc p {
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+}
+
+.customstories-prev {
+    left: -20px !important;
+}
+
+.customstories-next {
+    right: -20px !important;
+}
+
+.customstories-icon {
+    display: flex;
+    position: absolute;
+    top: -24px;
+}
+
+.instappy-customstories-box ul {
+    margin-left: -10px;
+    z-index: 0;
+    padding: 0 10px;
+    border-radius: 10px;
+    display: block;
+    background: #fff;
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    list-style: none;
+    margin-top: 10px;
+}
+
+ul.customstories-star li {
+    display: inline-block;
+}
+
+.instappy-customstories-box ul li i {
+    color: #fcc748;
+}
+
+.instappy-customstories-box {
+    background: #fff;
+    position: relative;
+    margin-top: 30px;
+    padding: 40px 20px 10px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    border-radius: 10px;
+}
+
+ul.customstories-star li {
+    margin: 0px 5px;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* faq */
+
+.faq-warp {
+    margin: 50px 0px;
+}
+
+#accordionfaq {
+    margin-bottom: 70px;
+}
+
+.faq-accordion {
+    border-radius: 10px;
+    padding: 20px 25px;
+    background: #f8fafd;
+    margin-bottom: 25px;
+}
+
+.accordion-content p {
+    color: #000000;
+    margin-bottom: 0px;
+}
+
+.accordion-content {
+    border-radius: 10px;
+    padding: 20px 30px;
+    background: #ffffff;
+    margin: 15px 18px 5px 18px;
+}
+
+.faq-header {
+    display: block;
+    cursor: pointer;
+}
+
+.accicon-faq {
+    margin-right: 15px;
+}
+
+.faq-title {
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* customstories section css end */
+span.tin-icon {
+    position: absolute;
+    right: 0px;
+    top: 38px;
+    z-index: -1;
+}
+
+.steps-image-box img {
+    max-width: 100%;
+}
+
+.click-box-icons img {
+    width: 50px;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    background: #f7f9fc;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.click-box-icons {
+    padding: 0px 10px;
+}
+
+.tabbing-custom {
+    position: relative;
+}
+
+.insta-click-tab {
+    display: flex;
+    background: #fff;
+    margin: 20px 0;
+    width: 35%;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.insta-click-tab.active {
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+
+.instappy-steps-section {
+    zoom: 1;
+    position: relative;
+    height: auto;
+    padding: 50px 0 20px;
+}
+
+.click-box h3 {
+    font-family: "Proxima Nova Rg";
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+}
+
+.insta-click-tab.active h3 {
+    margin-top: 0px;
+}
+
+.click-box h3 {
+    margin-top: 10px;
+}
+
+.click-box p {
+    font-size: 14px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    display: none;
+    padding: 5px 0 0;
+}
+
+.instappy-steps-section .active .click-box p {
+    display: block;
+}
+
+.insta-click-desc-box {
+    zoom: 1;
+    position: relative;
+    height: auto;
+    min-height: 100%;
+    display: none;
+}
+
+.transparent-btn i {
+    -webkit-text-stroke: 1px #fff;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.modal-header {
+    padding: 5px 10px;
+}
+
+.modal-body {
+    padding: 0px 10px 10px 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .insta-click-desc-box {
+        position: absolute;
+        width: 60%;
+        right: 0;
+        top: 0;
+    }
+}
+
+.instappy-steps-section .active+.insta-click-desc-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 1199.9px) {
+    ul.home-banner-main {
+        overflow: hidden;
+    }
+
+    .wizard-content-box {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 991.9px) {
+    ul.home-banner-main {
+        display: block;
+    }
+
+    .banner-content-box {
+        text-align: center;
+    }
+
+    ul.banner-btn-box {
+        justify-content: center;
+    }
+
+    section.instappy-wizard-section {
+        overflow: hidden;
+    }
+
+    .swiper-button-next {
+        right: -30px;
+    }
+
+    .swiper-button-prev {
+        left: -30px;
+    }
+
+    section.instappy-wizard-section {
+        padding-top: 0px;
+    }
+
+    .banner-content-box h2 {
+        font-size: 36px;
+    }
+
+    .bold-heading p {
+        width: 100%;
+    }
+
+    .insta-click-desc-box,
+    .insta-click-tab {
+        width: 100%;
+        position: relative;
+    }
+
+    .instappy-wizard-box {
+        flex-wrap: wrap;
+    }
+
+    .instappy-wizard-box>li:last-child {
+        flex: 0 0 100%;
+    }
+
+    .instappy-wizard-box>li:first-child {
+        flex: 0 0 100%;
+    }
+
+    .wizard-image-box {
+        position: relative;
+    }
+
+    .wizard-content-box h3 {
+        font-size: 28px;
+    }
+
+    /*section.instappy-banner-section {
+background-size: cover;
+}*/
+    section.instappy-banner-section {
+        background-size: 100% 75%;
+    }
+
+    .create-app-banner-box {
+        bottom: 100px;
+    }
+}
+
+.transparent-btn i {
+    -webkit-text-stroke: 1px #fff;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.modal-header {
+    padding: 5px 10px;
+}
+
+.modal-body {
+    padding: 0px 10px 10px 10px;
+}
+
+
+
+
+
+
+
+@media (max-width: 767.9px) {
+    .img1a {
+        margin-left: 0px;
+    }
+
+    .img2a {
+        margin-left: -50px;
+    }
+
+    .img3a {
+        margin-left: -150px;
+    }
+
+    ul.home-banner-main {
+        padding: 30px 0px 50px !important;
+    }
+
+    .home-banner-img {
+        margin-top: 30px;
+    }
+
+    .home-banner-img img {
+        max-width: 70%;
+    }
+
+    .instappy-main-footer {
+        padding-bottom: 20px !important;
+    }
+
+    button.btn.transparent-btn span {
+        display: none;
+    }
+
+    .footer-logo a svg {
+        width: 60%;
+    }
+
+    .footer-logo {
+        text-align: center;
+    }
+
+    .instappy-social-links li i {
+        color: #000;
+        font-size: 20px;
+    }
+
+    .instappy-social-links li {
+        padding-top: 10px;
+    }
+
+    .desktp-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .instappy-social-links {
+        text-align: center;
+    }
+
+    .wizard-content-box h4 {
+        font-weight: 600;
+    }
+
+    .instappy-footer-links {
+        text-align: center;
+    }
+
+    .wizard-content-box {
+        text-align: center;
+    }
+
+    .wizard-download-box {
+        justify-content: center;
+    }
+
+    .instappy-features-box {
+        text-align: center;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        background: #ffffff40;
+        width: 30px;
+        height: 30px;
+    }
+
+    section.powerfull-feature-section ul.banner-btn-box {
+        margin-bottom: 0;
+    }
+
+    .review-app-box {
+        top: 100px;
+    }
+
+    section.instappy-wizard-section {
+        padding: 0px 0;
+        overflow: hidden;
+    }
+
+    .powerfull-feature-section {
+        padding: 50px 0px;
+    }
+
+    .client-slider-section {
+        padding: 30px 0;
+        background: #133150;
+    }
+
+    section.instappy-banner-section .banner-content-box h2 {
+        font-size: 40px;
+    }
+
+    .bold-heading p,
+    .banner-content-box p {
+        font-size: 16px;
+    }
+
+    .instappy-wizard-box {
+        display: block;
+    }
+
+    .wizard-image-box {
+        position: relative;
+    }
+
+    .bold-heading h3 {
+        font-size: 26px;
+    }
+
+    .slide-relative {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .slide-expierence-box img {
+        width: 100%;
+    }
+
+    .create-app-banner-box {
+        width: 80%;
+    }
+
+    .bold-heading h3 span {
+        border-bottom: 3px solid #fdc40a;
+    }
+
+    .wizard-content-box h3 span {
+        border-bottom: 3px solid #fdc40a;
+    }
+}
+
+@media (max-width: 576.9px) {
+    ul.design-pj-bx li {
+        flex: 0 0 100%;
+        text-align: left;
+    }
+
+    ul.native-apps-btn-box {
+        display: block;
+    }
+
+    ul.native-apps-btn-box>li>a {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .banner-content-box h2 {
+        font-size: 26px;
+    }
+
+    ul.banner-btn-box li {
+        margin: 0;
+    }
+
+    .review-app-box {
+        top: 50px;
+        left: 0;
+    }
+
+    .live-experience-box {
+        bottom: 50px;
+        right: 0;
+    }
+
+    ul.banner-btn-box {
+        display: block;
+    }
+
+    ul.banner-btn-box li a {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    ul.banner-btn-box li {
+        margin-bottom: 20px;
+    }
+
+    ul.banner-btn-box li:last-child {
+        margin-bottom: 0;
+    }
+
+}
+
+@media (max-width: 479.9px) {
+
+    section.instappy-banner-section {
+        background-size: 100% 80%;
+    }
+
+    .create-app-banner-box {
+        bottom: 50px;
+    }
+
+    .swiper-button-next {
+        right: -30px;
+    }
+
+    .swiper-button-prev {
+        left: -30px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .faq-title {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .instappyblog-post-list {
+        text-align: center;
+    }
+
+    .accordion-content {
+        padding: 8px 8px;
+        margin: 9px 0px 0px 0px;
+    }
+
+    .faq-accordion {
+        padding: 11px 10px;
+        margin-bottom: 15px;
+    }
+
+    .accordion-content p {
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .faq-header {
+        display: flex;
+    }
+
+    .native-apps-warp {
+        display: block;
+        gap: 0px;
+        text-align: center;
+    }
+
+    .native-apps-right-box h4 {
+        font-size: 26px;
+        margin: 0 0 0px;
+
+    }
+
+    .native-apps-warp li {
+        width: 100%;
+
+    }
+
+    .list-dots-line,
+    .list-dots-line-1 {
+        display: none;
+    }
+
+    .native-apps-para {
+        margin: 23px 0px;
+        padding-right: 0px;
+    }
+
+    .instappy-blog-post {
+        display: block;
+        gap: 0px;
+    }
+
+    .blog-post-link h6 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 40px;
+    }
+
+    .blog-post-link p {
+        margin-bottom: 4px;
+        font-weight: 500;
+    }
+
+    .all-post-link a {
+        display: block;
+    }
+
+    .native-apps-section {
+        padding: 30px 0 30px;
+    }
+
+    .native-apps-left-box {
+        flex: 100%;
+        margin-bottom: 30px;
+    }
+
+    .mobile-view {
+        display: block;
+    }
+
+    .native-apps-bg-icon {
+        position: absolute;
+        right: 84px;
+        bottom: -32px;
+    }
+
+    section.faq {
+        padding-top: 50px;
+    }
+
+    ul.native-apps-list {
+        display: block;
+
+    }
+}

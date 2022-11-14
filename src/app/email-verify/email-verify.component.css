@@ -1,0 +1,56 @@
+.varify-desc {
+    text-align: center;
+    padding-top: 30px;
+    font-family: "Proxima Nova Rg";
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.varify-header-bx > h3 {
+    text-align: center;
+    font-family: "Proxima Nova Rg";
+    font-weight: 700;
+}
+
+.varify-icon {    
+    padding-top: 20px;
+}
+
+.login_page {
+    text-decoration: none;
+    /* color: rgb(62, 61, 61); */
+}
+
+.varification-bx > ul >li {
+    list-style: none;
+}
+
+section.varify-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: middle;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.varification-bx {    
+    padding: 30px 0;
+    border-radius: 20px;
+    box-shadow: 0 1px 5px #8e8282;
+    box-shadow: 0px 5px 12px 0px rgb(51 51 51 / 14%);
+    /* background-color: #fafcfe; */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#login_button {
+    font-family: "Proxima Nova Rg";
+    font-weight: 700;
+    font-size: 20px;
+    width: 15%;
+}

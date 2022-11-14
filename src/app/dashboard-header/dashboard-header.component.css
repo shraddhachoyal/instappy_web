@@ -1,0 +1,482 @@
+section.nstapp-navbar {
+  background: #fff;
+  border-left: 10px solid #fdc40a;
+  box-shadow: 1px 3px 4px #ebebeb;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown .dropdown-menu {
+  display: none;
+  box-shadow: 1px 3px 4px #ebebeb;
+
+}
+
+
+.dropdown-toggle {
+  border: none;
+  background-color: transparent;
+  border-radius: 0rem;
+}
+
+.dropdown-menu.show {
+  border-radius: 0px;
+  margin-top: 20px;
+  box-shadow: 1px 3px 4px #ebebeb;
+}
+
+.dropdown-menu.logout-nth.show {
+  margin-top: 17.5px;
+}
+
+.dropdown-menu {
+  border: none;
+  padding: 0;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background: transparent;
+
+}
+
+.dropdown-item {
+  padding: 12px 20px;
+
+}
+
+
+.secondary-btn {
+  color: #000;
+  font-family: 'Proxima Nova Rg';
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1.5px solid #000;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: all .3s;
+}
+
+.primary-btn {
+  background: #fdc40a;
+  color: #000;
+  font-family: 'Proxima Nova Rg';
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid #fdc40a;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.primary-btn:hover,
+.primary-btn:active,
+.primary-btn:focus,
+.secondary-btn:hover,
+.secondary-btn:active,
+.secondary-btn:focus,
+.blue-btn:hover,
+.blue-btn:active,
+.blue-btn:focus {
+  color: unset;
+  box-shadow: 0 0 11px rgb(33 33 33 / 20%);
+}
+
+div#navbar ul li a:hover:after {
+  width: 100%;
+}
+
+a.navbar-brand img {
+  width: 150px;
+  height: 50px;
+}
+
+.navbar-toggle {
+  border: none;
+  background: transparent;
+  transform: rotate(180deg);
+}
+
+.navbar-toggle:hover {
+  background: transparent;
+}
+
+a.nav-link.primary-btn:after,
+a.nav-link.secondary-btn:after {
+  display: none;
+}
+
+a.nav-link.primary-btn:hover,
+a.nav-link.secondary-btn:hover {
+  color: unset !important;
+}
+
+.navbar-toggle .icon-bar {
+  width: 22px;
+  left: 3px;
+  transition: all 0.2s;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.navbar-toggle.collapsed .icon-bar:nth-child(1) {
+  display: block;
+  background: #333;
+  color: black;
+  height: 3px;
+  border-radius: 50px;
+  width: 22px;
+}
+
+.navbar-toggle.collapsed .icon-bar:nth-child(2) {
+  width: 30px;
+
+}
+
+.navbar-toggle .icon-bar:nth-child(2) {
+  display: block;
+  background: #333;
+  color: black;
+  height: 3px;
+  border-radius: 50px;
+  opacity: 0;
+}
+
+.navbar-toggle.collapsed .icon-bar:nth-child(3) {
+  display: block;
+  background: #333;
+  color: black;
+  height: 3px;
+  border-radius: 50px;
+  width: 22px;
+}
+
+.navbar-toggle .icon-bar:nth-child(1) {
+  width: 30px;
+  display: block;
+  background: #333;
+  color: black;
+  height: 3px;
+  border-radius: 50px;
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+
+.navbar-toggle .icon-bar:nth-child(3) {
+  width: 30px;
+  display: block;
+  background: #333;
+  color: black;
+  height: 3px;
+  border-radius: 50px;
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+
+.navbar-toggle.collapsed .icon-bar:nth-child(1) {
+  transform: rotate(0);
+}
+
+.navbar-toggle.collapsed .icon-bar:nth-child(2) {
+  opacity: 1;
+}
+
+.navbar-toggle.collapsed .icon-bar:nth-child(3) {
+  transform: rotate(0);
+}
+
+.navbar-toggle.collapsed .icon-bar {
+  left: 0;
+}
+
+
+.navbar-expand-lg .navbar-nav li {
+  padding: 0px 10px;
+  position: relative;
+  display: block;
+  border-right: 1px solid #ccc;
+}
+
+.navbar-expand-lg .navbar-nav li a,
+.navbar-light .navbar-nav .nav-link {
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Proxima Nova Rg';
+  font-size: 14px;
+}
+
+a.nav-link.primary-btn,
+a.nav-link.secondary-btn {
+  padding: .5rem 1.5rem !important;
+  font-weight: 600;
+}
+
+a.nav-link.secondary-btn {
+  font-weight: 600;
+}
+
+.navbar-expand-lg .navbar-nav li:last-child {
+  margin-right: 0;
+}
+
+.btn-primary.border-0.text-white {
+  border-radius: 8px;
+  padding: 8px 15px;
+  border: none;
+  outline: none;
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+
+a#navbar-dropdown>i.fa.fa-user {
+  width: 35px;
+  height: 35px;
+  color: #007bff;
+  background: #dfeffa;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 100px;
+  font-size: 20px;
+}
+
+a#navbar-dropdown>i.fa.fa-user:hover {
+  color: #ffffff;
+  background: #0069d9;
+  transition: all 0.5s;
+
+}
+
+.navbar-expand-lg .navbar-nav {
+  flex-direction: row;
+  align-items: center;
+}
+
+.dropdown-menu {
+  min-width: 7rem;
+  border-radius: 0px;
+
+}
+
+@media (max-width: 1199.9px) {
+
+  .navbar-expand-lg .navbar-nav li a,
+  .navbar-light .navbar-nav .nav-link {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 991.9px) {
+  .navbar-expand-lg .navbar-nav li {
+    margin-bottom: 15px;
+    margin-right: 0px;
+  }
+
+  .navbar-expand-lg .navbar-nav li a,
+  .navbar-light .navbar-nav .nav-link {
+    font-size: 16px;
+  }
+
+  nav.navbar.navbar-expand-lg.navbar-light.bg-white {
+    padding: 0;
+  }
+
+  nav.navbar.navbar-expand-lg.navbar-light.bg-white {
+    flex-direction: row-reverse;
+  }
+
+  .nav-link.secondary-btn {
+    width: auto !important;
+    text-align: center;
+  }
+
+  .nav-link.primary-btn {
+    width: auto !important;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+
+.dashboard_box {
+  border-radius: 14px;
+  box-shadow: 0px 5px 12px 0px rgb(51 51 51 / 14%);
+  padding: 23px;
+  box-sizing: border-box;
+  background: #f9fafc;
+  margin-bottom: 2rem;
+  width: 500px;
+
+}
+
+.set-up-your-app {
+  display: flex;
+  grid-gap: 20px;
+  gap: 20px;
+}
+
+.additional-app {
+  margin-bottom: 18px;
+}
+
+.restaurantleft h4 {
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Proxima Nova';
+  margin-bottom: 0px;
+}
+
+.edit-para {
+  position: relative;
+}
+
+.edit-para h4 {
+  display: inline-block;
+}
+
+.restaurantleft h4 {
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Proxima Nova';
+  margin-bottom: 0px;
+}
+
+.edit-para span {
+  text-align: right;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  color: #197ad7;
+}
+
+.rider-app {
+  margin-top: 18px;
+}
+
+.dnumbers-restaurant-app {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 15px 20px;
+  border-radius: 10px;
+  grid-gap: 40px;
+  background: #fbfbfb;
+  gap: 40px;
+}
+
+.restaurantleft p {
+  margin-bottom: 0px;
+}
+
+.edit-wawp {
+  font-size: 14px;
+}
+
+.dropdown-menu.dashboard_right.show {
+  box-shadow: none;
+  background: transparent;
+  margin-top: 10px;
+}
+
+.set-app {
+  padding-left: 30px;
+  border-left: 1px solid #cccccc75;
+  margin-left: 30px;
+}
+
+a#navbar-dropdown>img {
+  max-width: 25%;
+}
+
+.left_line_logo {
+  display: none;
+}
+
+div#restaurant_step_2 {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0px 5px 12px 0px rgb(51 51 51 / 14%);
+  box-sizing: border-box;
+
+}
+
+@media (max-width: 767px) {
+
+
+  .left_line_logo {
+    border-left: 6px solid #fdc40a;
+    height: 60px;
+    float: left;
+    clear: both;
+    display: block;
+  }
+
+  section.nstapp-navbar {
+    border: none;
+  }
+
+  section.nstapp-navbar {
+    border: none;
+  }
+
+  ul.navbar-nav>li {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  ul.navbar-nav.ml-auto.mt-2.mt-lg-0 {
+    display: block;
+    margin-top: 20px !important;
+    padding-bottom: 20px;
+  }
+
+  li.nav-item {
+    border-right: 0px;
+  }
+
+  .dropdown-menu.show {
+    box-shadow: none !important;
+  }
+
+  .navbar-expand-lg .navbar-nav li {
+    border-right: 0px;
+  }
+
+  ul.navbar-nav.ml-auto.mt-2.mt-lg-0>li {
+    margin-bottom: 0px;
+  }
+
+  .dropdown-menu.show {
+    margin-top: 0px;
+  }
+
+  .dropdown-item {
+    padding: 6px 0px;
+  }
+
+  .set-app {
+    padding-left: 0px;
+    border-left: none;
+    margin-left: 0px;
+  }
+
+  .set-app {
+    display: none;
+  }
+}

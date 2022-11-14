@@ -1,0 +1,210 @@
+.video-bg {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 80px 0px;
+}
+
+.video-bg p {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.video-bg h2 {
+    color: #222f37;
+    font-family: "Proxima Nova Rg";
+    font-weight: bold;
+    font-size: 44px;
+    margin: 0 0 5px;
+}
+
+section.instappy-wizard-section {
+    background: url("../../assets/images/faq/banner.png") no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.video-title {
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.video-title p {
+    font-size: 18px;
+    text-align: left;
+}
+
+.video-play {
+    position: relative;
+    /* height: 220px; */
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.video-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 15px;
+    box-sizing: border-box;
+}
+
+.video-box {
+    text-align: center;
+    flex: 0 0 32%;
+    margin-bottom: 10px;
+}
+
+.video-play img {
+    max-width: 100%;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.play-hover:hover {
+    opacity: 0.5;
+    transition: all 0.5s;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+
+}
+
+.tab-active {
+    color: #222f37;
+    font-weight: 600;
+    border-bottom: 2px solid #fecd01;
+}
+
+.list-video-tab {
+    text-align: center;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+ul.list-video-tab li {
+    list-style: none;
+    display: inline-block;
+    margin: 20px 16px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.video-tab {
+    margin-bottom: 30px;
+}
+
+.modal-header {
+    padding: 5px 10px;
+}
+
+.modal-body {
+    padding: 0px 10px 10px 10px;
+}
+
+@media (max-width: 576px) {
+    .video-box {
+        flex: 0 0 100%;
+        margin-bottom: 0px;
+    }
+
+    .play-hover img {
+        max-width: 50%;
+    }
+
+    .video-title p {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    section.instappy-wizard-section {
+        background-position: center;
+        padding: 0px;
+    }
+
+    .video-bg {
+        padding: 40px;
+    }
+
+
+}
+
+@media screen and (min-device-width: 577px) and (max-device-width: 767px) {
+    section.instappy-wizard-section {
+        background-position: center;
+        padding: 0px;
+    }
+
+    .video-bg {
+        padding: 47px;
+    }
+
+    .video-box {
+        text-align: center;
+        flex: 0 0 48%;
+        margin-bottom: 0px;
+    }
+
+    .play-hover img {
+        max-width: 50%;
+    }
+
+    .video-title p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-device-width: 577px) and (max-device-width: 768px) {
+    section.instappy-wizard-section {
+        background-position: center;
+        padding: 0px;
+    }
+
+    .video-bg {
+        padding: 47px;
+    }
+
+    .video-box {
+        text-align: center;
+        flex: 0 0 48%;
+        margin-bottom: 0px;
+    }
+
+    .play-hover img {
+        max-width: 50%;
+    }
+
+    .video-title p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-device-width: 769px) and (max-device-width: 992px) {
+    section.instappy-wizard-section {
+        background-position: center;
+        padding: 0px;
+    }
+
+    .video-bg {
+        padding: 47px;
+    }
+
+    .video-box {
+        text-align: center;
+        flex: 0 0 31%;
+        margin-bottom: 0px;
+    }
+
+    .play-hover img {
+        max-width: 60%;
+    }
+
+    .video-title p {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,295 @@
+.checkout-box {
+    padding: 50px 0;
+    background-color: #f9fafb;
+}
+
+.hideSection {
+    display: none;
+}
+
+.showSection {
+    display: block;
+}
+
+.heading-bx {
+    margin: 0 0 20px;
+}
+
+.heading-bx h3 {
+    font-size: 22px;
+    font-family: 'Proxima Nova Rg';
+    font-weight: 800;
+}
+
+.checkout-bx {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout-bx>li:first-child {
+    flex: 0 0 60%;
+}
+
+.checkout-bx li:last-child {
+    flex: 0 0 35%;
+}
+
+.data-pay-desc {
+    list-style: none;
+    padding: 10px 0px;
+    border-bottom: 1px solid #c7c7c7;
+
+}
+
+.checkout-bx>li {
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    border-radius: 10px;
+    padding: 35px;
+}
+
+.data-pay-desc>li:nth-child(odd) {
+    /* flex: 0 0 60%; */
+    margin: 7px 0;
+}
+
+.data-pay-desc>li:nth-child(even) {
+    /* flex: 0 0 40%; */
+    margin: 7px 0;
+    text-align: right;
+}
+
+.checkout-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.checkout-bx h3 {
+    font-size: 19px;
+    font-family: Proxima Nova Rg;
+    font-weight: 800;
+}
+
+.data-pay-desc p {
+    width: 100%;
+    margin: 0;
+}
+
+.coupon {
+    position: relative;
+}
+
+.coupon .submit-bx {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
+
+.border-none {
+    border: none;
+    align-items: center;
+}
+
+a.complete-btn {
+    background: #fecd01;
+    color: #000;
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    padding: 8px;
+    border-radius: 10px;
+    font-family: Proxima Nova Rg;
+    font-weight: 800;
+    text-decoration: unset;
+    cursor: pointer;
+}
+
+.complete-btn {
+    width: 100%;
+    border-radius: 5px;
+    padding: 7px 0;
+    background: #fdc40a;
+    font-weight: 700;
+    border: none;
+}
+
+.complete-btn:hover {
+    color: unset;
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.complete-payment-btn {
+    margin-top: 20px;
+}
+
+.visa-varified ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.visa-varified ul {
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.heading-bx>a {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+.heading-bx>a>i {
+    margin-right: 10px;
+}
+
+ul.data-pay-desc>li {
+    font-family: 'Proxima Nova Rg';
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.prise-total {
+    font-weight: bold;
+    font-size: 16px !important;
+}
+
+.apply-now {
+    color: #1a79d3;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-weight: bold;
+}
+
+h6.ml-3.mt-2 {
+    font-weight: bold;
+    color: #007bff;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.checkout-box-data-radius {
+    box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+    border-radius: 10px;
+    padding: 35px;
+    max-width: 914px;
+    margin: 50px auto;
+}
+
+.payment-successful-title {
+    display: flex;
+    justify-content: center;
+    column-gap: 1.2rem;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.payment-successful-title>h3 {
+    font-size: 30px;
+    font-family: Proxima Nova;
+    font-weight: bold;
+}
+
+.payment-successful>p {
+    font-family: Proxima Nova Regular;
+    font-size: 18px;
+}
+
+.card-body-data.notifications-para {
+    background-color: #f9fafc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.payment_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 0.875rem;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+.payment_list>li {
+    list-style: none;
+    font-size: 16px;
+    font-family: 'Proxima Nova Rg';
+    font-weight: bold;
+}
+
+.payment_list>li>p {
+    margin-bottom: 0px;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+#coupon-code {
+    background: #f7f6f6;
+    border: 0;
+    border-radius: 5px;
+}
+
+input:focus,
+select:focus {
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
+    appearance: auto !important;
+}
+
+.custom-select:focus {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
+
+.custom-select {
+    color: #495057cf;
+}
+
+.bill_address {
+    height: 85px;
+}
+
+li.app_data_list {
+    display: flex;
+    flex: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+ul.data-pay-desc>li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+}
+
+.form-group.form-check>label {
+    cursor: pointer;
+}
+
+@media (max-width: 991.98px) {
+    ul.data-pay-desc>li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .checkout-bx {
+        display: block;
+    }
+
+    .checkout-bx>li {
+        margin: 15px 0px;
+        padding: 20px;
+    }
+
+    .form-check-label {
+        margin-bottom: 0;
+        font-size: 12px;
+    }
+}

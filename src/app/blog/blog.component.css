@@ -1,0 +1,513 @@
+/* blog css heading start */
+.my-pagination /deep/ .ngx-pagination .current {
+	background: #fdc40a;
+}
+
+.blog-search-box {
+	padding: 50px 0px 30px 0px;
+	background-color: #f8fafd;
+}
+
+.blog-heading-list li {
+	display: inline-block;
+	padding-right: 30px;
+	position: relative;
+}
+
+.blog-heading-list {
+	padding: 0;
+	list-style: none;
+	display: inline-block;
+}
+
+.blog-search-section h2 {
+	font-family: "Proxima Nova Rg";
+	font-size: 40px;
+	font-weight: bold;
+	margin: 0 0 0px;
+	color: #222f37;
+}
+
+.great-apps {
+	font-size: 40px;
+	color: #197ad7;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.great-apps::before {
+	content: '“';
+	font-size: 40px;
+	color: #a5b7d3;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.great-apps::after {
+	margin-left: 5px;
+	font-weight: bold;
+	content: '”';
+	font-size: 40px;
+	color: #a5b7d3;
+	text-transform: uppercase;
+	position: absolute;
+	transform: rotate(360deg);
+}
+
+ul.blog-heading-list li:after {
+	content: close-quote;
+	width: 5px;
+	height: 5px;
+	background: #133150;
+	position: absolute;
+	border-radius: 50px;
+	top: 10px;
+	right: 10px;
+}
+
+ul.blog-heading-list li:last-child:after {
+	display: none;
+}
+
+/* blog css heading end */
+
+/* blog seach css start */
+
+.blog-search-input .input-group {
+	margin: 10px auto 0;
+	justify-content: center;
+	width: 50%;
+}
+
+.blog-search-input .input-group input {
+	text-align: left;
+	font-size: 16px;
+	display: flex;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	border-right: none !important;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	color: #000;
+	outline: none;
+	box-shadow: none;
+	width: 75%;
+	cursor: text;
+}
+
+.blog-search-input .input-group .transparent-btn {
+	border-radius: 10px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	width: 25%;
+	color: #000;
+	font-family: 'Proxima Nova Rg';
+	padding: 10px 20px;
+	font-weight: 600;
+	background-color: #fdc40a;
+	border: 1px solid #fdc40a;
+	cursor: pointer;
+	text-decoration: none !important;
+}
+
+.blog-search-input .input-group .transparent-btn:hover,
+.blog-search-input .input-group .transparent-btn:active,
+.blog-search-input .input-group .transparent-btn:focus,
+.blog-search-input .input-group .transparent-btn:visited {
+	box-shadow: 0 0 11px rgb(33 33 33 / 20%);
+}
+
+.blog-search-input {
+	margin: 0 0 30px;
+}
+
+/* blog seach css end */
+
+/* latest blog seach css start */
+
+.latest-blog-section {
+	padding: 20px 0;
+}
+
+.latest-blog-desc {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.latest-blog-img {
+	box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.latest-blog-img img {
+	max-width: 100%;
+}
+
+.latest-blog-desc h3 {
+	font-family: "Proxima Nova Rg";
+	font-size: 22px;
+	font-weight: bold;
+	color: #000;
+	margin: 0 0 5px;
+}
+
+.latest-blog-desc p {
+	font-family: "Proxima Nova Rg";
+	font-size: 16px;
+	font-weight: 300;
+	margin: 0 0 5px;
+	color: #000;
+}
+
+/* latest blog seach css end */
+
+/* all blog seach css start */
+
+.blog-list-content-box {
+	padding: 0;
+	list-style: none;
+}
+
+.blog-list-content-box>li {
+	display: flex;
+	padding: 20px 0px;
+	border-bottom: .5px solid #ccc;
+}
+
+.blog-list-content-box>li:last-child {
+	border: none;
+}
+
+.blog-list-content-box>li .blog-content-box {
+	flex: 0 0 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	vertical-align: middle;
+	padding-left: 30px;
+}
+
+.blog-list-content-box>li .blog-img-box {
+	flex: 0 0 50%;
+	overflow: hidden;
+}
+
+.blog-content-box h3 {
+	font-family: "Proxima Nova Rg";
+	font-size: 30px;
+	margin: 0 0 5px;
+	color: #000;
+	font-weight: 600;
+}
+
+.blog-content-box p {
+	font-family: "Proxima Nova Rg";
+	font-size: 16px;
+	font-weight: 300;
+	margin: 0 0 5px;
+	text-align: justify;
+	color: #000;
+
+}
+
+.blog-img-box img {
+	max-width: 100%;
+	border-radius: 10px;
+	box-shadow: rgb(0 0 0 / 8%) 0px 3px 8px;
+}
+
+/* all blog seach css end */
+
+/* pagination css start */
+
+.blog-paginatin-bx .pagination {
+	justify-content: center;
+}
+
+.blog-paginatin-bx .pagination li a {
+	border: none;
+	color: #000;
+	outline: none;
+	box-shadow: none;
+}
+
+.blog-paginatin-bx .pagination li a:hover {
+	background: none;
+	font-weight: 700;
+}
+
+.blog-paginatin-bx .pagination li.page-item a span {
+	color: #fdc40a;
+	font-weight: bold;
+}
+
+.blog-content-box a {
+	width: fit-content;
+	text-decoration: none;
+	cursor: pointer;
+	font-family: "Proxima Nova Rg";
+	font-weight: bold;
+	padding: 5px 10px;
+}
+
+.box_blog>em {
+	font-style: normal !important;
+}
+
+.blog-content-box a i {
+	-webkit-text-stroke: 1px white;
+}
+
+.newest {
+	color: #197ad7;
+	font-size: 16px;
+	background-color: #d8e9f8;
+	padding: 2px 10px;
+	border-radius: 5px;
+	border: 1px solid #197ad7;
+	text-transform: uppercase;
+}
+
+.newestltag {
+	margin-bottom: 15px !important;
+
+}
+
+.read-time {
+	color: #888888;
+	margin-top: 5px;
+	font-weight: normal;
+}
+
+.category-title p {
+	margin-bottom: 0px;
+}
+
+
+
+.blog-category-tab li {
+	list-style: none;
+	margin: 0px 24.5px;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 18px;
+	color: #000000;
+	text-transform: capitalize;
+}
+
+.tab-active {
+	font-weight: 600;
+	border-bottom: 4px solid #fdc40a;
+	border-radius: 2px;
+}
+
+.category-list {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	gap: 16px;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
+
+.category-box {
+	text-align: center;
+	flex: 0 0 32.333%;
+	margin-bottom: 10px;
+}
+
+.category-content img {
+	max-width: 100%;
+	width: 400px;
+	height: 250px;
+	border-radius: 25px;
+}
+
+.category-title {
+	margin-top: 20px;
+	font-weight: 600;
+	text-align: justify;
+	padding-right: 25px;
+	padding-left: 5px;
+	margin-bottom: 20px;
+}
+
+.newest-rede {
+	text-decoration: none;
+	color: #212529;
+}
+
+.blog-paginatin-bx {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.next-btn span {
+	width: 5px;
+	border-radius: 100px;
+	height: 5px;
+	background-color: #000000;
+	display: inline-block;
+	margin: 0px 4px;
+	cursor: pointer;
+}
+
+.blog-category-scroll {
+	display: flex;
+	/* overflow-x: hidden; */
+	padding: 15px 30px 15px 30px;
+	border-radius: 10px;
+	top: -35px;
+	text-align: center;
+	position: relative;
+	background: #fff;
+	box-shadow: rgba(131, 131, 156, 0.2) 0px 7px 29px 0px;
+	overflow: auto;
+}
+
+.blog-category-tab {
+	padding-left: 0px;
+	/* overflow-x: scroll;
+	overflow-y: hidden; */
+	margin-bottom: 0px;
+	white-space: nowrap;
+	max-width: 1000px;
+	float: left;
+}
+
+.blog-img-box img {
+	width: 100%;
+}
+
+.blog-category-tab li:first-child {
+	margin-left: 0px;
+}
+
+
+.blog-category-tab::-webkit-scrollbar {
+	display: none;
+}
+
+/* pagination css end */
+
+@media (max-width: 767.9px) {
+	.latest-blog-desc {
+		padding-top: 20px;
+	}
+
+	.blog-list-content-box li {
+		flex-direction: column-reverse;
+	}
+
+	.blog-list-content-box>li .blog-content-box {
+		padding-top: 20px;
+		padding-right: 0px;
+	}
+
+	.blog-search-input .input-group {
+		width: 100%;
+	}
+
+	.blog-search-section h2 {
+		font-size: 30px;
+	}
+
+	.great-apps {
+		font-size: 30px;
+	}
+
+	.blog-content-box h3 {
+		font-size: 22px;
+	}
+
+	.blog-category-tab {
+		padding: 5px 5px;
+		border-radius: 10px;
+		top: 0px;
+
+	}
+
+	.category-box {
+		flex: 100%;
+	}
+
+	.category-list {
+		gap: 0px;
+	}
+
+	.category-content img {
+		height: auto;
+
+	}
+
+	.blog-list-content-box>li .blog-content-box {
+		padding-left: 0px;
+	}
+
+
+	.tab-active {
+		border-bottom: 2px solid #fdc40a;
+	}
+
+	.blog-category-tab li {
+		margin: 0px 10.5px;
+		font-size: 14px;
+
+	}
+
+
+
+
+
+
+}
+
+@media (max-width: 474.4px) {
+	.blog-search-input .input-group .transparent-btn {
+		padding: 0px;
+		font-size: 14px;
+	}
+}
+
+
+@media only screen and (min-device-width: 667px) and (max-device-width: 1024px) {
+
+	.blog-search-input .input-group .transparent-btn {
+		padding: 10px 10px;
+	}
+
+	.blog-search-input .input-group {
+		margin: 10px auto 0;
+		justify-content: center;
+		width: 80%;
+	}
+
+	.category-box {
+		text-align: center;
+		flex: 0 48%;
+		margin-bottom: 10px;
+	}
+
+	.category-list {
+		justify-content: space-between;
+	}
+
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1199.98px) {
+	.category-list {
+		gap: 13px;
+	}
+}
+
+@media (max-device-width: 666.98px) {
+
+	.category-title p {
+		text-align: center;
+	}
+}

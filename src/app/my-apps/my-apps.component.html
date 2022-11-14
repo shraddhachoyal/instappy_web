@@ -1,0 +1,135 @@
+<app-panel-header></app-panel-header>
+<section class="my-apps-bx">
+  <div class="container">
+    <div class="header-height"></div>
+    <div class="row">
+      <div class="col-12">
+        <div class="search-bx-box">
+          <ul>
+            <li>
+              <div class="heading-bx">
+                <h2>My Apps</h2>
+              </div>
+            </li>
+            <li>
+              <div class="search-bx-zone">
+                <!-- <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control"
+                  placeholder="Search app by name"> </div> -->
+                <div class="new-app-btn" *ngIf="planStatus === 0">
+                  <a class="primary-btn" routerLink="/panel">Create New App</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <!-- Paid Apps Section -->
+      <div class="col-12">
+        <h5 class="title_para">Paid Apps</h5>
+        <div class="app-bx">
+          <!--<p class="{{ msgClass }}"><span>{{message}}</span></p>-->
+          <ul class="app-bx-block">
+            <li class="published"
+              *ngFor="let listdata of paidAppListArr| paginate: { itemsPerPage: paidAppsLength, currentPage: p, id: 'p' }">
+              <a href="/dashboard/{{listdata.app_uid}}/{{listdata.app_progress}}">
+                <div class="app-shadow-box">
+                  <div class="app-icon-bx">
+                    <div class="icon-bx" *ngIf="listdata.icon_type == 'custom'"
+                      [ngStyle]="{background:listdata.icon_values[1]}">
+                      <div
+                        [ngStyle]="{'color':listdata.icon_values[4],'font-size':listdata.icon_values[3], 'font-family':listdata.icon_values[2]}">
+                        {{listdata.icon_values[0]}}
+                      </div>
+                    </div>
+                    <div class="icon-bx" *ngIf="listdata.icon_type == 'upload'">
+                      <img src="http://52.10.50.94/media/{{listdata.icon_values}}" alt="edt">
+                    </div>
+                    <div class="app-desc-bx">
+                      <h3>{{listdata.app_name}}</h3>
+                      <!-- <p>{{listdata.app_uid}}</p> -->
+                      <p>{{listdata.created_at}} </p>
+                    </div>
+                  </div>
+                  <div class="app-detailed-bx">
+                    <h4>Subscription Plan : <span>{{listdata.plan_name}}</span></h4>
+                  </div>
+                  <div class="subs-btn published">
+                    <a class="click-btn">{{listdata.app_state}}</a>
+                    <!-- <a class="click-btn">Published</a> -->
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div class="blog-paginatin-bx" *ngIf="paidAppListArr.length > paidAppsLength">
+            <div class="d-flex justify-content-center">
+              <pagination-controls (pageChange)="p = $event" id="p"></pagination-controls>
+            </div>
+          </div>
+          <div *ngIf="paidAppListArr.length == 0" class="no-record">
+            <!-- <img src="assets/images/no-data.webp" alt="no-data.webp"> -->
+            <p> {{paidMessage}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Paid Apps Section -->
+
+
+      <!-- Dummy Apps Section -->
+      <div class="col-12">
+        <h5 class="title_para">Dummy Apps</h5>
+
+        <div class="app-bx">
+          <!--<p class="{{ msgClass }}"><span>{{message}}</span></p>-->
+          <ul class="app-bx-block">
+            <li class="published"
+              *ngFor="let listdata of dummyAppListArr| paginate: { itemsPerPage: dummyAppsLength, currentPage: p1, id: 'p1' }">
+              <a href="/dashboard/{{listdata.app_uid}}/{{listdata.app_progress}}">
+                <div class="app-shadow-box">
+                  <div class="app-icon-bx">
+                    <div class="icon-bx" *ngIf="listdata.icon_type == 'custom'"
+                      [ngStyle]="{background:listdata.icon_values[1]}">
+                      <div
+                        [ngStyle]="{'color':listdata.icon_values[4],'font-size':listdata.icon_values[3], 'font-family':listdata.icon_values[2]}">
+                        {{listdata.icon_values[0]}}
+                      </div>
+                    </div>
+                    <div class="icon-bx" *ngIf="listdata.icon_type == 'upload'">
+                      <img src="http://52.10.50.94/media/{{listdata.icon_values}}" alt="edt">
+                    </div>
+                    <div class="app-desc-bx">
+                      <h3>{{listdata.app_name}}</h3>
+                      <!-- <p>{{listdata.app_uid}}</p> -->
+                      <p>{{listdata.created_at}} </p>
+                    </div>
+                  </div>
+                  <div class="app-detailed-bx">
+                    <h4>Subscription Plan : <span>{{listdata.plan_name}}</span></h4>
+                  </div>
+                  <div class="subs-btn published">
+                    <a class="click-btn">{{listdata.app_state}}</a>
+                    <!-- <a class="click-btn">Published</a> -->
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div class="blog-paginatin-bx" *ngIf="dummyAppListArr.length > dummyAppsLength">
+            <div class="d-flex justify-content-center">
+              <pagination-controls (pageChange)="p1 = $event" id="p1"></pagination-controls>
+            </div>
+          </div>
+          <div *ngIf="dummyAppListArr.length == 0" class="no-record">
+            <!-- <img src="assets/images/no-data.webp" alt="no-data.webp"> -->
+
+            <p> {{dummyMessage}} </p>
+          </div>
+        </div>
+      </div>
+      <!-- End Dummy Apps Section -->
+    </div>
+  </div>
+</section>

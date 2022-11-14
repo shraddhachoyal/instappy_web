@@ -1,0 +1,122 @@
+<footer class="insta-footer">
+   <div class="container">
+      <ul class="footer-box">
+         <li>
+            <div class="text-bx">
+               <h2><span><img src="../../assets/images/emoji-hi.png"></span> Say hi!</h2>
+               <p> Stay in the loop on everything Adalo! </p>
+            </div>
+            <span *ngIf="message" class="message-subscribe">{{ message }}</span>
+            <div class="ft-input-bx">
+               <form [formGroup]="UserForm" (ngSubmit)="onFormSubmit()" novalidate>
+                  <div class="input-group">
+                     <input class="btn btn-lg" formControlName="email" id="email" type="email"
+                        placeholder="Your Email ID" [ngClass]="{ 'is-invalid': submitted && contactform.email.errors}">
+                     <button class="btn btn-info btn-lg transparent-btn" type="submit">Subscribe</button>
+                     <div *ngIf="submitted && contactform.email.errors" class="invalid-feedback">
+                        <div *ngIf="contactform.email.errors.required" class="message-footer">Email is required</div>
+                        <div *ngIf="contactform.email.errors.email" class="message-footer">Email must be a valid email
+                           address</div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </li>
+         <li>
+            <div class="text-bx">
+               <h2><span><img src="../../assets/images/emoji-connect.png"></span>Connect with Us!</h2>
+               <ul class="instappy-social-links">
+                  <li><a href="{{youtubeUrl}}" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                  </li>
+                  <li><a href="{{twitterUrl}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="{{fbUrl}}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="{{linkedinUrl}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+               </ul>
+            </div>
+            <div class="divider-bx">
+               <h3>or</h3>
+            </div>
+            <div class="talk-bx">
+               <a routerLink="/contact" class="btn btn-info btn-lg transparent-btn">Let’s Talk</a>
+            </div>
+         </li>
+      </ul>
+   </div>
+   <div class="container">
+      <div class="list-footer-item">
+         <div class="row d-flex justify-content-center">
+            <div class="col-md-3">
+               <div class="instappy-footer-links">
+                  <ul class="list-footer">
+                     <!-- <li><a routerLink="#" >About</a></li> -->
+                     <li><a routerLink="/pricing">Pricing</a></li>
+                     <li><a routerLink="/blog">Blog</a></li>
+                     <li><a routerLink="/faq">FAQ’s</a></li>
+                     <li><a routerLink="/videos">Videos </a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <div class="instappy-footer-links">
+                  <ul class="list-footer">
+                     <li><a routerLink="#">Features</a></li>
+                     <li><a routerLink="#">Restaurant App</a></li>
+                     <!-- <li><a routerLink="/returnpolicy">Return Policy</a></li> -->
+                  </ul>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <div class="instappy-footer-links">
+                  <ul class="list-footer">
+                     <li><a routerLink="/contact">Contact Us</a></li>
+                     <li><a routerLink="/terms-condition">Terms & Condition </a></li>
+                     <li><a routerLink="/privacy-policy">Privacy Policy
+                        </a>
+                     </li>
+                     <li><a routerLink="/returnpolicy">Return Policy</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="copyright-footer text-center">
+         <p class="copyright-title">&copy; Instappy.com. 2022. All Rights Reserved</p>
+      </div>
+   </div>
+</footer>
+<div class="modal top fade" id="app_purchased">
+   <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content notification_modal-box border-0">
+         <div class="modal-header d-flex border-0 pb-0">
+            <!-- <h4 class="modal-title notification-modal-title">Apps information and features</h4> -->
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         <div class="modal-body">
+            <div class="eatfresh_content">
+               <p>You have already purchased this app from this account. Please create or login from a different account
+                  to continue.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="modal top fade" id="edit-app-content_modal">
+   <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content notification_modal-box border-0">
+         <div class="modal-header d-block border-0">
+            <h4 class="modal-title notification-modal-title"></h4>
+            <button type="button" class="close video-btn" data-dismiss="modal">&times;</button>
+         </div>
+         <div class="modal-body">
+            <div class="notification_content">
+               <div class="embed-responsive embed-responsive-16by9">
+                  <iframe id="ContentVideo" class="embed-responsive-item" width="100%" height="auto"
+                     src="https://www.youtube.com/embed/Dr_5PzRK7a0" title="YouTube video player" frameborder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowfullscreen></iframe>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
