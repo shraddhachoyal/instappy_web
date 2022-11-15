@@ -584,20 +584,9 @@ $(function () {
 })
 
 function learnMoreApp1() {
-  // alert('my Name is Cheeta');
   var tab1 = document.getElementById("tab_01");
   var tab7 = document.getElementById("tab_7_hide");
-
-  //var tab_1_class = document.getElementById("tab_1");
-  //var tab_7_class = document.getElementById("tab_7");
-  //var tab_7_res_apps = document.getElementById("tab_7_res_apps");
-  //var restaurant_step_1 = document.getElementById("restaurant_step_1");
-  //var restaurant_step_2 = document.getElementById("restaurant_step_2");
-  //tab_1_class.removeClass("tab-active");
-  //tab_7_class.addClass("tab-active");
   tab7.style.display = "block";
-  //restaurant_step_1.style.display = "block";
-  //restaurant_step_2.style.display = "none";
   tab1.style.display = "none";
 
 
@@ -607,12 +596,11 @@ function learnMoreApp1() {
 
 
 
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   $(".tab-active").click(function () {
-//     location.reload();
-//   });
-// })
+document.addEventListener('DOMContentLoaded', () => {
+  $(".tab-active").click(function () {
+    location.reload();
+  });
+})
 
 
 //Section 3 Start
@@ -667,3 +655,6 @@ function termsConditionFunction3() {
 }
 
 //Section 3 End
+
+
+

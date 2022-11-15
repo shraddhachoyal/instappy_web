@@ -333,7 +333,7 @@ export class DashboardComponent implements OnInit {
   tabChange(ids: any) {
     this.id = ids;
     if (this.id === 'tab_1') {
-      $(".divtab_1").css('display', "block");
+      $(".divtab_1").css('display', "flex");
       // $("#tab_7_hide").css('display', "block");
     }
     if (this.id === 'tab_7') {
