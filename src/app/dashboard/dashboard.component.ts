@@ -17,8 +17,6 @@ import { Cat, Ban, submitArray } from './model-class/banners/catbanInterface';
 import { threadId } from 'worker_threads';
 declare function videopush(): any;
 declare function chartcircle(): any;
-
-
 declare var jQuery: any;
 declare function restaurantFunction(app_type: number, id: any, pyment_status: any): any;
 
@@ -37,11 +35,7 @@ export class DashboardComponent implements OnInit {
     private myappsService: MyappsService
   ) {
     this.currentDate = new Date().toISOString().slice(0, 10);
-
     this.currentTime = new Date().toISOString().slice(12, 16);
-
-    console.log(this.currentTime);
-
   }
 
   public slideexpierencebox: SwiperConfigInterface = {
@@ -314,37 +308,21 @@ export class DashboardComponent implements OnInit {
   catBanMsg: string = '';
   catBanMsgCls: string = '';
 
-  // openAdditionalAppsForm(app_type: any, additional_id: any, app_name: any, app_descriptions: any, price: any, pyment_status: any) {
-  //   this.id = 'tab_7';
-  //   $("#tab_7").css('display', 'block');
-  //   this.additionalAppsForm(app_type, additional_id, app_name, app_descriptions, price, pyment_status);
-  // }
-
   learnMoreApp(app_type: any, additional_id: any, app_name: any, app_descriptions: any, price: any, pyment_status: any) {
-
     $("#tab_1").removeClass('tab-active');
     $("#tab_7").addClass('tab-active');
-
-    // $(".divtab_1").css('display', "none");
+    this.id = "tab_7";
     $("#tab_7_hide").css('display', "block");
-
     this.additionalAppsForm(app_type, additional_id, app_name, app_descriptions, price, pyment_status);
-
-
     $("#icon_1").attr('src', "assets/images/panel/icon_1.png");
-    $("#icon_2").attr('src', "assets/images/panel/icon_2.png");
-    $("#icon_3").attr('src', "assets/images/panel/icon_3.png");
-    $("#icon_4").attr('src', "assets/images/panel/icon_4.png");
-    $("#icon_5").attr('src', "assets/images/panel/icon_5.png");
-    // $("#icon_6").attr('src',"assets/images/panel/icon_6.png");
     $("#icon_7").attr('src', "assets/images/panel/icon_7g.png");
   }
 
   tabChange(ids: any) {
     this.id = ids;
-    if (this.id === 'tab_1') {
-      $(".divtab_1").css('display', "block");
-      // $("#tab_7_hide").css('display', "block");
+    if (this.id === 'tab_7') {
+      $("#restaurant_step_1").css('display', "block");
+      $("#restaurant_step_2").css('display', "none");
     }
     if (this.id === 'tab_5') {
       this.getAllCountries();
@@ -1294,10 +1272,8 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getAdditionalAppInfo(app_type, this.authUser.id).subscribe(data => {
       this.aditionalAppDetails = data;
       if (this.aditionalAppDetails.success === true) {
-        // console.log('aditionalAppDetails1 are: ', this.aditionalAppDetails);
         this.app_form_appuid = this.aditionalAppDetails.response.app_uid;
         this.aditionalAppDetails = this.aditionalAppDetails.response;
-        console.log('***:', this.aditionalAppDetails);
 
         const appIcon = siteURL + '/media/' + this.aditionalAppDetails.icon_values;
         const appSplashIcon = siteURL + '/media/' + this.aditionalAppDetails.splashscreen_icon_value;
@@ -1305,15 +1281,14 @@ export class DashboardComponent implements OnInit {
         $("#additionalAppIcon_img").html('<img src="' + appIcon + '" width="30px;" style="border-radius:2px; height:15px;">');
         $("#additionalAppSplashIcon_img").html('<img src="' + appSplashIcon + '" width="30px;" style="border-radius:2px; height:15px;">');
 
-        //get documents and commission of this App
         this.getDocommission(app_type);
         this.getTermsConditionDetails(app_type);
       } else { this.aditionalAppDetails = []; this.additionalapps_details_added = 0; }
     });
-    // console.log('aditionalAppDetails are: ', this.aditionalAppDetails);
   }
   /* Appended Documents */
   appenMoreDocs() {
+    alert(this.doc_auto_id)
     let value = this.doc_auto_id;
     console.log('B-add: ', value);
     value++;
@@ -1375,8 +1350,10 @@ export class DashboardComponent implements OnInit {
           $("#commission").val(this.docommissionListResponse.response.commission.commission);
 
           this.docommissionListArr = this.docommissionListResponse.response.document;
+          this.doc_auto_id = this.docommissionListArr.length;
         } else {
           this.docommissionListArr = this.docommissionListResponse.response;
+          this.doc_auto_id = this.docommissionListArr.length;
         }
         this.docAddedStatus = this.docNxtBtn = 1;
       } else {
@@ -1394,11 +1371,9 @@ export class DashboardComponent implements OnInit {
     this.docommitionSubmitted = true;
     this.docArr = Array();
     if (this.addDocsCommissionForm.invalid) {
-      console.log('invalid:- ');
+      console.log('addDocsCommission invalid:- ');
       return;
     } else {
-      console.log('before loop:- ', this.doc_auto_id);
-
       for (var i = 1; i <= this.doc_auto_id; i++) {
         var docImgVal = $('input[name="image_required_' + i + '"]:checked').val();
         var docTypeVal = $("#doc_type_" + i).val();
@@ -1408,6 +1383,8 @@ export class DashboardComponent implements OnInit {
       }
       let formdata = this.addDocsCommissionForm.value;
       let commissionVal = $("#commission").val();
+      console.log('this.docArr:= ', this.docArr);
+
       if (this.app_type === 3) {
         this.addRestroDocs(commissionVal);
       } else if (this.app_type === 2) {
@@ -1418,8 +1395,8 @@ export class DashboardComponent implements OnInit {
   addRestroDocs(commission: any) {
     let postARr = {
       "app_uid": this.app_form_appuid,
-      "commission_id": this.commissionID,
-      "commission": parseInt(commission),
+      "commission_id": Number(this.commissionID),
+      "commission": Number(commission),
       "document": this.docArr
     }
 
@@ -1531,22 +1508,19 @@ export class DashboardComponent implements OnInit {
     this.totAmmount = parseInt(this.totAmmount) + parseInt(price);
     this.additionalapp_id.push(additionalapp_id);
     this.items_data.push({ 'id': additionalapp_id, 'name': additionalapp_name, 'app_type': 2, 'price': price });
-    // $(".addBtn_" + additionalapp_id).css('display', 'none');
-    // $(".addedBtn_" + additionalapp_id).css('display', 'block');
+
     $(".checkoutDiv").css('display', 'block');
     $('.cartbtn_' + additionalapp_id).addClass('current');
 
-    //$('.add-price').on('click', function () {
     $('.cartbtn_' + additionalapp_id).addClass('current');
     $('.cartbtn_' + additionalapp_id).text('Added');
     $('.cartbtn_' + additionalapp_id).removeClass('bg-light border');
-    // });
+
     $('.moredetail_retro').on('click', function () {
       $('.cartbtn_' + additionalapp_id).addClass('current');
       $('.cartbtn_' + additionalapp_id).text('Added');
       $('.cartbtn_' + additionalapp_id).removeClass('bg-light border');
     });
-
   }
 
   checkout() {
