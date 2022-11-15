@@ -1288,7 +1288,6 @@ export class DashboardComponent implements OnInit {
   }
   /* Appended Documents */
   appenMoreDocs() {
-    alert(this.doc_auto_id)
     let value = this.doc_auto_id;
     console.log('B-add: ', value);
     value++;
