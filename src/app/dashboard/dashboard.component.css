@@ -3345,7 +3345,7 @@ h5.box_payment {
 	align-items: center;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	margin-left: 5px;
+	margin-left: 3px;
 	grid-column-gap: 10px;
 	column-gap: 10px;
 }
@@ -3406,6 +3406,12 @@ p.appname {
 	margin-bottom: 2rem;
 }
 
+.invalid-feedback.select_app {
+	position: absolute;
+	top: 6px;
+	right: 84px;
+	width: 127px;
+}
 
 
 

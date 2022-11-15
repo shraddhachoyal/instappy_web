@@ -314,6 +314,10 @@ h5.title_para {
         flex: 0 0 48%;
 
     }
+
+    .app-bx-block li {
+        flex: 0 0 48%;
+    }
 }
 
 @media (max-width:767.9px) {
@@ -335,12 +339,16 @@ h5.title_para {
     }
 
     .search-bx-box ul {
-        display: flex;
+        display: block;
         text-align: center;
     }
 
     .line_para {
         margin: 0px 0px 14px 0px;
 
+    }
+
+    .app-bx-block li {
+        flex: 0 0 100%;
     }
 }

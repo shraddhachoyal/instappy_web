@@ -314,29 +314,19 @@ export class DashboardComponent implements OnInit {
   catBanMsg: string = '';
   catBanMsgCls: string = '';
 
-  // openAdditionalAppsForm(app_type: any, additional_id: any, app_name: any, app_descriptions: any, price: any, pyment_status: any) {
-  //   this.id = 'tab_7';
-  //   $("#tab_7").css('display', 'block');
-  //   this.additionalAppsForm(app_type, additional_id, app_name, app_descriptions, price, pyment_status);
-  // }
 
   learnMoreApp(app_type: any, additional_id: any, app_name: any, app_descriptions: any, price: any, pyment_status: any) {
 
     $("#tab_1").removeClass('tab-active');
     $("#tab_7").addClass('tab-active');
+    this.id = "tab_7";
 
-    // $(".divtab_1").css('display', "none");
     $("#tab_7_hide").css('display', "block");
 
     this.additionalAppsForm(app_type, additional_id, app_name, app_descriptions, price, pyment_status);
 
 
     $("#icon_1").attr('src', "assets/images/panel/icon_1.png");
-    $("#icon_2").attr('src', "assets/images/panel/icon_2.png");
-    $("#icon_3").attr('src', "assets/images/panel/icon_3.png");
-    $("#icon_4").attr('src', "assets/images/panel/icon_4.png");
-    $("#icon_5").attr('src', "assets/images/panel/icon_5.png");
-    // $("#icon_6").attr('src',"assets/images/panel/icon_6.png");
     $("#icon_7").attr('src', "assets/images/panel/icon_7g.png");
   }
 
@@ -345,6 +335,11 @@ export class DashboardComponent implements OnInit {
     if (this.id === 'tab_1') {
       $(".divtab_1").css('display', "block");
       // $("#tab_7_hide").css('display', "block");
+    }
+    if (this.id === 'tab_7') {
+      $("#restaurant_step_1").css('display', "block");
+      $("#restaurant_step_2").css('display', "none");
+
     }
     if (this.id === 'tab_5') {
       this.getAllCountries();
@@ -533,7 +528,9 @@ export class DashboardComponent implements OnInit {
       this.appSplashIconFontClr = e.target.value;
     }
   }
-
+  addAppname(e: any) {
+    $(".appname").text(e.target.value);
+  }
   updateApp() {
     this.appsubmitted = true;
     let formdata = this.updateAppForm.value;
@@ -777,16 +774,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  /*This function is used for show changes of app name when we type app name in tab-3*/
-  addAppname(e: any) {
-    let text = e.target.value;
-    let limit = 6;
-    if (text.length > limit) {
-      /* This function is used for set limit on paragraph text/content text */
-      text = text.substring(0, limit) + '...';
-    } else { text; }
-    $(".appname").text(text);
-  }
   editName() {
     $('#editAppname').hide();
     $('.updateappname').show();
@@ -1213,8 +1200,7 @@ export class DashboardComponent implements OnInit {
     } else {
       let formdata = this.appDataForm.value;
       if (formdata.app_details_uid) {
-        let appData = { "web_id": this.authUser.id, "data_id": formdata.app_details_uid, "colar_type": '', "color_code": '', "app_type": this.app_type, "app_name": formdata.apps_name };
-        this.updateAdditionalAppData(appData);
+        this.updateAdditionalAppData(formdata);
       } else {
         let formdataVal = {
           web_id: this.authUser.id,
@@ -1254,40 +1240,44 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  updateAdditionalAppData(appData: any) {
-    let second_array = appData;
-    if (this.additionalAppIcon) {
-      var merged = Object.assign(appData, { 'icon_values': this.additionalAppIcon });
-      second_array = appData;
-    }
+  updateAdditionalAppData(formdata: any) {
 
-    if (this.additionalAppSplashIcon) {
-      var merged = Object.assign(appData, { 'splashscreen_icon_value': this.additionalAppSplashIcon });
-      second_array = appData;
-    }
-    console.log(second_array);
+    var updateData = new Array();
+    var appname: any = 'app_name';
+    var mydataId: any = 'data_id';
+    var iconVals: any = 'icon_values';
+    var splashscreen_icon_value: any = 'splashscreen_icon_value';
+    updateData[appname] = formdata.apps_name;
+    // updateData[mydataId] = formdata.app_details_uid
 
-    this.dashboardService.updateAdditionalApp(second_array).subscribe((data) => {
-      this.addAdditionalAppResult = data;
-      if (this.addAdditionalAppResult.success === true) {
-        this.addAdditionalAppMsg = "App has been successfully updated";
-        this.addAdditionalSuccessCls = "message-success";
-        this.appDataForm.reset();
-        $("#additionalAppIcon_name").html('');
-        $("#additionalAppSplashIcon_name").html('');
-        this.getAPP(this.app_type);
-        setTimeout(() => {
-          this.activeCurrTab('active2', 'active1', 'active3');
-          $("#formFirstState").css('display', 'none');
-          $("#formSecondState").css('display', 'block');
-          $("#formThirdState").css('display', 'none');
-        }, 3000);
-      } else {
-        this.addAdditionalAppMsg = "Oops! Failed to update";
-        this.addAdditionalSuccessCls = "message-failed";
-      }
-      setTimeout(() => { this.addAdditionalAppMsg = this.addAdditionalSuccessCls = ''; }, 5000);
-    })
+    // if (this.additionalAppIcon) {
+    //   updateData[iconVals] = this.additionalAppIcon;
+    // }
+    // if (this.additionalAppSplashIcon) {
+    //   updateData[splashscreen_icon_value] = this.additionalAppSplashIcon;
+    // }
+    console.log('update Arr: ', updateData);
+    // this.dashboardService.updateAdditionalApp(updateData).subscribe((data) => {
+    //   this.addAdditionalAppResult = data;
+    //   if (this.addAdditionalAppResult.success === true) {
+    //     this.addAdditionalAppMsg = "App has been successfully updated";
+    //     this.addAdditionalSuccessCls = "message-success";
+    //     this.appDataForm.reset();
+    //     $("#additionalAppIcon_name").html('');
+    //     $("#additionalAppSplashIcon_name").html('');
+    //     this.getAPP(this.app_type);
+    //     setTimeout(() => {
+    //       this.activeCurrTab('active2', 'active1', 'active3');
+    //       $("#formFirstState").css('display', 'none');
+    //       $("#formSecondState").css('display', 'block');
+    //       $("#formThirdState").css('display', 'none');
+    //     }, 3000);
+    //   } else {
+    //     this.addAdditionalAppMsg = "Oops! Failed to update";
+    //     this.addAdditionalSuccessCls = "message-failed";
+    //   }
+    //   setTimeout(() => { this.addAdditionalAppMsg = this.addAdditionalSuccessCls = ''; }, 5000);
+    // })
   }
 
   /*Get Restaurant and Rider Apps Details*/
