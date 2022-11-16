@@ -36,7 +36,7 @@
   <div class="container">
     <div class="center-box">
       <div class="dashboard_warp">
-        <div id="tab_1" *ngIf="id ===  'tab_1'" class="tab-warp-dashboard divtab_1">
+        <div id="tab_1" *ngIf="id ===  'tab_1'" class="tab-warp-dashboard">
           <div class="dashboard_left">
             <div class="main-heading">
               <h1 class="h1-common">Dashboard</h1>
@@ -426,14 +426,11 @@
 
                                     <div class="tbfs-form bg-white">
                                       <ul class="topbanner-form" id="topbannerform__">
-                                        <li class="olor-box" id="topbannerform1">
+                                        <li class="olor-box" id="topbannerform1" *ngIf="addedBanner === 0">
                                           <label><span class="bold-para">Banner 1</span> </label>
                                           <span class="Upload_file form-control">
                                             <label for="upload-photo" class="Upload pl-0">Banner 1
                                             </label>
-
-
-
                                             <input type="file" id="upload-photo" formControlName="bannerimg_1"
                                               (change)="BannerImages($event,1)" value=""
                                               [ngClass]="{ 'is-invalid': bannerCatSubmitted && addCatBanform.bannerimg_1.errors }">
@@ -441,8 +438,7 @@
                                             <div *ngIf="bannerCatSubmitted && addCatBanform.bannerimg_1.errors"
                                               class="invalid-feedback select_app">
                                               <div *ngIf="addCatBanform.bannerimg_1.errors.required">Please select app
-                                                icon
-                                              </div>
+                                                icon </div>
                                             </div>
 
                                             <span class="cross_icon_img"> <i class="fa fa-times"
@@ -455,7 +451,33 @@
                                           <span class="file-datils" id="bannerimg_1"></span>
                                           <div id="bannerimg1_img"></div>
                                         </li>
+                                        <!-- All Banners comming from database -->
+                                        <div *ngFor="let val of bannerList; let i=index;" class="olor-box">
+                                          <li class="olor-box" id="topbannerform1">
+                                            <label><span class="bold-para">Banner {{i+1}}</span> </label>
+                                            <span class="Upload_file form-control">
+                                              <label for="upload-photo" class="Upload pl-0">Banner 1
+                                              </label>
+                                              <input type="file" id="upload-photo" formControlName="bannerimg_1"
+                                                (change)="BannerImages($event,2)" value="">
 
+                                              <span class="cross_icon_img"><a> <i class="fa fa-times"
+                                                    aria-hidden="true"></i></a></span>
+                                            </span>
+                                            <label class="size_title">(Max. size 15 kb, Format :jpg, png, svg
+                                              supported)</label>
+                                            <input type="hidden" name="bannerimg_val{{i+1}}" id="bannerimg_val{{i+1}}"
+                                              value="" />
+                                            <span class="file-datils" id="bannerimg_{{i+1}}">
+                                              <img img src="{{siteURL+ '/media/' +val.banner_name}}" alt="user image"
+                                                style="border-radius:2px; height:15px; margin-top:5px;">
+                                            </span>
+                                            <!-- <div id="bannerimg{{i+1}}_img">
+                                              
+                                            </div> -->
+                                          </li>
+                                        </div>
+                                        <!-- All Banners comming by click on Add btn -->
                                         <div *ngFor="let val of bannerArray" class="olor-box">
                                           <li class="olor-box" id="topbannerform{{val}}">
                                             <label class="label-sample"><span class="bold-para">Banner
@@ -465,8 +487,9 @@
                                               <input type="file" name="photo" id="upload-photo{{val}}"
                                                 class="file_hide_list" name="files" value="" multiple="multiple"
                                                 (change)="BannerImages($event,val)" #banner_name>
-                                              <span class="cross_icon_img"> <i class="fa fa-times"
-                                                  aria-hidden="true"></i></span>
+                                              <span class="cross_icon_img"> <a
+                                                  (click)="removeAppendedBan('topbannerform'+val,val)"><i
+                                                    class="fa fa-times" aria-hidden="true"></i></a></span>
                                             </span>
 
                                             <label class="size_title">(Max. size 15 kb, Format :jpg, png, svg
@@ -656,13 +679,11 @@
                               <li><a href="javascript:void(0)" class="menu_mobile mob-active" id="menu_home"
                                   onclick="homedataFunction()">Home</a>
                               </li>
-
                               <li><a href="javascript:void(0)" id="menu_contact" onclick="contactdataFunction()">Contact
                                   Us</a>
                               </li>
                               <li><a href="javascript:void(0)" id="menu_terms" onclick="termsConditionFunction()">Terms
-                                  &
-                                  Condition</a>
+                                  & Condition</a>
                               </li>
                             </ul>
                           </div>
@@ -1741,7 +1762,7 @@
                               <form [formGroup]="taxForm" (ngSubmit)="taxFormSubmit()" novalidate=""
                                 class="tax_data_list">
                                 <div class="payment-datils-country-name d-flex justify-content-center">
-                                  <img src="../../assets/images/panel/india.png" alt="notifications-box.png">
+                                  <!-- <img src="../../assets/images/panel/india.png" alt="notifications-box.png"> -->
                                   <select class="select-sample mb-0" formControlName="country_name"
                                     [(ngModel)]="taxDataArr.country_name" value="" placeholder="Select country"
                                     [ngClass]="{'is-invalid': taxsubmitted && taxform.country_name.errors}">
@@ -1866,7 +1887,7 @@
                                         <span class="d-block firebase-file-type"> Browse .json file </span>
                                       </div>
                                     </label>
-                                    <input type="file" name="photo" id="upload-photo">
+                                    <input type="file" name="photo" id="upload-photo" (change)="uploadFirebase($event)">
                                   </div>
                                 </div>
                                 <p>
@@ -2439,6 +2460,7 @@
                                       </h5>
                                       <p> Terms and Conditions agreement (T&C) is where you set out the rules and
                                         restrictions for anyone who uses your mobile app.</p>
+                                      <input type="hidden" name="termsCID" id="termsCID" value="" />
                                       <textarea id="txtEditor" name="content" formControlName="content"
                                         [ngClass]="{ 'is-invalid': termsCSubmitted && addTermConditionform.content.errors }"></textarea>
                                       <!-- <textarea id="txtEditor"></textarea> -->

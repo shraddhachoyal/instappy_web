@@ -17,8 +17,6 @@ import { Cat, Ban, submitArray } from './model-class/banners/catbanInterface';
 import { threadId } from 'worker_threads';
 declare function videopush(): any;
 declare function chartcircle(): any;
-
-
 declare var jQuery: any;
 declare function restaurantFunction(app_type: number, id: any, pyment_status: any): any;
 
@@ -37,11 +35,7 @@ export class DashboardComponent implements OnInit {
     private myappsService: MyappsService
   ) {
     this.currentDate = new Date().toISOString().slice(0, 10);
-
     this.currentTime = new Date().toISOString().slice(12, 16);
-
-    console.log(this.currentTime);
-
   }
 
   public slideexpierencebox: SwiperConfigInterface = {
@@ -230,7 +224,7 @@ export class DashboardComponent implements OnInit {
   bannerArr: any = Array();
   bannerList: any = Array();
   banerSliderImg = 0;
-  totBanner: number = 0;
+  // totBanner: number = 0;  //not in use
 
   additionalapp_id: any = Array();
   items_data: any = Array();
@@ -259,6 +253,8 @@ export class DashboardComponent implements OnInit {
 
   categpriesArr: any = Array();
   bannerpriesArr: any = Array();
+  addedBanner: any = 0;
+  addedCat: any = 0;
 
   //For Additional app (Restro & Rider) form
   app_form_appid: any = '';
@@ -316,25 +312,23 @@ export class DashboardComponent implements OnInit {
 
 
   learnMoreApp(app_type: any, additional_id: any, app_name: any, app_descriptions: any, price: any, pyment_status: any) {
-
     $("#tab_1").removeClass('tab-active');
     $("#tab_7").addClass('tab-active');
     this.id = "tab_7";
 
     $("#tab_7_hide").css('display', "block");
-
     this.additionalAppsForm(app_type, additional_id, app_name, app_descriptions, price, pyment_status);
-
-
     $("#icon_1").attr('src', "assets/images/panel/icon_1.png");
     $("#icon_7").attr('src', "assets/images/panel/icon_7g.png");
   }
 
   tabChange(ids: any) {
     this.id = ids;
+
     if (this.id === 'tab_1') {
       $(".divtab_1").css('display', "flex");
       // $("#tab_7_hide").css('display', "block");
+
     }
     if (this.id === 'tab_7') {
       $("#restaurant_step_1").css('display', "block");
@@ -648,12 +642,13 @@ export class DashboardComponent implements OnInit {
    *  Banner and Category Section
   **************************************/
   getBanners() {
+    this.addedBanner = 0;
     this.dashboardService.getBanners(this.app_uid).subscribe(data => {
       this.bannerArr = data;
       if (this.bannerArr.success === true) {
-        this.banerSliderImg = 1;
+        this.banerSliderImg = 1; this.addedBanner = 1;
         this.bannerList = this.bannerArr.response;
-        this.totBanner = this.bannerList.length;
+        this.auto_id = this.bannerList.length;
       }
       console.log('bannerList: ', this.bannerList);
     })
@@ -661,10 +656,12 @@ export class DashboardComponent implements OnInit {
 
   /* only count useable not data showing using this function*/
   getCategories() {
+    this.addedCat = 0;
     this.dashboardService.getCategories(this.app_uid).subscribe(data => {
       this.categoryArr = data;
       if (this.categoryArr.success === true) {
         this.cateSliderImg = 1;
+        this.addedCat = 1;
         this.categoryList = this.categoryArr.response;
         this.totCat = this.categoryList.response.length;
       }
@@ -677,10 +674,19 @@ export class DashboardComponent implements OnInit {
       this.auto_id = value;
       this.bannerArray.push(value)
     } else {
-      this.messaageCatBan = 'Banner can not be more then 4';
-      alert(this.messaageCatBan);
-      setTimeout(() => { this.messaageCatBan = this.messaageCatBanMsgCls = ""; }, 3000);
+      this.catBanMsgCls = 'message-failed'; this.catBanMsg = "Banner can not be more then 4";
+      // this.messaageCatBan = 'Banner can not be more then 4';
+      setTimeout(() => { this.catBanMsg = this.catBanMsgCls = ""; }, 3000);
     }
+  }
+
+  removeAppendedBan(removeDiv: any, i: any) {
+    const index = this.bannerArray.indexOf(i, 0);
+    if (index > -1) {
+      this.bannerArray.splice(index, 1);
+    }
+    this.auto_id = this.auto_id - 1;
+    console.log('A-Remove: ', this.bannerArray);
   }
 
   // Code which count number of CategoryImages added
@@ -1017,7 +1023,7 @@ export class DashboardComponent implements OnInit {
 
 
   /************************
-    PAYMENT SECTIONS
+    SETTING: PAYMENT SECTIONS
   *************************/
   getAllPaymentMethods() {
     this.dashboardService.getAllPaymentMethods().subscribe(data => {
@@ -1082,7 +1088,7 @@ export class DashboardComponent implements OnInit {
   }
 
   /************************
-    TAX SECTIONS
+    SETTING: TAX SECTIONS
   *************************/
   getTaxDetails() {
     this.dashboardService.getTaxDetails(this.app_uid).subscribe(data => {
@@ -1131,6 +1137,16 @@ export class DashboardComponent implements OnInit {
         setTimeout(() => { this.addPayMsg = this.addPayMsgCls = ''; }, 5000);
       })
     }
+  }
+  /****************************************
+   *  SETTING: FIREBASE SECTIONS
+  **************************************/
+  uploadFirebase(e: any) {
+    let file = e.target.files[0];
+    /*this.dashboardService.addFirebase(file).subscribe((event: any) => {
+      this.upload = event;
+      if (this.upload.success === true) {}
+    });*/
   }
 
   /************************************************************
@@ -1240,44 +1256,38 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  updateAdditionalAppData(formdata: any) {
-
-    var updateData = new Array();
-    var appname: any = 'app_name';
-    var mydataId: any = 'data_id';
-    var iconVals: any = 'icon_values';
-    var splashscreen_icon_value: any = 'splashscreen_icon_value';
-    updateData[appname] = formdata.apps_name;
-    // updateData[mydataId] = formdata.app_details_uid
-
-    // if (this.additionalAppIcon) {
-    //   updateData[iconVals] = this.additionalAppIcon;
-    // }
-    // if (this.additionalAppSplashIcon) {
-    //   updateData[splashscreen_icon_value] = this.additionalAppSplashIcon;
-    // }
-    console.log('update Arr: ', updateData);
-    // this.dashboardService.updateAdditionalApp(updateData).subscribe((data) => {
-    //   this.addAdditionalAppResult = data;
-    //   if (this.addAdditionalAppResult.success === true) {
-    //     this.addAdditionalAppMsg = "App has been successfully updated";
-    //     this.addAdditionalSuccessCls = "message-success";
-    //     this.appDataForm.reset();
-    //     $("#additionalAppIcon_name").html('');
-    //     $("#additionalAppSplashIcon_name").html('');
-    //     this.getAPP(this.app_type);
-    //     setTimeout(() => {
-    //       this.activeCurrTab('active2', 'active1', 'active3');
-    //       $("#formFirstState").css('display', 'none');
-    //       $("#formSecondState").css('display', 'block');
-    //       $("#formThirdState").css('display', 'none');
-    //     }, 3000);
-    //   } else {
-    //     this.addAdditionalAppMsg = "Oops! Failed to update";
-    //     this.addAdditionalSuccessCls = "message-failed";
-    //   }
-    //   setTimeout(() => { this.addAdditionalAppMsg = this.addAdditionalSuccessCls = ''; }, 5000);
-    // })
+  /*This function is used for update additional apps details*/
+  updateAdditionalAppData(appData: any) {
+    let second_array = appData;
+    if (this.additionalAppIcon) {
+      var merged = Object.assign(appData, { 'icon_values': this.additionalAppIcon });
+      second_array = appData;
+    }
+    if (this.additionalAppSplashIcon) {
+      var merged = Object.assign(appData, { 'splashscreen_icon_value': this.additionalAppSplashIcon });
+      second_array = appData;
+    }
+    this.dashboardService.updateAdditionalApp(second_array).subscribe((data) => {
+      this.addAdditionalAppResult = data;
+      if (this.addAdditionalAppResult.success === true) {
+        this.addAdditionalAppMsg = "App has been successfully updated";
+        this.addAdditionalSuccessCls = "message-success";
+        this.appDataForm.reset();
+        $("#additionalAppIcon_name").html('');
+        $("#additionalAppSplashIcon_name").html('');
+        this.getAPP(this.app_type);
+        setTimeout(() => {
+          this.activeCurrTab('active2', 'active1', 'active3');
+          $("#formFirstState").css('display', 'none');
+          $("#formSecondState").css('display', 'block');
+          $("#formThirdState").css('display', 'none');
+        }, 3000);
+      } else {
+        this.addAdditionalAppMsg = "Oops! Failed to update";
+        this.addAdditionalSuccessCls = "message-failed";
+      }
+      setTimeout(() => { this.addAdditionalAppMsg = this.addAdditionalSuccessCls = ''; }, 5000);
+    })
   }
 
   /*Get Restaurant and Rider Apps Details*/
@@ -1286,11 +1296,8 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getAdditionalAppInfo(app_type, this.authUser.id).subscribe(data => {
       this.aditionalAppDetails = data;
       if (this.aditionalAppDetails.success === true) {
-        // console.log('aditionalAppDetails1 are: ', this.aditionalAppDetails);
         this.app_form_appuid = this.aditionalAppDetails.response.app_uid;
         this.aditionalAppDetails = this.aditionalAppDetails.response;
-        console.log('***:', this.aditionalAppDetails);
-
 
         const appIcon = siteURL + '/media/' + this.aditionalAppDetails.icon_values;
         const appSplashIcon = siteURL + '/media/' + this.aditionalAppDetails.splashscreen_icon_value;
@@ -1298,12 +1305,10 @@ export class DashboardComponent implements OnInit {
         $("#additionalAppIcon_img").html('<img src="' + appIcon + '" width="30px;" style="border-radius:2px; height:15px;">');
         $("#additionalAppSplashIcon_img").html('<img src="' + appSplashIcon + '" width="30px;" style="border-radius:2px; height:15px;">');
 
-        //get documents and commission of this App
         this.getDocommission(app_type);
         this.getTermsConditionDetails(app_type);
       } else { this.aditionalAppDetails = []; this.additionalapps_details_added = 0; }
     });
-    // console.log('aditionalAppDetails are: ', this.aditionalAppDetails);
   }
   /* Appended Documents */
   appenMoreDocs() {
@@ -1368,8 +1373,10 @@ export class DashboardComponent implements OnInit {
           $("#commission").val(this.docommissionListResponse.response.commission.commission);
 
           this.docommissionListArr = this.docommissionListResponse.response.document;
+          this.doc_auto_id = this.docommissionListArr.length;
         } else {
           this.docommissionListArr = this.docommissionListResponse.response;
+          this.doc_auto_id = this.docommissionListArr.length;
         }
         this.docAddedStatus = this.docNxtBtn = 1;
       } else {
@@ -1387,11 +1394,9 @@ export class DashboardComponent implements OnInit {
     this.docommitionSubmitted = true;
     this.docArr = Array();
     if (this.addDocsCommissionForm.invalid) {
-      console.log('invalid:- ');
+      console.log('addDocsCommission invalid:- ');
       return;
     } else {
-      console.log('before loop:- ', this.doc_auto_id);
-
       for (var i = 1; i <= this.doc_auto_id; i++) {
         var docImgVal = $('input[name="image_required_' + i + '"]:checked').val();
         var docTypeVal = $("#doc_type_" + i).val();
@@ -1401,6 +1406,8 @@ export class DashboardComponent implements OnInit {
       }
       let formdata = this.addDocsCommissionForm.value;
       let commissionVal = $("#commission").val();
+      console.log('this.docArr:= ', this.docArr);
+
       if (this.app_type === 3) {
         this.addRestroDocs(commissionVal);
       } else if (this.app_type === 2) {
@@ -1411,8 +1418,8 @@ export class DashboardComponent implements OnInit {
   addRestroDocs(commission: any) {
     let postARr = {
       "app_uid": this.app_form_appuid,
-      "commission_id": this.commissionID,
-      "commission": parseInt(commission),
+      "commission_id": Number(this.commissionID),
+      "commission": Number(commission),
       "document": this.docArr
     }
 
@@ -1466,12 +1473,14 @@ export class DashboardComponent implements OnInit {
   /* Terms & Conditions */
   getTermsConditionDetails(app_type: number) {
     $("#txtEditor").val('');
+    $("#termsCID").val('');
     this.dashboardService.getTermCondition(this.app_form_appuid, app_type).subscribe((data) => {
 
       this.getTersCRes = data;
       if (this.getTersCRes.success === true) {
-        this.getTersCRes.data.content;
-
+        // this.getTersCRes.data.content;
+        console.log('TermsC ID: ', this.getTersCRes.data.id)
+        $("#termsCID").val(this.getTersCRes.data.id);
         $("#txtEditor").val(this.getTersCRes.data.content);
       }
     })
@@ -1488,25 +1497,47 @@ export class DashboardComponent implements OnInit {
       return;
     } else {
       let formdata = this.addTermConditionForm.value;
-      let postTerms = {
-        app_uid: this.app_form_appuid,
-        content: formdata.content,
-        content_type: 2
-      }
-      this.dashboardService.addTermCondition(postTerms).subscribe((data) => {
-        this.termsConditionSubmit = data;
-        if (this.termsConditionSubmit.success === true) {
-          this.addtermsConditionMsg = this.termsConditionSubmit.message;
-          this.addtermsConditionMsgCls = "message-success";
-          this.getTermsConditionDetails(this.app_type);
-        } else {
-          this.addtermsConditionMsg = this.termsConditionSubmit.message;
-          this.addtermsConditionMsgCls = "message-failed";
+      let termsCID = Number($("#termsCID").val());
+      if (termsCID) {
+        let updateTermsC = {
+          data_id: termsCID,
+          content: formdata.content
         }
-        setTimeout(() => {
-          this.addtermsConditionMsg = this.addtermsConditionMsgCls = '';
-        }, 3000);
-      })
+        this.dashboardService.updateTermCondition(updateTermsC).subscribe((data) => {
+          this.termsConditionSubmit = data;
+          if (this.termsConditionSubmit.success === true) {
+            this.addtermsConditionMsg = this.termsConditionSubmit.message;
+            this.addtermsConditionMsgCls = "message-success";
+            this.getTermsConditionDetails(this.app_type);
+          } else {
+            this.addtermsConditionMsg = this.termsConditionSubmit.message;
+            this.addtermsConditionMsgCls = "message-failed";
+          }
+          setTimeout(() => {
+            this.addtermsConditionMsg = this.addtermsConditionMsgCls = '';
+          }, 3000);
+        })
+      } else {
+        let postTerms = {
+          app_uid: this.app_form_appuid,
+          content: formdata.content,
+          content_type: 2
+        }
+        this.dashboardService.addTermCondition(postTerms).subscribe((data) => {
+          this.termsConditionSubmit = data;
+          if (this.termsConditionSubmit.success === true) {
+            this.addtermsConditionMsg = this.termsConditionSubmit.message;
+            this.addtermsConditionMsgCls = "message-success";
+            this.getTermsConditionDetails(this.app_type);
+          } else {
+            this.addtermsConditionMsg = this.termsConditionSubmit.message;
+            this.addtermsConditionMsgCls = "message-failed";
+          }
+          setTimeout(() => {
+            this.addtermsConditionMsg = this.addtermsConditionMsgCls = '';
+          }, 3000);
+        })
+      }
     }
   }
 
@@ -1524,22 +1555,19 @@ export class DashboardComponent implements OnInit {
     this.totAmmount = parseInt(this.totAmmount) + parseInt(price);
     this.additionalapp_id.push(additionalapp_id);
     this.items_data.push({ 'id': additionalapp_id, 'name': additionalapp_name, 'app_type': 2, 'price': price });
-    // $(".addBtn_" + additionalapp_id).css('display', 'none');
-    // $(".addedBtn_" + additionalapp_id).css('display', 'block');
+
     $(".checkoutDiv").css('display', 'block');
     $('.cartbtn_' + additionalapp_id).addClass('current');
 
-    //$('.add-price').on('click', function () {
     $('.cartbtn_' + additionalapp_id).addClass('current');
     $('.cartbtn_' + additionalapp_id).text('Added');
     $('.cartbtn_' + additionalapp_id).removeClass('bg-light border');
-    // });
+
     $('.moredetail_retro').on('click', function () {
       $('.cartbtn_' + additionalapp_id).addClass('current');
       $('.cartbtn_' + additionalapp_id).text('Added');
       $('.cartbtn_' + additionalapp_id).removeClass('bg-light border');
     });
-
   }
 
   checkout() {
