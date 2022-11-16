@@ -9,6 +9,7 @@ import { Myapp } from '../panel/myapp';
 import { Docommission } from './model-class/additionalApps/docommission';
 import { Documents } from './model-class/additionalApps/documents';
 import { Termsconditions } from './model-class/termsCondition/termsconditions';
+import { UpdateTermsC } from './model-class/termsCondition/update-terms-c';
 import { Bannercat } from './model-class/banners/bannercat';
 import { MyAdditionalapp } from './model-class/additionalApps/my-additionalapp';
 
@@ -135,7 +136,16 @@ export class DashboardService {
     return this.httpClient.post<Termsconditions[]>(api_url + 'termsconditionprivacypolicy/post_policy_terms/', termsconditions, httpOptions)
   }
 
+  updateTermCondition(updateTermsC: UpdateTermsC) {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.httpClient.post<UpdateTermsC[]>(api_url + 'termsconditionprivacypolicy/post_policy_terms_update/', updateTermsC, httpOptions)
+  }
+
   deleteDocument(docID: number) {
     return this.httpClient.get(api_url + "document/required-document-delete/" + docID + "/");
+  }
+
+  addFirebase(file: any) {
+    return true;
   }
 }

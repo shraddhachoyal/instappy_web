@@ -224,7 +224,7 @@ export class DashboardComponent implements OnInit {
   bannerArr: any = Array();
   bannerList: any = Array();
   banerSliderImg = 0;
-  totBanner: number = 0;
+  // totBanner: number = 0;  //not in use
 
   additionalapp_id: any = Array();
   items_data: any = Array();
@@ -253,6 +253,8 @@ export class DashboardComponent implements OnInit {
 
   categpriesArr: any = Array();
   bannerpriesArr: any = Array();
+  addedBanner: any = 0;
+  addedCat: any = 0;
 
   //For Additional app (Restro & Rider) form
   app_form_appid: any = '';
@@ -629,12 +631,13 @@ export class DashboardComponent implements OnInit {
    *  Banner and Category Section
   **************************************/
   getBanners() {
+    this.addedBanner = 0;
     this.dashboardService.getBanners(this.app_uid).subscribe(data => {
       this.bannerArr = data;
       if (this.bannerArr.success === true) {
-        this.banerSliderImg = 1;
+        this.banerSliderImg = 1; this.addedBanner = 1;
         this.bannerList = this.bannerArr.response;
-        this.totBanner = this.bannerList.length;
+        this.auto_id = this.bannerList.length;
       }
       console.log('bannerList: ', this.bannerList);
     })
@@ -642,10 +645,12 @@ export class DashboardComponent implements OnInit {
 
   /* only count useable not data showing using this function*/
   getCategories() {
+    this.addedCat = 0;
     this.dashboardService.getCategories(this.app_uid).subscribe(data => {
       this.categoryArr = data;
       if (this.categoryArr.success === true) {
         this.cateSliderImg = 1;
+        this.addedCat = 1;
         this.categoryList = this.categoryArr.response;
         this.totCat = this.categoryList.response.length;
       }
@@ -658,10 +663,19 @@ export class DashboardComponent implements OnInit {
       this.auto_id = value;
       this.bannerArray.push(value)
     } else {
-      this.messaageCatBan = 'Banner can not be more then 4';
-      alert(this.messaageCatBan);
-      setTimeout(() => { this.messaageCatBan = this.messaageCatBanMsgCls = ""; }, 3000);
+      this.catBanMsgCls = 'message-failed'; this.catBanMsg = "Banner can not be more then 4";
+      // this.messaageCatBan = 'Banner can not be more then 4';
+      setTimeout(() => { this.catBanMsg = this.catBanMsgCls = ""; }, 3000);
     }
+  }
+
+  removeAppendedBan(removeDiv: any, i: any) {
+    const index = this.bannerArray.indexOf(i, 0);
+    if (index > -1) {
+      this.bannerArray.splice(index, 1);
+    }
+    this.auto_id = this.auto_id - 1;
+    console.log('A-Remove: ', this.bannerArray);
   }
 
   // Code which count number of CategoryImages added
@@ -1008,7 +1022,7 @@ export class DashboardComponent implements OnInit {
 
 
   /************************
-    PAYMENT SECTIONS
+    SETTING: PAYMENT SECTIONS
   *************************/
   getAllPaymentMethods() {
     this.dashboardService.getAllPaymentMethods().subscribe(data => {
@@ -1073,7 +1087,7 @@ export class DashboardComponent implements OnInit {
   }
 
   /************************
-    TAX SECTIONS
+    SETTING: TAX SECTIONS
   *************************/
   getTaxDetails() {
     this.dashboardService.getTaxDetails(this.app_uid).subscribe(data => {
@@ -1122,6 +1136,16 @@ export class DashboardComponent implements OnInit {
         setTimeout(() => { this.addPayMsg = this.addPayMsgCls = ''; }, 5000);
       })
     }
+  }
+  /****************************************
+   *  SETTING: FIREBASE SECTIONS
+  **************************************/
+  uploadFirebase(e: any) {
+    let file = e.target.files[0];
+    /*this.dashboardService.addFirebase(file).subscribe((event: any) => {
+      this.upload = event;
+      if (this.upload.success === true) {}
+    });*/
   }
 
   /************************************************************
@@ -1449,12 +1473,14 @@ export class DashboardComponent implements OnInit {
   /* Terms & Conditions */
   getTermsConditionDetails(app_type: number) {
     $("#txtEditor").val('');
+    $("#termsCID").val('');
     this.dashboardService.getTermCondition(this.app_form_appuid, app_type).subscribe((data) => {
 
       this.getTersCRes = data;
       if (this.getTersCRes.success === true) {
-        this.getTersCRes.data.content;
-
+        // this.getTersCRes.data.content;
+        console.log('TermsC ID: ', this.getTersCRes.data.id)
+        $("#termsCID").val(this.getTersCRes.data.id);
         $("#txtEditor").val(this.getTersCRes.data.content);
       }
     })
@@ -1471,25 +1497,47 @@ export class DashboardComponent implements OnInit {
       return;
     } else {
       let formdata = this.addTermConditionForm.value;
-      let postTerms = {
-        app_uid: this.app_form_appuid,
-        content: formdata.content,
-        content_type: 2
-      }
-      this.dashboardService.addTermCondition(postTerms).subscribe((data) => {
-        this.termsConditionSubmit = data;
-        if (this.termsConditionSubmit.success === true) {
-          this.addtermsConditionMsg = this.termsConditionSubmit.message;
-          this.addtermsConditionMsgCls = "message-success";
-          this.getTermsConditionDetails(this.app_type);
-        } else {
-          this.addtermsConditionMsg = this.termsConditionSubmit.message;
-          this.addtermsConditionMsgCls = "message-failed";
+      let termsCID = Number($("#termsCID").val());
+      if (termsCID) {
+        let updateTermsC = {
+          data_id: termsCID,
+          content: formdata.content
         }
-        setTimeout(() => {
-          this.addtermsConditionMsg = this.addtermsConditionMsgCls = '';
-        }, 3000);
-      })
+        this.dashboardService.updateTermCondition(updateTermsC).subscribe((data) => {
+          this.termsConditionSubmit = data;
+          if (this.termsConditionSubmit.success === true) {
+            this.addtermsConditionMsg = this.termsConditionSubmit.message;
+            this.addtermsConditionMsgCls = "message-success";
+            this.getTermsConditionDetails(this.app_type);
+          } else {
+            this.addtermsConditionMsg = this.termsConditionSubmit.message;
+            this.addtermsConditionMsgCls = "message-failed";
+          }
+          setTimeout(() => {
+            this.addtermsConditionMsg = this.addtermsConditionMsgCls = '';
+          }, 3000);
+        })
+      } else {
+        let postTerms = {
+          app_uid: this.app_form_appuid,
+          content: formdata.content,
+          content_type: 2
+        }
+        this.dashboardService.addTermCondition(postTerms).subscribe((data) => {
+          this.termsConditionSubmit = data;
+          if (this.termsConditionSubmit.success === true) {
+            this.addtermsConditionMsg = this.termsConditionSubmit.message;
+            this.addtermsConditionMsgCls = "message-success";
+            this.getTermsConditionDetails(this.app_type);
+          } else {
+            this.addtermsConditionMsg = this.termsConditionSubmit.message;
+            this.addtermsConditionMsgCls = "message-failed";
+          }
+          setTimeout(() => {
+            this.addtermsConditionMsg = this.addtermsConditionMsgCls = '';
+          }, 3000);
+        })
+      }
     }
   }
 
