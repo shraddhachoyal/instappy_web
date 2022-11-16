@@ -436,7 +436,7 @@
                                               [ngClass]="{ 'is-invalid': bannerCatSubmitted && addCatBanform.bannerimg_1.errors }">
 
                                             <div *ngIf="bannerCatSubmitted && addCatBanform.bannerimg_1.errors"
-                                              class="invalid-feedback">
+                                              class="invalid-feedback select_app">
                                               <div *ngIf="addCatBanform.bannerimg_1.errors.required">Please select app
                                                 icon </div>
                                             </div>
@@ -1251,11 +1251,9 @@
                                     <div class="list_name text-center">
                                       <div class="icon_priew_bg" *ngIf="icon_type === 'custom'"
                                         [ngStyle]="{background:appIconClr}">
-                                        <!-- [innerHtml]="doHtmlDisplay(appIconTxt,5)" -->
                                         <p class="appIconLogo"
                                           [ngStyle]="{ 'color': iconFontColor, 'font-family':appIconFont }">
-                                          {{appIconTxt}}
-                                        </p>
+                                          {{appIconTxt}}</p>
                                       </div>
 
                                       <div *ngIf="icon_type === 'upload'" id="newAppIconImg">

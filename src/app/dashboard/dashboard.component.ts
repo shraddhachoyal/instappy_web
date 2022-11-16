@@ -310,10 +310,12 @@ export class DashboardComponent implements OnInit {
   catBanMsg: string = '';
   catBanMsgCls: string = '';
 
+
   learnMoreApp(app_type: any, additional_id: any, app_name: any, app_descriptions: any, price: any, pyment_status: any) {
     $("#tab_1").removeClass('tab-active');
     $("#tab_7").addClass('tab-active');
     this.id = "tab_7";
+
     $("#tab_7_hide").css('display', "block");
     this.additionalAppsForm(app_type, additional_id, app_name, app_descriptions, price, pyment_status);
     $("#icon_1").attr('src', "assets/images/panel/icon_1.png");
@@ -322,9 +324,16 @@ export class DashboardComponent implements OnInit {
 
   tabChange(ids: any) {
     this.id = ids;
+
+    if (this.id === 'tab_1') {
+      $(".divtab_1").css('display', "flex");
+      // $("#tab_7_hide").css('display', "block");
+
+    }
     if (this.id === 'tab_7') {
       $("#restaurant_step_1").css('display', "block");
       $("#restaurant_step_2").css('display', "none");
+
     }
     if (this.id === 'tab_5') {
       this.getAllCountries();
@@ -513,7 +522,9 @@ export class DashboardComponent implements OnInit {
       this.appSplashIconFontClr = e.target.value;
     }
   }
-
+  addAppname(e: any) {
+    $(".appname").text(e.target.value);
+  }
   updateApp() {
     this.appsubmitted = true;
     let formdata = this.updateAppForm.value;
@@ -769,16 +780,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  /*This function is used for show changes of app name when we type app name in tab-3*/
-  addAppname(e: any) {
-    let text = e.target.value;
-    let limit = 6;
-    if (text.length > limit) {
-      /* This function is used for set limit on paragraph text/content text */
-      text = text.substring(0, limit) + '...';
-    } else { text; }
-    $(".appname").text(text);
-  }
   editName() {
     $('#editAppname').hide();
     $('.updateappname').show();
@@ -1215,8 +1216,7 @@ export class DashboardComponent implements OnInit {
     } else {
       let formdata = this.appDataForm.value;
       if (formdata.app_details_uid) {
-        let appData = { "web_id": this.authUser.id, "data_id": formdata.app_details_uid, "colar_type": '', "color_code": '', "app_type": this.app_type, "app_name": formdata.apps_name };
-        this.updateAdditionalAppData(appData);
+        this.updateAdditionalAppData(formdata);
       } else {
         let formdataVal = {
           web_id: this.authUser.id,

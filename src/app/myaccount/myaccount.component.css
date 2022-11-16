@@ -426,4 +426,8 @@ select {
     .nextprev-button button {
         margin: 20px auto;
     }
+
+    .nextprev-button>h2 {
+        font-size: 20px;
+    }
 }

@@ -583,11 +583,24 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   $(".tab-active").click(function () {
-//     location.reload();
-//   });
-// })
+function learnMoreApp1() {
+  var tab1 = document.getElementById("tab_01");
+  var tab7 = document.getElementById("tab_7_hide");
+  tab7.style.display = "block";
+  tab1.style.display = "none";
+
+
+
+
+}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  $(".tab-active").click(function () {
+    location.reload();
+  });
+})
 
 
 //Section 3 Start
@@ -642,3 +655,6 @@ function termsConditionFunction3() {
 }
 
 //Section 3 End
+
+
+
