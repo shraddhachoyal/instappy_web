@@ -176,17 +176,13 @@ span.message-success {
     text-align: center;
     display: block;
     font-size: 14px;
-    /*color: #000;*/
     font-weight: 500;
-    /*background: #b9ffb9;*/
     background: #DDF2DF;
     color: #1CA92A;
-    padding: 3px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding: 5px 15px;
     border-radius: 5px;
-    max-width: 250px;
-    margin: 0 auto;
+    max-width: 500px;
+    margin: 10px auto;
 }
 
 span.message-failed {
@@ -196,10 +192,10 @@ span.message-failed {
     color: #000;
     font-weight: 500;
     background: #ffd1bd82;
-    padding: 3px;
     border-radius: 5px;
-    max-width: 250px;
-    margin: 0 auto;
+    padding: 5px 15px;
+    border-radius: 5px;
+    max-width: 500px;
 }
 
 .nav_active {
@@ -611,7 +607,7 @@ a.active_list.nav_active>i {
 }
 
 .app_icon_para {
-    /* background: #007bff; */
+    background: #007bff;
     height: 100%;
     width: 100%;
     border-radius: 15px;
@@ -864,6 +860,7 @@ p.appname {
     height: 20px;
     margin-bottom: 0;
     text-transform: uppercase;
+    width: 32px;
 }
 
 .home_class2 {
